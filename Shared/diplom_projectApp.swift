@@ -11,7 +11,8 @@ import SwiftUI
 struct diplom_projectApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LaunchView()
+                .environmentObject(ContentModel())
         }
     }
 }
