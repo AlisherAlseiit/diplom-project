@@ -92,7 +92,7 @@ class ContentModel: ObservableObject {
                                     let tokenAcceso = convertedJsonIntoDict["token"] as? String
                                     self.token = tokenAcceso!
                                     completion(true)
-//                                    print("my token = \(self.token)")
+                                    print("my token = \(self.token)")
                                     
                                 }
                             } else {
@@ -116,7 +116,7 @@ class ContentModel: ObservableObject {
         }
         
     }
-    func register(email: String, password: String, name: String, phone: String, completion: @escaping (Bool) -> Void) {
+    func register(email: String, password: String, name: String, phone: String, confirmPassword: String, completion: @escaping (Bool) -> Void) {
         print("Performin Registration")
         
         guard let url = URL(string: "https://api.edev.kz/api/register")
@@ -127,7 +127,7 @@ class ContentModel: ObservableObject {
         
         do {
             
-            let params = ["email": email, "password": password, "name": name, "phone": phone]
+            let params = ["email": email, "password": password, "name": name, "phone": phone, "password_confirmation": confirmPassword]
             loginRequest.httpBody = try JSONSerialization.data(withJSONObject: params, options: .init())
             
             loginRequest.setValue("application/json", forHTTPHeaderField: "content-type")
@@ -165,7 +165,7 @@ class ContentModel: ObservableObject {
                                     let tokenAcceso = convertedJsonIntoDict["token"] as? String
                                     self.token = tokenAcceso!
                                     completion(true)
-//                                    print("my token = \(self.token)")
+                                    print("my token = \(self.token)")
                                     
                                 }
                             } else {

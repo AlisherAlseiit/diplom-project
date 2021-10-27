@@ -77,7 +77,7 @@ struct LoginView: View {
                         
                     } else {
                         
-                        model.register(email: email, password: password, name: name, phone: phoneNumber) { _ in
+                        model.register(email: email, password: password, name: name, phone: phoneNumber, confirmPassword: "dwa") { _ in
                             model.checkLogin()
                         }
                         

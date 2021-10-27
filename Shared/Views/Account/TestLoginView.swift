@@ -14,6 +14,7 @@ struct TestLoginView: View {
         case name
         case phoneNumber
         case password
+        case confirmPassword
     }
     
     @State private var fadeToggle: Bool = true
@@ -22,6 +23,7 @@ struct TestLoginView: View {
     @State private var password: String = ""
     @State private var phoneNumber = ""
     @State private var name = ""
+    @State private var confirmPassword = ""
     @State private var rotationAngle = 0.0
     @EnvironmentObject var model: ContentModel
     @FocusState private var focusedField: Field?
@@ -160,7 +162,7 @@ struct TestLoginView: View {
                             .foregroundColor(Color.white.opacity(0.7))
                             .autocapitalization(.none)
                             .textContentType(.password)
-                            .submitLabel(.join)
+                            .submitLabel(model.loginMode == Constants.LoginMode.login ? .join : .next)
                     }
                     .frame(height: 52)
                     .overlay(
@@ -175,6 +177,33 @@ struct TestLoginView: View {
                             .opacity(0.8)
                     )
                     
+                    if model.loginMode == Constants.LoginMode.creteAccount {
+                        HStack(spacing: 15) {
+                            TextFieldIcon(iconName: "lock.fill")
+                            
+                            SecureField("Confirm Password", text: $confirmPassword)
+                                .focused($focusedField, equals: .confirmPassword)
+                                .colorScheme(.dark)
+                                .foregroundColor(Color.white.opacity(0.7))
+                                .autocapitalization(.none)
+                                .textContentType(.password)
+                                .submitLabel(.join)
+                        }
+                        .frame(height: 52)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(Color.white,
+                                        lineWidth: 1)
+                                .blendMode(.overlay)
+                        )
+                        .background(
+                            Color("secondaryBackground")
+                                .cornerRadius(16)
+                                .opacity(0.8)
+                        )
+                    }
+                    
+                    
                     GradientButton(buttonTitle: model.loginMode == Constants.LoginMode.creteAccount ? "Create Account" : "Sign in") {
                         
                         if model.loginMode == Constants.LoginMode.login {
@@ -185,7 +214,7 @@ struct TestLoginView: View {
                             
                         } else {
                             
-                            model.register(email: email, password: password, name: name, phone: phoneNumber) { _ in
+                            model.register(email: email, password: password, name: name, phone: phoneNumber, confirmPassword: confirmPassword) { _ in
                                 model.checkLogin()
                             }
                             
