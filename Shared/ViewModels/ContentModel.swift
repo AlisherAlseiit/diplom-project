@@ -31,6 +31,7 @@ class ContentModel: ObservableObject {
     @Published var tapped = false
     
     
+    
 //    func fetchPosts() {
 //        guard let url = URL(string: "https://api.edev.kz/api/products") else {
 //            return

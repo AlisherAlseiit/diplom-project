@@ -11,45 +11,51 @@ struct CustomTextField: View {
     
     @Binding var field: String
     var iconName: String
-    var placeHolder: String
     var isSecure:Bool = false
     var title: String
+    var prompt: String
     var body: some View {
-        HStack(spacing: 15) {
-            TextFieldIcon(iconName: iconName)
-            
-            if !isSecure {
-            TextField(title, text: $field)
-                .colorScheme(.dark)
-                .foregroundColor(Color.white.opacity(0.7))
-                .autocapitalization(.none)
+        VStack (alignment: .leading) {
+            HStack(spacing: 15) {
+                TextFieldIcon(iconName: iconName)
                 
-            } else {
-                SecureField(title, text: $field)
-                    .colorScheme(.dark)
-                    .foregroundColor(Color.white.opacity(0.7))
-                    .autocapitalization(.none)
+                if !isSecure {
+                    TextField(title, text: $field)
+                        .colorScheme(.dark)
+                        .foregroundColor(Color.white.opacity(0.7))
+                        .autocapitalization(.none)
                     
+                } else {
+                    SecureField(title, text: $field)
+                        .colorScheme(.dark)
+                        .foregroundColor(Color.white.opacity(0.7))
+                        .autocapitalization(.none)
+                    
+                }
+                
             }
-            
+            .frame(height: 52)
+            .overlay(
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(Color.white,
+                            lineWidth: 1)
+                    .blendMode(.overlay)
+            )
+            .background(
+                Color("secondaryBackground")
+                    .cornerRadius(16)
+                    .opacity(0.8)
+            )
+            Text(prompt)
+                .fixedSize(horizontal: false, vertical: true)
+                .font(.caption)
+                .foregroundColor(.white)
         }
-        .frame(height: 52)
-        .overlay(
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.white,
-                        lineWidth: 1)
-                .blendMode(.overlay)
-        )
-        .background(
-            Color("secondaryBackground")
-                .cornerRadius(16)
-                .opacity(0.8)
-        )
     }
 }
 
 struct CustomTextField_Previews: PreviewProvider {
     static var previews: some View {
-        CustomTextField(field: .constant(""), iconName: "envelope.open.fill", placeHolder: "", title: "Email")
+        CustomTextField(field: .constant(""), iconName: "envelope.open.fill", title: "Email", prompt: "Enter a valid email")
     }
 }

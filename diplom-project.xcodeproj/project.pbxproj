@@ -29,11 +29,11 @@
 		38BE77B22730011E008498C3 /* loading2.json in Resources */ = {isa = PBXBuildFile; fileRef = 38BE77B12730011E008498C3 /* loading2.json */; };
 		38BE77B42730039D008498C3 /* Paperplane.json in Resources */ = {isa = PBXBuildFile; fileRef = 38BE77B32730039D008498C3 /* Paperplane.json */; };
 		38BE77B627301430008498C3 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BE77B527301430008498C3 /* CustomTextField.swift */; };
+		38BE77BA27302B71008498C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BE77B927302B71008498C3 /* ContentView.swift */; };
+		38BE77BC27302B81008498C3 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BE77BB27302B81008498C3 /* SignupViewModel.swift */; };
 		38C26AF0272A948D0095F68C /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C26AEF272A948D0095F68C /* Product.swift */; };
 		38CF090327203FCC0079C51B /* diplom_projectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CF08F327203FCA0079C51B /* diplom_projectApp.swift */; };
 		38CF090427203FCC0079C51B /* diplom_projectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CF08F327203FCA0079C51B /* diplom_projectApp.swift */; };
-		38CF090527203FCC0079C51B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CF08F427203FCA0079C51B /* ContentView.swift */; };
-		38CF090627203FCC0079C51B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CF08F427203FCA0079C51B /* ContentView.swift */; };
 		38CF090727203FCC0079C51B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38CF08F527203FCC0079C51B /* Assets.xcassets */; };
 		38CF090827203FCC0079C51B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38CF08F527203FCC0079C51B /* Assets.xcassets */; };
 		38CF0937272041540079C51B /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CF0936272041540079C51B /* LaunchView.swift */; };
@@ -65,9 +65,10 @@
 		38BE77B12730011E008498C3 /* loading2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading2.json; sourceTree = "<group>"; };
 		38BE77B32730039D008498C3 /* Paperplane.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Paperplane.json; sourceTree = "<group>"; };
 		38BE77B527301430008498C3 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		38BE77B927302B71008498C3 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		38BE77BB27302B81008498C3 /* SignupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		38C26AEF272A948D0095F68C /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		38CF08F327203FCA0079C51B /* diplom_projectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = diplom_projectApp.swift; sourceTree = "<group>"; };
-		38CF08F427203FCA0079C51B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		38CF08F527203FCC0079C51B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		38CF08FA27203FCC0079C51B /* diplom-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "diplom-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		38CF090027203FCC0079C51B /* diplom-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "diplom-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,13 +137,13 @@
 			isa = PBXGroup;
 			children = (
 				38CF08F327203FCA0079C51B /* diplom_projectApp.swift */,
+				38BE77B927302B71008498C3 /* ContentView.swift */,
 				38CF0935272041430079C51B /* Views */,
 				38CF09382720416C0079C51B /* ViewModels */,
 				38CF09392720417B0079C51B /* Models */,
 				38CF093A272041900079C51B /* Resources */,
 				38BE77AA272FF9A5008498C3 /* LottieView.swift */,
 				38CF093B272041960079C51B /* Helpers */,
-				38CF08F427203FCA0079C51B /* ContentView.swift */,
 				38BE77AC272FF9F8008498C3 /* Lottie */,
 				38CF08F527203FCC0079C51B /* Assets.xcassets */,
 			);
@@ -182,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				38CF093E272041E50079C51B /* ContentModel.swift */,
+				38BE77BB27302B81008498C3 /* SignupViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -348,10 +350,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38BE77BC27302B81008498C3 /* SignupViewModel.swift in Sources */,
 				38BE77B627301430008498C3 /* CustomTextField.swift in Sources */,
 				38C26AF0272A948D0095F68C /* Product.swift in Sources */,
 				38B870932723DDF900AED736 /* GradientText.swift in Sources */,
-				38CF090527203FCC0079C51B /* ContentView.swift in Sources */,
 				383D652B272149AE00C76927 /* ProfileView.swift in Sources */,
 				38B870912723DD7D00AED736 /* TextFieldIcon.swift in Sources */,
 				383F17AC27230FE9005173B0 /* BackButtonView.swift in Sources */,
@@ -362,6 +364,7 @@
 				38CF093F272041E50079C51B /* ContentModel.swift in Sources */,
 				381E39C1272E7DFF00F8B4D9 /* ForgotPasswordView.swift in Sources */,
 				38B8708F2723DD4900AED736 /* VisualEffectBlur12.swift in Sources */,
+				38BE77BA27302B71008498C3 /* ContentView.swift in Sources */,
 				38CF0942272046AA0079C51B /* OnBoardingView.swift in Sources */,
 				38B870952723DF1000AED736 /* TestLoginView.swift in Sources */,
 				383D65312721BF4600C76927 /* OnBoardingOverlay.swift in Sources */,
@@ -381,7 +384,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38CF090627203FCC0079C51B /* ContentView.swift in Sources */,
 				38CF090427203FCC0079C51B /* diplom_projectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

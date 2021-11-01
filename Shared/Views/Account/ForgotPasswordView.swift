@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ForgotPasswordView: View {
     @EnvironmentObject var model: ContentModel
+    @ObservedObject var signupVM = SignupViewModel()
     @State private var fadeToggle: Bool = true
     @State private var email: String = ""
     @State private var verificationCode: String = ""
@@ -38,7 +39,7 @@ struct ForgotPasswordView: View {
                     
                     if model.forgotPasswordMode == Constants.ForgotPasswordMode.forgotPassword {
                         
-                        CustomTextField(field: $email, iconName: "envelope.open.fill", placeHolder: "", isSecure: false, title: "Email")
+                        CustomTextField(field: $signupVM.email, iconName: "envelope.open.fill", isSecure: false, title: "Email", prompt: signupVM.emailPrompt)
                             .submitLabel(.next)
                         
                         
@@ -46,14 +47,14 @@ struct ForgotPasswordView: View {
                     
                     if model.forgotPasswordMode == Constants.ForgotPasswordMode.setNewPassword {
                         
-                        CustomTextField(field: $verificationCode, iconName: "phone.fill", placeHolder: "", isSecure: false, title: "Verification Code")
+                        CustomTextField(field: $verificationCode, iconName: "number", isSecure: false, title: "Verification Code", prompt: "")
                             .submitLabel(.next)
                         
                         
-                        CustomTextField(field: $newPassword, iconName: "key.fill", placeHolder: "", isSecure: true, title: "New Password")
+                        CustomTextField(field: $signupVM.password, iconName: "key.fill", isSecure: true, title: "New Password", prompt: signupVM.passwordPrompt)
                             .textContentType(.password)
                         
-                        CustomTextField(field: $passwrodConfirmation, iconName: "lock.fill", placeHolder: "", isSecure: true, title: "Confirm Password")
+                        CustomTextField(field: $signupVM.confirmPw, iconName: "lock.fill", isSecure: true, title: "Confirm Password", prompt: signupVM.confirmPwPrompt)
                             .textContentType(.password)
                     
                     }
@@ -61,7 +62,7 @@ struct ForgotPasswordView: View {
                     GradientButton(buttonTitle:model.forgotPasswordMode == Constants.ForgotPasswordMode.forgotPassword ? "Next" : "Confirm") {
                         
                         if  model.forgotPasswordMode == Constants.ForgotPasswordMode.forgotPassword {
-                            model.forgotPassword(email: email) { err in
+                            model.forgotPassword(email: signupVM.email) { err in
                                 
                                 if !err.contains("error") {
                                     isSuccess = true
@@ -94,7 +95,7 @@ struct ForgotPasswordView: View {
                             }
                         } else {
                             
-                            model.resetPassword(code: verificationCode, password: newPassword, password_confirmation: passwrodConfirmation) { err in
+                            model.resetPassword(code: verificationCode, password: signupVM.password, password_confirmation: signupVM.confirmPw) { err in
                                 
                                 if !err.contains("error") {
                                     DispatchQueue.main.async {

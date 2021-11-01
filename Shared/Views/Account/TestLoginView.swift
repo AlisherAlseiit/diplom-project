@@ -27,6 +27,7 @@ struct TestLoginView: View {
     @State private var rotationAngle = 0.0
     @State private var showAlert = false
     @EnvironmentObject var model: ContentModel
+    @ObservedObject var signupVM = SignupViewModel()
     @State private var showingSheet = false
     @FocusState private var focusedField: Field?
     @State var isLoading = false
@@ -119,20 +120,20 @@ struct TestLoginView: View {
                         
                     }
                     
-                    CustomTextField(field: $email, iconName: "envelope.open.fill", placeHolder: "", isSecure: false, title: "Email")
+                    CustomTextField(field: $signupVM.email, iconName: "envelope.open.fill", isSecure: false, title: "Email", prompt: signupVM.emailPrompt)
                         .focused($focusedField, equals: .email)
                         .submitLabel(.next)
  
                     
                     if model.loginMode == Constants.LoginMode.creteAccount {
                        
-                        CustomTextField(field: $name, iconName: "person.fill", placeHolder: "", isSecure: false, title: "Name")
+                        CustomTextField(field: $signupVM.name, iconName: "person.fill", isSecure: false, title: "Name", prompt: "")
                             .focused($focusedField, equals: .name)
                             .submitLabel(.next)
                         
 
                         
-                        CustomTextField(field: $phoneNumber, iconName: "phone.fill", placeHolder: "", isSecure: false, title: "phone number")
+                        CustomTextField(field: $signupVM.phoneNum, iconName: "8.circle.fill",isSecure: false, title: "phone number", prompt: signupVM.phoneNumPrompt)
                             .focused($focusedField, equals: .phoneNumber)
                             .submitLabel(.next)
                             .keyboardType(.decimalPad)
@@ -141,7 +142,7 @@ struct TestLoginView: View {
                     }
                     
                     
-                    CustomTextField(field: $password, iconName: "key.fill", placeHolder: "", isSecure: true, title: "Password")
+                    CustomTextField(field: $signupVM.password, iconName: "key.fill", isSecure: true, title: "Password", prompt: signupVM.passwordPrompt)
                         .focused($focusedField, equals: .password)
                         .submitLabel(model.loginMode == Constants.LoginMode.login ? .join : .next)
                         .textContentType(.password)
@@ -152,7 +153,7 @@ struct TestLoginView: View {
                     
                     if model.loginMode == Constants.LoginMode.creteAccount {
                        
-                        CustomTextField(field: $confirmPassword, iconName: "lock.fill", placeHolder: "", isSecure: true, title: "Confirm Password")
+                        CustomTextField(field: $signupVM.confirmPw, iconName: "lock.fill", isSecure: true, title: "Confirm Password", prompt: signupVM.confirmPwPrompt)
                             .focused($focusedField, equals: .confirmPassword)
                             .submitLabel(.join)
                             .textContentType(.password)
@@ -165,7 +166,7 @@ struct TestLoginView: View {
                         if model.loginMode == Constants.LoginMode.login {
                             self.isLoading = true
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                            model.login(email: email, password: password) { message in
+                            model.login(email: signupVM.email, password: signupVM.password) { message in
                                 isLoading = false
                                 if message == "fail" {
                                     showAlert = true
@@ -180,7 +181,7 @@ struct TestLoginView: View {
                         } else {
                             self.isLoading = true
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                            model.register(email: email, password: password, name: name, phone: phoneNumber, confirmPassword: confirmPassword) { _ in
+                                model.register(email: signupVM.email, password: signupVM.password, name: signupVM.name, phone: signupVM.phoneNum, confirmPassword: signupVM.confirmPw) { _ in
                                 isLoading = false
                                 model.checkLogin()
                             }
