@@ -13,4 +13,12 @@ struct Constants {
         case login
         case creteAccount
     }
+    
+    enum ForgotPasswordMode {
+        case forgotPassword
+        case setNewPassword
+    }
+    
+    
+    static var url = "https://api.edev.kz/api"
 }

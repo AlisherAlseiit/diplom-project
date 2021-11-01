@@ -25,7 +25,9 @@ struct TestLoginView: View {
     @State private var name = ""
     @State private var confirmPassword = ""
     @State private var rotationAngle = 0.0
+    @State private var showAlert = false
     @EnvironmentObject var model: ContentModel
+    @State private var showingSheet = false
     @FocusState private var focusedField: Field?
     
     @ViewBuilder
@@ -37,9 +39,43 @@ struct TestLoginView: View {
             
             onBoarding
             
+            forgotPasswordView
+            
+            
             
         }
         
+    }
+    
+    @ViewBuilder
+    var forgotPasswordView: some View {
+        
+        if model.showForgotPasswordView {
+            ZStack {
+                ForgotPasswordView()
+                
+                VStack {
+                    HStack {
+                        Spacer()
+                        
+                        Image(systemName: "xmark")
+                            .frame(width: 36, height: 36)
+                            .foregroundColor(.white)
+                            .background(Color("secondaryBackground")
+                                            .opacity(0.5))
+                            .background(VisualEffectBlur(blurStyle: .systemMaterialDark))
+                            .clipShape(Circle())
+                    }
+                    Spacer()
+                }
+                .padding(20)
+                .padding(.top, 20)
+                .onTapGesture {
+                    model.showForgotPasswordView = false
+                    model.forgotPasswordMode = Constants.ForgotPasswordMode.forgotPassword
+                }
+            }
+        }
     }
     
     @ViewBuilder
@@ -77,7 +113,7 @@ struct TestLoginView: View {
                                 model.excltapped = true
                                 
                             }
-                            
+                        
                         
                         
                     }
@@ -208,8 +244,14 @@ struct TestLoginView: View {
                         
                         if model.loginMode == Constants.LoginMode.login {
                             
-                            model.login(email: email, password: password) { _ in
-                                model.checkLogin()
+                            model.login(email: email, password: password) { message in
+                                if message == "fail" {
+                                    showAlert = true
+                                    
+                                } else if message == "success" {
+                                    
+                                    model.checkLogin()
+                                }
                             }
                             
                         } else {
@@ -220,6 +262,9 @@ struct TestLoginView: View {
                             
                         }
                         
+                    }
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text("Error"), message: Text(model.errorMessage), dismissButton: .default(Text("OK")))
                     }
                     
                     if  model.loginMode == Constants.LoginMode.creteAccount {
@@ -266,7 +311,7 @@ struct TestLoginView: View {
                         
                         if model.loginMode == Constants.LoginMode.login {
                             Button(action: {
-                                
+                                model.showForgotPasswordView = true
                             }, label: {
                                 HStack(spacing: 4) {
                                     Text("Forgot password?")
@@ -277,6 +322,7 @@ struct TestLoginView: View {
                                         .font(.footnote.bold())
                                 }
                             })
+                            
                             
                             Rectangle()
                                 .frame(height: 1)
@@ -328,7 +374,18 @@ struct TestLoginView: View {
                 Angle(degrees: self.rotationAngle),
                 axis: (x: 0.0, y: 1.0, z: 0.0)
             )
+            
+            
+            
         }
+        
+        
+        
+        //        .sheet(isPresented: $showingSheet) {
+        //            ForgotPasswordView()
+        //                .transition(.move(edge: .trailing))
+        
+        //        }
     }
 }
 

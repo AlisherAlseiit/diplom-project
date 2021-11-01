@@ -50,7 +50,10 @@ struct OnBoardingView: View {
                 Text("Exit")
                     .foregroundColor(.purple)
                     .onTapGesture {
-                        model.excltapped = false
+                        
+                            model.excltapped = false
+                        
+                        
                         
                     }
                 } 

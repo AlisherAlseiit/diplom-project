@@ -7,16 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		381E39C1272E7DFF00F8B4D9 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381E39C0272E7DFF00F8B4D9 /* ForgotPasswordView.swift */; };
+		381E39C3272E8E0400F8B4D9 /* VisualEffectBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381E39C2272E8E0400F8B4D9 /* VisualEffectBlur.swift */; };
+		381E39C5272EA75100F8B4D9 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381E39C4272EA75100F8B4D9 /* CloseButton.swift */; };
+		381E39C7272ED79400F8B4D9 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381E39C6272ED79400F8B4D9 /* SheetView.swift */; };
+		381E39C9272EE14F00F8B4D9 /* HalfSheetModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381E39C8272EE14E00F8B4D9 /* HalfSheetModal.swift */; };
 		383D652B272149AE00C76927 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383D652A272149AE00C76927 /* ProfileView.swift */; };
 		383D652D2721BE7100C76927 /* OffsetPageTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383D652C2721BE7100C76927 /* OffsetPageTabView.swift */; };
 		383D652F2721BEAB00C76927 /* OnBoardingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383D652E2721BEAB00C76927 /* OnBoardingContent.swift */; };
 		383D65312721BF4600C76927 /* OnBoardingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383D65302721BF4600C76927 /* OnBoardingOverlay.swift */; };
 		383F17AC27230FE9005173B0 /* BackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383F17AB27230FE9005173B0 /* BackButtonView.swift */; };
-		38B8708F2723DD4900AED736 /* VisualEffectBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B8708E2723DD4900AED736 /* VisualEffectBlur.swift */; };
+		38B8708F2723DD4900AED736 /* VisualEffectBlur12.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B8708E2723DD4900AED736 /* VisualEffectBlur12.swift */; };
 		38B870912723DD7D00AED736 /* TextFieldIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B870902723DD7D00AED736 /* TextFieldIcon.swift */; };
 		38B870932723DDF900AED736 /* GradientText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B870922723DDF900AED736 /* GradientText.swift */; };
 		38B870952723DF1000AED736 /* TestLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B870942723DF1000AED736 /* TestLoginView.swift */; };
 		38B870972723E21300AED736 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B870962723E21300AED736 /* GradientButton.swift */; };
+		38C26AF0272A948D0095F68C /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C26AEF272A948D0095F68C /* Product.swift */; };
 		38CF090327203FCC0079C51B /* diplom_projectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CF08F327203FCA0079C51B /* diplom_projectApp.swift */; };
 		38CF090427203FCC0079C51B /* diplom_projectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CF08F327203FCA0079C51B /* diplom_projectApp.swift */; };
 		38CF090527203FCC0079C51B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CF08F427203FCA0079C51B /* ContentView.swift */; };
@@ -28,20 +34,25 @@
 		38CF093F272041E50079C51B /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CF093E272041E50079C51B /* ContentModel.swift */; };
 		38CF0942272046AA0079C51B /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CF0941272046AA0079C51B /* OnBoardingView.swift */; };
 		38CF0945272047B20079C51B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CF0944272047B20079C51B /* HomeView.swift */; };
-		38CF0948272049290079C51B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CF0947272049290079C51B /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		381E39C0272E7DFF00F8B4D9 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		381E39C2272E8E0400F8B4D9 /* VisualEffectBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VisualEffectBlur.swift; path = ../../../CoursesView/iOS/VisualEffectBlur.swift; sourceTree = "<group>"; };
+		381E39C4272EA75100F8B4D9 /* CloseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
+		381E39C6272ED79400F8B4D9 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
+		381E39C8272EE14E00F8B4D9 /* HalfSheetModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfSheetModal.swift; sourceTree = "<group>"; };
 		383D652A272149AE00C76927 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		383D652C2721BE7100C76927 /* OffsetPageTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffsetPageTabView.swift; sourceTree = "<group>"; };
 		383D652E2721BEAB00C76927 /* OnBoardingContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingContent.swift; sourceTree = "<group>"; };
 		383D65302721BF4600C76927 /* OnBoardingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingOverlay.swift; sourceTree = "<group>"; };
 		383F17AB27230FE9005173B0 /* BackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonView.swift; sourceTree = "<group>"; };
-		38B8708E2723DD4900AED736 /* VisualEffectBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectBlur.swift; sourceTree = "<group>"; };
+		38B8708E2723DD4900AED736 /* VisualEffectBlur12.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectBlur12.swift; sourceTree = "<group>"; };
 		38B870902723DD7D00AED736 /* TextFieldIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldIcon.swift; sourceTree = "<group>"; };
 		38B870922723DDF900AED736 /* GradientText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientText.swift; sourceTree = "<group>"; };
 		38B870942723DF1000AED736 /* TestLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLoginView.swift; sourceTree = "<group>"; };
 		38B870962723E21300AED736 /* GradientButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
+		38C26AEF272A948D0095F68C /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		38CF08F327203FCA0079C51B /* diplom_projectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = diplom_projectApp.swift; sourceTree = "<group>"; };
 		38CF08F427203FCA0079C51B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		38CF08F527203FCC0079C51B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,7 +64,6 @@
 		38CF093E272041E50079C51B /* ContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentModel.swift; sourceTree = "<group>"; };
 		38CF0941272046AA0079C51B /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		38CF0944272047B20079C51B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		38CF0947272049290079C51B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,10 +87,12 @@
 		383F17AD27231153005173B0 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				381E39C4272EA75100F8B4D9 /* CloseButton.swift */,
 				38B870922723DDF900AED736 /* GradientText.swift */,
 				38B870902723DD7D00AED736 /* TextFieldIcon.swift */,
 				383F17AB27230FE9005173B0 /* BackButtonView.swift */,
 				38B870962723E21300AED736 /* GradientButton.swift */,
+				381E39C6272ED79400F8B4D9 /* SheetView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -149,6 +161,7 @@
 		38CF09392720417B0079C51B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				38C26AEF272A948D0095F68C /* Product.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -163,7 +176,9 @@
 		38CF093B272041960079C51B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				38B8708E2723DD4900AED736 /* VisualEffectBlur.swift */,
+				381E39C8272EE14E00F8B4D9 /* HalfSheetModal.swift */,
+				38B8708E2723DD4900AED736 /* VisualEffectBlur12.swift */,
+				381E39C2272E8E0400F8B4D9 /* VisualEffectBlur.swift */,
 				38CF093C272041C90079C51B /* Constants.swift */,
 			);
 			path = Helpers;
@@ -191,9 +206,9 @@
 		38CF09462720490F0079C51B /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				38CF0947272049290079C51B /* LoginView.swift */,
 				383D652A272149AE00C76927 /* ProfileView.swift */,
 				38B870942723DF1000AED736 /* TestLoginView.swift */,
+				381E39C0272E7DFF00F8B4D9 /* ForgotPasswordView.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -296,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38C26AF0272A948D0095F68C /* Product.swift in Sources */,
 				38B870932723DDF900AED736 /* GradientText.swift in Sources */,
 				38CF090527203FCC0079C51B /* ContentView.swift in Sources */,
 				383D652B272149AE00C76927 /* ProfileView.swift in Sources */,
@@ -304,14 +320,18 @@
 				383D652D2721BE7100C76927 /* OffsetPageTabView.swift in Sources */,
 				38CF0945272047B20079C51B /* HomeView.swift in Sources */,
 				38CF0937272041540079C51B /* LaunchView.swift in Sources */,
+				381E39C9272EE14F00F8B4D9 /* HalfSheetModal.swift in Sources */,
 				38CF093F272041E50079C51B /* ContentModel.swift in Sources */,
-				38B8708F2723DD4900AED736 /* VisualEffectBlur.swift in Sources */,
+				381E39C1272E7DFF00F8B4D9 /* ForgotPasswordView.swift in Sources */,
+				38B8708F2723DD4900AED736 /* VisualEffectBlur12.swift in Sources */,
 				38CF0942272046AA0079C51B /* OnBoardingView.swift in Sources */,
 				38B870952723DF1000AED736 /* TestLoginView.swift in Sources */,
 				383D65312721BF4600C76927 /* OnBoardingOverlay.swift in Sources */,
+				381E39C3272E8E0400F8B4D9 /* VisualEffectBlur.swift in Sources */,
+				381E39C7272ED79400F8B4D9 /* SheetView.swift in Sources */,
 				38B870972723E21300AED736 /* GradientButton.swift in Sources */,
 				38CF090327203FCC0079C51B /* diplom_projectApp.swift in Sources */,
-				38CF0948272049290079C51B /* LoginView.swift in Sources */,
+				381E39C5272EA75100F8B4D9 /* CloseButton.swift in Sources */,
 				383D652F2721BEAB00C76927 /* OnBoardingContent.swift in Sources */,
 				38CF093D272041C90079C51B /* Constants.swift in Sources */,
 			);
