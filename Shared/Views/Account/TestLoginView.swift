@@ -29,6 +29,7 @@ struct TestLoginView: View {
     @EnvironmentObject var model: ContentModel
     @State private var showingSheet = false
     @FocusState private var focusedField: Field?
+    @State var isLoading = false
     
     @ViewBuilder
     var body: some View {
@@ -126,6 +127,7 @@ struct TestLoginView: View {
                             .colorScheme(.dark)
                             .foregroundColor(Color.white.opacity(0.7))
                             .submitLabel(.next)
+                            .autocapitalization(.none)
                         
                     }
                     .frame(height: 52)
@@ -150,6 +152,7 @@ struct TestLoginView: View {
                                 .colorScheme(.dark)
                                 .foregroundColor(Color.white.opacity(0.7))
                                 .submitLabel(.next)
+                                .autocapitalization(.none)
                             
                         }
                         .frame(height: 52)
@@ -173,6 +176,8 @@ struct TestLoginView: View {
                                 .colorScheme(.dark)
                                 .foregroundColor(Color.white.opacity(0.7))
                                 .submitLabel(.next)
+                                .keyboardType(.decimalPad)
+                            
                             
                         }
                         .frame(height: 52)
@@ -199,6 +204,7 @@ struct TestLoginView: View {
                             .autocapitalization(.none)
                             .textContentType(.password)
                             .submitLabel(model.loginMode == Constants.LoginMode.login ? .join : .next)
+                            .autocapitalization(.none)
                     }
                     .frame(height: 52)
                     .overlay(
@@ -224,6 +230,7 @@ struct TestLoginView: View {
                                 .autocapitalization(.none)
                                 .textContentType(.password)
                                 .submitLabel(.join)
+                                .autocapitalization(.none)
                         }
                         .frame(height: 52)
                         .overlay(
@@ -243,8 +250,10 @@ struct TestLoginView: View {
                     GradientButton(buttonTitle: model.loginMode == Constants.LoginMode.creteAccount ? "Create Account" : "Sign in") {
                         
                         if model.loginMode == Constants.LoginMode.login {
-                            
+                            self.isLoading = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
                             model.login(email: email, password: password) { message in
+                                isLoading = false
                                 if message == "fail" {
                                     showAlert = true
                                     
@@ -253,12 +262,16 @@ struct TestLoginView: View {
                                     model.checkLogin()
                                 }
                             }
+                            }
                             
                         } else {
-                            
+                            self.isLoading = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
                             model.register(email: email, password: password, name: name, phone: phoneNumber, confirmPassword: confirmPassword) { _ in
+                                isLoading = false
                                 model.checkLogin()
                             }
+                        }
                             
                         }
                         
@@ -376,6 +389,9 @@ struct TestLoginView: View {
             )
             
             
+            if isLoading {
+                LoadingView()
+            }
             
         }
         
