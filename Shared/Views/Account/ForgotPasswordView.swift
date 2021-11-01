@@ -37,102 +37,25 @@ struct ForgotPasswordView: View {
                         .foregroundColor(.white)
                     
                     if model.forgotPasswordMode == Constants.ForgotPasswordMode.forgotPassword {
-                        HStack(spacing: 15) {
-                            TextFieldIcon(iconName: "envelope.open.fill")
-                            
-                            TextField("Email", text: $email)
-                                .colorScheme(.dark)
-                                .foregroundColor(Color.white.opacity(0.7))
-                                .submitLabel(.next)
-                            
-                        }
-                        .frame(height: 52)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.white,
-                                        lineWidth: 1)
-                                .blendMode(.overlay)
-                        )
-                        .background(
-                            Color("secondaryBackground")
-                                .cornerRadius(16)
-                                .opacity(0.8)
-                        )
+                        
+                        CustomTextField(field: $email, iconName: "envelope.open.fill", placeHolder: "", isSecure: false, title: "Email")
+                            .submitLabel(.next)
+                        
+                        
                     }
                     
                     if model.forgotPasswordMode == Constants.ForgotPasswordMode.setNewPassword {
                         
-                        
-                        HStack(spacing: 15) {
-                            TextFieldIcon(iconName: "phone.fill")
-                            
-                            TextField("Verification Code", text: $verificationCode)
-                                .colorScheme(.dark)
-                                .foregroundColor(Color.white.opacity(0.7))
-                                .submitLabel(.next)
-                            
-                        }
-                        .frame(height: 52)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.white,
-                                        lineWidth: 1)
-                                .blendMode(.overlay)
-                        )
-                        .background(
-                            Color("secondaryBackground")
-                                .cornerRadius(16)
-                                .opacity(0.8)
-                        )
-                        
-                        HStack(spacing: 15) {
-                            TextFieldIcon(iconName: "key.fill")
-                            
-                            SecureField("New Passowrd", text: $newPassword)
-                                .colorScheme(.dark)
-                                .foregroundColor(Color.white.opacity(0.7))
-                                .autocapitalization(.none)
-                                .textContentType(.password)
-                            
-                        }
-                        .frame(height: 52)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.white,
-                                        lineWidth: 1)
-                                .blendMode(.overlay)
-                        )
-                        .background(
-                            Color("secondaryBackground")
-                                .cornerRadius(16)
-                                .opacity(0.8)
-                        )
-                        
-                        HStack(spacing: 15) {
-                            TextFieldIcon(iconName: "lock.fill")
-                            
-                            SecureField("Confirm Password", text: $passwrodConfirmation)
-                                .colorScheme(.dark)
-                                .foregroundColor(Color.white.opacity(0.7))
-                                .autocapitalization(.none)
-                                .textContentType(.password)
-                            
-                        }
-                        .frame(height: 52)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.white,
-                                        lineWidth: 1)
-                                .blendMode(.overlay)
-                        )
-                        .background(
-                            Color("secondaryBackground")
-                                .cornerRadius(16)
-                                .opacity(0.8)
-                        )
+                        CustomTextField(field: $verificationCode, iconName: "phone.fill", placeHolder: "", isSecure: false, title: "Verification Code")
+                            .submitLabel(.next)
                         
                         
+                        CustomTextField(field: $newPassword, iconName: "key.fill", placeHolder: "", isSecure: true, title: "New Password")
+                            .textContentType(.password)
                         
+                        CustomTextField(field: $passwrodConfirmation, iconName: "lock.fill", placeHolder: "", isSecure: true, title: "Confirm Password")
+                            .textContentType(.password)
+                    
                     }
                     
                     GradientButton(buttonTitle:model.forgotPasswordMode == Constants.ForgotPasswordMode.forgotPassword ? "Next" : "Confirm") {

@@ -22,13 +22,14 @@ struct CustomTextField: View {
             TextField(title, text: $field)
                 .colorScheme(.dark)
                 .foregroundColor(Color.white.opacity(0.7))
-                .submitLabel(.next)
+                .autocapitalization(.none)
+                
             } else {
                 SecureField(title, text: $field)
                     .colorScheme(.dark)
                     .foregroundColor(Color.white.opacity(0.7))
                     .autocapitalization(.none)
-                    .textContentType(.password)
+                    
             }
             
         }

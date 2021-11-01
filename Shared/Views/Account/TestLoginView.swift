@@ -119,131 +119,44 @@ struct TestLoginView: View {
                         
                     }
                     
-                    HStack(spacing: 15) {
-                        TextFieldIcon(iconName: "envelope.open.fill")
-                        
-                        TextField("Email", text: $email)
-                            .focused($focusedField, equals: .email)
-                            .colorScheme(.dark)
-                            .foregroundColor(Color.white.opacity(0.7))
+                    CustomTextField(field: $email, iconName: "envelope.open.fill", placeHolder: "", isSecure: false, title: "Email")
+                        .focused($focusedField, equals: .email)
+                        .submitLabel(.next)
+ 
+                    
+                    if model.loginMode == Constants.LoginMode.creteAccount {
+                       
+                        CustomTextField(field: $name, iconName: "person.fill", placeHolder: "", isSecure: false, title: "Name")
+                            .focused($focusedField, equals: .name)
                             .submitLabel(.next)
-                            .autocapitalization(.none)
+                        
+
+                        
+                        CustomTextField(field: $phoneNumber, iconName: "phone.fill", placeHolder: "", isSecure: false, title: "phone number")
+                            .focused($focusedField, equals: .phoneNumber)
+                            .submitLabel(.next)
+                            .keyboardType(.decimalPad)
+
                         
                     }
-                    .frame(height: 52)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color.white,
-                                    lineWidth: 1)
-                            .blendMode(.overlay)
-                    )
-                    .background(
-                        Color("secondaryBackground")
-                            .cornerRadius(16)
-                            .opacity(0.8)
-                    )
+                    
+                    
+                    CustomTextField(field: $password, iconName: "key.fill", placeHolder: "", isSecure: true, title: "Password")
+                        .focused($focusedField, equals: .password)
+                        .submitLabel(model.loginMode == Constants.LoginMode.login ? .join : .next)
+                        .textContentType(.password)
+                    
+                    
+                    
+
                     
                     if model.loginMode == Constants.LoginMode.creteAccount {
-                        HStack(spacing: 15) {
-                            TextFieldIcon(iconName: "person.fill")
-                            
-                            TextField("Name", text: $name)
-                                .focused($focusedField, equals: .name)
-                                .colorScheme(.dark)
-                                .foregroundColor(Color.white.opacity(0.7))
-                                .submitLabel(.next)
-                                .autocapitalization(.none)
-                            
-                        }
-                        .frame(height: 52)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.white,
-                                        lineWidth: 1)
-                                .blendMode(.overlay)
-                        )
-                        .background(
-                            Color("secondaryBackground")
-                                .cornerRadius(16)
-                                .opacity(0.8)
-                        )
-                        
-                        HStack(spacing: 15) {
-                            TextFieldIcon(iconName: "phone.fill")
-                            
-                            TextField("phone number", text: $phoneNumber)
-                                .focused($focusedField, equals: .phoneNumber)
-                                .colorScheme(.dark)
-                                .foregroundColor(Color.white.opacity(0.7))
-                                .submitLabel(.next)
-                                .keyboardType(.decimalPad)
-                            
-                            
-                        }
-                        .frame(height: 52)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.white,
-                                        lineWidth: 1)
-                                .blendMode(.overlay)
-                        )
-                        .background(
-                            Color("secondaryBackground")
-                                .cornerRadius(16)
-                                .opacity(0.8)
-                        )
-                    }
-                    
-                    HStack(spacing: 15) {
-                        TextFieldIcon(iconName: "key.fill")
-                        
-                        SecureField("Password", text: $password)
-                            .focused($focusedField, equals: .password)
-                            .colorScheme(.dark)
-                            .foregroundColor(Color.white.opacity(0.7))
-                            .autocapitalization(.none)
+                       
+                        CustomTextField(field: $confirmPassword, iconName: "lock.fill", placeHolder: "", isSecure: true, title: "Confirm Password")
+                            .focused($focusedField, equals: .confirmPassword)
+                            .submitLabel(.join)
                             .textContentType(.password)
-                            .submitLabel(model.loginMode == Constants.LoginMode.login ? .join : .next)
-                            .autocapitalization(.none)
-                    }
-                    .frame(height: 52)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color.white,
-                                    lineWidth: 1)
-                            .blendMode(.overlay)
-                    )
-                    .background(
-                        Color("secondaryBackground")
-                            .cornerRadius(16)
-                            .opacity(0.8)
-                    )
                     
-                    if model.loginMode == Constants.LoginMode.creteAccount {
-                        HStack(spacing: 15) {
-                            TextFieldIcon(iconName: "lock.fill")
-                            
-                            SecureField("Confirm Password", text: $confirmPassword)
-                                .focused($focusedField, equals: .confirmPassword)
-                                .colorScheme(.dark)
-                                .foregroundColor(Color.white.opacity(0.7))
-                                .autocapitalization(.none)
-                                .textContentType(.password)
-                                .submitLabel(.join)
-                                .autocapitalization(.none)
-                        }
-                        .frame(height: 52)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.white,
-                                        lineWidth: 1)
-                                .blendMode(.overlay)
-                        )
-                        .background(
-                            Color("secondaryBackground")
-                                .cornerRadius(16)
-                                .opacity(0.8)
-                        )
                     }
                     
                     
@@ -357,6 +270,8 @@ struct TestLoginView: View {
                         focusedField = .phoneNumber
                     case .phoneNumber:
                         focusedField = .password
+                    case .password:
+                        focusedField = .confirmPassword
                     default:
                         print("")
                     }
