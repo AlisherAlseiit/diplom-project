@@ -44,18 +44,50 @@ class SignupViewModel: ObservableObject {
         return emailTest.evaluate(with: email)
     }
     
+    func isNameValid() -> Bool {
+        
+        let nameTest = NSPredicate(format: "SELF MATCHES %@", "^([a-zA-Z0-9@*#]{2,26})$")
+        
+        return nameTest.evaluate(with: name)
+    }
     
     
     var isSignUpComplete: Bool {
         if !passwordsMatch() ||
         !isPasswordValid() ||
-        !isEmailValid() {
+        !isEmailValid() || !isNameValid() ||
+        !isPhoneNumberValid(){
             return false
         }
         return true
     }
     
+    var isSignInComplete: Bool {
+        if !isEmailValid() ||
+            !isPasswordValid() {
+            return false
+        } else {
+            return true
+        }
+        
+    }
+    
+    var isForgotPasswordComplete: Bool {
+        !isEmailValid() ? false : true
+    }
+    
+    var isResetPasswordComplete: Bool {
+        if !isPasswordValid() ||
+            !passwordsMatch() {
+            return false
+        } else {
+            return true
+        }
+    }
+    
     // MARK: - Validation Prompt Strings
+    
+    
     
     var confirmPwPrompt: String {
         if passwordsMatch() {
@@ -63,6 +95,15 @@ class SignupViewModel: ObservableObject {
         } else {
             return "Password fields do not match"
         }
+    }
+    
+    var namePromt: String {
+        if isNameValid() {
+            return ""
+        } else {
+            return "Must consists of at least 2 characters and not more than 13 characters"
+        }
+        
     }
     
     var emailPrompt: String {

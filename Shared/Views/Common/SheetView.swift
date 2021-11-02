@@ -9,7 +9,10 @@ import SwiftUI
 
 struct SheetView: View {
     @EnvironmentObject var model: ContentModel
-    @State var email = ""
+    var email = ""
+    var title = ""
+    var subTitle = ""
+    var buttonText = ""
     @Binding var isSuccess: Bool
     @Binding var showSheet:Bool
     var body: some View {
@@ -20,12 +23,12 @@ struct SheetView: View {
             
         VStack(alignment: .center, spacing: 15){
                 
-            Text(isSuccess ? "Check Email" : "oops, something went wrong...")
+            Text(title)
                     .font(.title2.bold())
                     
                     
             
-            Text(isSuccess ? "We sent the confirmation code to \(email). Use it to reset your password." : "You entered a wrong email, please try again.")
+            Text(subTitle)
                     .foregroundColor(.secondary)
                     .padding(.horizontal, 25)
                 
@@ -33,7 +36,7 @@ struct SheetView: View {
                 Button {
                     showSheet = false
                 } label: {
-                    Text(isSuccess ? "Set New Password" : "Ok")
+                    Text(buttonText)
                         .foregroundColor(.black)
                         
                 }

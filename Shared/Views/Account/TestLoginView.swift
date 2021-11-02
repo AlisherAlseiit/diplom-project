@@ -127,7 +127,7 @@ struct TestLoginView: View {
                     
                     if model.loginMode == Constants.LoginMode.creteAccount {
                        
-                        CustomTextField(field: $signupVM.name, iconName: "person.fill", isSecure: false, title: "Name", prompt: "")
+                        CustomTextField(field: $signupVM.name, iconName: "person.fill", isSecure: false, title: "Name", prompt: signupVM.namePromt)
                             .focused($focusedField, equals: .name)
                             .submitLabel(.next)
                         
@@ -190,6 +190,8 @@ struct TestLoginView: View {
                         }
                         
                     }
+                    .disabled(model.loginMode == Constants.LoginMode.creteAccount ? !signupVM.isSignUpComplete : !signupVM.isSignInComplete)
+                    
                     .alert(isPresented: $showAlert) {
                         Alert(title: Text("Error"), message: Text(model.errorMessage), dismissButton: .default(Text("OK")))
                     }

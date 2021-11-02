@@ -20,6 +20,9 @@ struct ForgotPasswordView: View {
     @State private var infoMessage = false
     @State var showSheet = false
     @State var isSuccess = false
+    @State var sheetTitle = ""
+    @State var sheetSubtitle = ""
+    @State var sheetButtonText = ""
     
     var body: some View {
         
@@ -66,6 +69,10 @@ struct ForgotPasswordView: View {
                                 
                                 if !err.contains("error") {
                                     isSuccess = true
+                                    sheetTitle = "Check Email"
+                                    sheetSubtitle = "We sent the confirmation code to \(signupVM.email). Use it to reset your password."
+                                    sheetButtonText = "Set New Password"
+                                    
                                     showSheet.toggle()
                                     withAnimation(.easeInOut(duration: 0.35)) {
                                         fadeToggle.toggle()
@@ -90,6 +97,9 @@ struct ForgotPasswordView: View {
                                     
                                 } else {
                                     isSuccess = false
+                                    sheetTitle = "Oops, something went wrong..."
+                                    sheetSubtitle = "Please check your mail and try again"
+                                    sheetButtonText = "Ok"
                                     showSheet.toggle()
                                 }
                             }
@@ -105,22 +115,21 @@ struct ForgotPasswordView: View {
                                    
                                 } else {
                                     isSuccess = false
+                                    sheetTitle = "Wrong verification code"
+                                    sheetSubtitle = "Please check your mail and try again"
+                                    sheetButtonText = "Ok"
                                     showSheet.toggle()
                                 }
                             }
                             
                     }
-                    
-                    
-                    
-                    
-                    
-                    
+        
                     
                 }
+                .disabled(model.forgotPasswordMode == Constants.ForgotPasswordMode.forgotPassword ? !signupVM.isForgotPasswordComplete : !signupVM.isResetPasswordComplete)
                 .halfSheet(showSheet: $showSheet) {
                     
-                    SheetView(email: email, isSuccess: $isSuccess,  showSheet: $showSheet)
+                    SheetView(email: signupVM.email, title: sheetTitle, subTitle: sheetSubtitle, buttonText: sheetButtonText, isSuccess: $isSuccess,  showSheet: $showSheet)
                         .environmentObject(model)
                     
                     
