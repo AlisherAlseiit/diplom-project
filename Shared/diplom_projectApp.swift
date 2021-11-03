@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct diplom_projectApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {
             LaunchView()

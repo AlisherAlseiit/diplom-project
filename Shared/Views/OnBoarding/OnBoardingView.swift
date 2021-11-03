@@ -56,9 +56,10 @@ struct OnBoardingView: View {
                         
                         
                     }
-                } 
+                }
             }
             .padding(.top, model.excltapped ? 30 : 0)
+            .padding(.top, getScreenBounds().height <= 667  && model.excltapped ? 40 : 0)
             .padding(15)
             
         }

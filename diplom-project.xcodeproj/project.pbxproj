@@ -41,6 +41,7 @@
 		38CF093F272041E50079C51B /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CF093E272041E50079C51B /* ContentModel.swift */; };
 		38CF0942272046AA0079C51B /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CF0941272046AA0079C51B /* OnBoardingView.swift */; };
 		38CF0945272047B20079C51B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CF0944272047B20079C51B /* HomeView.swift */; };
+		38D8AA192732ADB60058BB1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D8AA182732ADB60058BB1D /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		38CF093E272041E50079C51B /* ContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentModel.swift; sourceTree = "<group>"; };
 		38CF0941272046AA0079C51B /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		38CF0944272047B20079C51B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		38D8AA182732ADB60058BB1D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 		38CF093B272041960079C51B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				38D8AA182732ADB60058BB1D /* AppDelegate.swift */,
 				381E39C8272EE14E00F8B4D9 /* HalfSheetModal.swift */,
 				38B8708E2723DD4900AED736 /* VisualEffectBlur12.swift */,
 				381E39C2272E8E0400F8B4D9 /* VisualEffectBlur.swift */,
@@ -354,6 +357,7 @@
 				38BE77B627301430008498C3 /* CustomTextField.swift in Sources */,
 				38C26AF0272A948D0095F68C /* Product.swift in Sources */,
 				38B870932723DDF900AED736 /* GradientText.swift in Sources */,
+				38D8AA192732ADB60058BB1D /* AppDelegate.swift in Sources */,
 				383D652B272149AE00C76927 /* ProfileView.swift in Sources */,
 				38B870912723DD7D00AED736 /* TextFieldIcon.swift in Sources */,
 				383F17AC27230FE9005173B0 /* BackButtonView.swift in Sources */,
