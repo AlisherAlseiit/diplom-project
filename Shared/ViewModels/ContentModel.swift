@@ -359,8 +359,8 @@ let description = "Small business can receive device \npayment super fast and su
 // Sample Model SCreens....
 var boardingScreens = [
 
-    BoardingModel(image: "screen1", title: "How?", description: "With carefully crafted filters, we'll make almost all your social media more eye catching"),
-    BoardingModel(image: "screen2", title: "Inspiration", description: "To find the right words and designs we've got a How To section for you"),
-    BoardingModel(image: "screen3", title: "Share", description: "Also, to give you ideas, you can see what others have written and designed"),
-    BoardingModel(image: "screen4", title: "Small Business", description: "you're here to design your brand from the ground up"),
+    BoardingModel(image: "screen1", title: "How?", description: "Small and large wholesale for the supply of oil products"),
+    BoardingModel(image: "screen2", title: "Inspiration", description: "Expand your business with us"),
+    BoardingModel(image: "screen3", title: "Share", description: "All types of petroleum products"),
+    
 ]

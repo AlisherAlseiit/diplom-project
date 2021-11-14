@@ -55,7 +55,7 @@ struct OnBoardingOverlay: View {
             HStack {
                 
                 Button {
-                    offset = getScreenBounds().width * 3
+                    offset = getScreenBounds().width * 2
                 } label: {
                     Text("Skip")
                         .fontWeight(.semibold)
@@ -78,7 +78,7 @@ struct OnBoardingOverlay: View {
                 Button {
                     
                     // max 4 screens so max will be 3*width
-                    offset = min(offset + getScreenBounds().width, getScreenBounds().width * 3)
+                    offset = min(offset + getScreenBounds().width, getScreenBounds().width * 2)
                     
                 } label: {
                     Text("Next")

@@ -45,10 +45,23 @@ struct OnBoardingView: View {
             
             HStack(alignment: .center) {
                 BackButtonView(getIndex: getIndex(), offset: $offset)
+                    .background(Color("screen\(getIndex() + 1)")
+                                    .animation(.easeInOut, value: getIndex())
+                    )
+                    .clipShape(Circle())
+                    .padding(.all, 5)
+                
                 Spacer()
                 if model.excltapped {
                 Text("Exit")
-                    .foregroundColor(.purple)
+                    .foregroundColor(
+                        
+                        Color("screen\(getIndex() + 1)")
+                            
+                        
+                    )
+                    
+                    
                     .onTapGesture {
                         
                             model.excltapped = false

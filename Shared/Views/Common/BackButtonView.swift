@@ -14,9 +14,8 @@ struct BackButtonView: View {
         Image(systemName: "chevron.backward")
             .foregroundColor(.white)
             .padding(.all, 15)
-            .background(Color.purple)
-            .clipShape(Circle())
-            .padding(.all, 5)
+            
+            
             
             .onTapGesture {
                 
