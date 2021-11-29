@@ -2,7 +2,7 @@
 //  ContentModel.swift
 //  diplom-project (iOS)
 //
-//  Created by Алишер Алсейт on 20.10.2021.
+//  Created by Алишер Алсейт on 20.10.2021
 //
 
 import Foundation
@@ -19,7 +19,7 @@ class ContentModel: ObservableObject {
     @AppStorage("token") var token = ""
     
     @Published var loginMode = Constants.LoginMode.login
-    @Published var errorMessage:String = "Something went wrong."
+    @Published var errorMessage:String = "Something went wrong"
     @Published var forgotPasswordErrorMessage:String = "nil"
     @Published var resetPasswordErrorMessage:String = "nil"
     @Published var infoTapped = false
