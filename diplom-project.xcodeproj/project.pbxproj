@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		381E39C1272E7DFF00F8B4D9 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381E39C0272E7DFF00F8B4D9 /* ForgotPasswordView.swift */; };
-		381E39C3272E8E0400F8B4D9 /* VisualEffectBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381E39C2272E8E0400F8B4D9 /* VisualEffectBlur.swift */; };
 		381E39C5272EA75100F8B4D9 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381E39C4272EA75100F8B4D9 /* CloseButton.swift */; };
 		381E39C7272ED79400F8B4D9 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381E39C6272ED79400F8B4D9 /* SheetView.swift */; };
 		381E39C9272EE14F00F8B4D9 /* HalfSheetModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381E39C8272EE14E00F8B4D9 /* HalfSheetModal.swift */; };
@@ -17,6 +16,7 @@
 		383D652F2721BEAB00C76927 /* OnBoardingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383D652E2721BEAB00C76927 /* OnBoardingContent.swift */; };
 		383D65312721BF4600C76927 /* OnBoardingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383D65302721BF4600C76927 /* OnBoardingOverlay.swift */; };
 		383F17AC27230FE9005173B0 /* BackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383F17AB27230FE9005173B0 /* BackButtonView.swift */; };
+		389FB749274BC998005C576A /* VisualEffectBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389FB748274BC998005C576A /* VisualEffectBlur.swift */; };
 		38B8708F2723DD4900AED736 /* VisualEffectBlur12.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B8708E2723DD4900AED736 /* VisualEffectBlur12.swift */; };
 		38B870912723DD7D00AED736 /* TextFieldIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B870902723DD7D00AED736 /* TextFieldIcon.swift */; };
 		38B870932723DDF900AED736 /* GradientText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B870922723DDF900AED736 /* GradientText.swift */; };
@@ -46,7 +46,6 @@
 
 /* Begin PBXFileReference section */
 		381E39C0272E7DFF00F8B4D9 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
-		381E39C2272E8E0400F8B4D9 /* VisualEffectBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VisualEffectBlur.swift; path = ../../../CoursesView/iOS/VisualEffectBlur.swift; sourceTree = "<group>"; };
 		381E39C4272EA75100F8B4D9 /* CloseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		381E39C6272ED79400F8B4D9 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
 		381E39C8272EE14E00F8B4D9 /* HalfSheetModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfSheetModal.swift; sourceTree = "<group>"; };
@@ -55,6 +54,7 @@
 		383D652E2721BEAB00C76927 /* OnBoardingContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingContent.swift; sourceTree = "<group>"; };
 		383D65302721BF4600C76927 /* OnBoardingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingOverlay.swift; sourceTree = "<group>"; };
 		383F17AB27230FE9005173B0 /* BackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonView.swift; sourceTree = "<group>"; };
+		389FB748274BC998005C576A /* VisualEffectBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectBlur.swift; sourceTree = "<group>"; };
 		38B8708E2723DD4900AED736 /* VisualEffectBlur12.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectBlur12.swift; sourceTree = "<group>"; };
 		38B870902723DD7D00AED736 /* TextFieldIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldIcon.swift; sourceTree = "<group>"; };
 		38B870922723DDF900AED736 /* GradientText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientText.swift; sourceTree = "<group>"; };
@@ -211,7 +211,7 @@
 				38D8AA182732ADB60058BB1D /* AppDelegate.swift */,
 				381E39C8272EE14E00F8B4D9 /* HalfSheetModal.swift */,
 				38B8708E2723DD4900AED736 /* VisualEffectBlur12.swift */,
-				381E39C2272E8E0400F8B4D9 /* VisualEffectBlur.swift */,
+				389FB748274BC998005C576A /* VisualEffectBlur.swift */,
 				38CF093C272041C90079C51B /* Constants.swift */,
 			);
 			path = Helpers;
@@ -360,6 +360,7 @@
 				38D8AA192732ADB60058BB1D /* AppDelegate.swift in Sources */,
 				383D652B272149AE00C76927 /* ProfileView.swift in Sources */,
 				38B870912723DD7D00AED736 /* TextFieldIcon.swift in Sources */,
+				389FB749274BC998005C576A /* VisualEffectBlur.swift in Sources */,
 				383F17AC27230FE9005173B0 /* BackButtonView.swift in Sources */,
 				383D652D2721BE7100C76927 /* OffsetPageTabView.swift in Sources */,
 				38CF0945272047B20079C51B /* HomeView.swift in Sources */,
@@ -372,7 +373,6 @@
 				38CF0942272046AA0079C51B /* OnBoardingView.swift in Sources */,
 				38B870952723DF1000AED736 /* TestLoginView.swift in Sources */,
 				383D65312721BF4600C76927 /* OnBoardingOverlay.swift in Sources */,
-				381E39C3272E8E0400F8B4D9 /* VisualEffectBlur.swift in Sources */,
 				381E39C7272ED79400F8B4D9 /* SheetView.swift in Sources */,
 				38BE77AE272FFA95008498C3 /* LoadingView.swift in Sources */,
 				38B870972723E21300AED736 /* GradientButton.swift in Sources */,
