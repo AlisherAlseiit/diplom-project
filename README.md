@@ -13,11 +13,15 @@ https://user-images.githubusercontent.com/63951641/145979851-b81c6f57-d1b0-45f6-
 
 # Reset password screen:
 
-##
+https://user-images.githubusercontent.com/63951641/145983876-6eca6fe3-927f-4974-ad65-0fa613710ea6.mov
 
 # main page and sign out screens
 
 https://user-images.githubusercontent.com/63951641/145982690-01b12cc1-4b36-4779-b1d5-12965f54aa8f.mov
+
+
+
+
 
 
 
