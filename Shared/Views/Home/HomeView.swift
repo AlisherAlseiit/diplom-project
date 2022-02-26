@@ -16,42 +16,12 @@ struct HomeView: View {
     @EnvironmentObject var model:ContentModel
     var body: some View {
         NavigationView {
-            
-                List(products) { product in
+            ScrollView {
                 VStack {
-                    Text(product.name)
-                        .font(.headline)
                     
-                    HStack {
-                        Text(product.description)
-                            .lineLimit(1)
-                            .foregroundColor(.secondary)
-                        
-                        Spacer()
-                        Text("\(product.price)")
-                            .foregroundColor(.secondary)
-                    }
                 }
-                
             }
-            
-            
-            
-        }
-        .task {
-            do {
-                
-//                model.fetchPosts()
-                let url = URL(string: "\(Constants.url)/products")
-
-                let (data, _) = try await URLSession.shared.data(from: url!)
-                
-                products = try JSONDecoder().decode([Product].self, from: data)
-                print(products)
-            }
-            catch {
-                products = []
-            }
+            .navigationTitle("About Us")
         }
     }
 }
