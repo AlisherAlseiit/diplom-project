@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct LaunchView: View {
+    
+    
+    
     @EnvironmentObject var model:ContentModel
+    
+   
     var body: some View {
         if model.isFirstTime {
                 OnBoardingView()
@@ -28,17 +33,40 @@ struct LaunchView: View {
                 
                 HomeView()
                     .tabItem {
-                        Image(systemName: "rectangle")
+                        Image(systemName: "house")
+                            Text("Home")
+                    }
+                
+               
+                
+                HomeView()
+                    .tabItem {
+                        VStack {
+                            Image(systemName: "chart.pie")
+                            Text("Statistics")
+                        }
+                    }
+                
+                HomeView()
+                    .tabItem {
+                        VStack {
+                            Image(systemName: "cart")
+                            Text("Cart")
+                        }
                     }
                 
                 ProfileView()
                     .tabItem {
                         VStack {
                             Image(systemName: "person")
-                            Text("Learn")
+                            Text("Profile")
                         }
                     }
             }
+            .onAppear {
+                UITabBar.appearance().backgroundColor = UIColor(Color("TabbarColor"))
+            }
+            .accentColor(Color("screen3"))
             
         }
     }

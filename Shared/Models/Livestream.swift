@@ -22,9 +22,9 @@ struct Livestream: Identifiable, Hashable {
 var livestreams = [
     Livestream(
         title: "Crypto Investors should be prepared to lose all their money, BOE governor says",
-        subtitle: "",
+        subtitle: "National Ocean Industries Association (NOIA) President",
         text: "Sunday, 9 May 2021",
-        image: "Livestream 8",
+        image: "Livestream 1",
         logo: "Logo UI Design",
         show: false,
         appear: false,

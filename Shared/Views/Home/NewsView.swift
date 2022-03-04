@@ -15,6 +15,7 @@ struct NewsView: View {
     @State var selectedItem: Livestream? = nil
     @State var offset: CGFloat = .zero
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    @State var showAnimation = false
     
     var body: some View {
         ZStack {
@@ -34,10 +35,13 @@ struct NewsView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
                 .frame(maxWidth: .infinity)
                 .background(
-                    withAnimation(.linear) {
+                    
                         BlurView()
                             .opacity(appear ? 1 : 0)
-                    }
+                            .animation(.linear, value: showAnimation)
+                            .onTapGesture {
+                                showAnimation.toggle()
+                            }
                     
                     
                 )
@@ -71,12 +75,13 @@ struct NewsView: View {
     var content: some View {
         ForEach(items.indices) { index in
             GeometryReader { geo in
-                withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
+              
                     VStack(alignment: .center) {
                         NewsItem(livestream: items[index])
                             .matchedGeometryEffect(id: items[index].id, in: namespace, properties: .frame, isSource: !items[index].show)
                             .frame(maxWidth: 600, maxHeight: 300)
                             .onTapGesture {
+                                showAnimation.toggle()
                                 items[index].show = true
                                 items[index].index = 1
                                 
@@ -91,26 +96,34 @@ struct NewsView: View {
                         anchorZ: 0.0,
                         perspective: 0.3
                     )
-                }
+                    .animation(.spring(response: 0.4, dampingFraction: 0.8), value: showAnimation)
+                    .onTapGesture {
+                        showAnimation.toggle()
+                    }
+                   
             }
             .zIndex(items[index].index)
             .frame(maxWidth: 600)
             .frame(height: 190)
             
         }
+        
+        
+        
     }
     
     @ViewBuilder
     var fullContent: some View {
         ForEach(items.indices) { index in
             if items[index].show {
-                withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
+               
                 ScrollView {
                     NewsItem(livestream: items[index])
                         .matchedGeometryEffect(id: items[index].id, in: namespace, properties: .frame, isSource: items[index].show)
                         .frame(maxWidth: 712)
                         .frame(height: 500)
                         .onTapGesture {
+                            showAnimation.toggle()
                             items[index].show = false
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                                 items[index].index = 0
@@ -124,7 +137,10 @@ struct NewsView: View {
                         .zIndex(0)
                     
                 }
-                
+                .animation(.spring(response: 0.4, dampingFraction: 0.8), value: showAnimation)
+                .onTapGesture(perform: {
+                    showAnimation.toggle()
+                })
                 .onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         appear = true
@@ -135,7 +151,7 @@ struct NewsView: View {
                     appear = false
                     items[index].appear = false
                 }
-                }
+                
             }
         }
     }
