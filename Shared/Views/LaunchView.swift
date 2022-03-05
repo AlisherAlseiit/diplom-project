@@ -47,7 +47,7 @@ struct LaunchView: View {
                         }
                     }
                 
-                HomeView()
+                CartView()
                     .tabItem {
                         VStack {
                             Image(systemName: "cart")

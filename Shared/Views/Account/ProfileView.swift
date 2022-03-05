@@ -10,26 +10,61 @@ import SwiftUI
 struct ProfileView: View {
     @EnvironmentObject var model:ContentModel
     var body: some View {
-        
-        
-        ZStack {
-            NavigationView {
-                ScrollView {
-                    VStack {
+        NavigationView {
+            ZStack {
+                Color("Background 6").edgesIgnoringSafeArea(.all)
+                
+                
+                List {
+                    Section {
                         ProfileInfoItem()
-                            
-    //                    List {
-    //
-    //                    }
                     }
-                    .padding(.horizontal, 20)
-                .navigationTitle("Account")
+                    Section {
+                        ForEach(firstListSections) { section in
+                            NavigationLink(destination: Text("Dwa")) {
+                                SectionRow(section: section)
+                                
+                            }
+                            .padding(5)
+                        }
+                    }
+                    
+                    Section {
+                        ForEach(secondListSections) { section in
+                            Link(destination: URL(string: "https://m.yelp.com/biz/tacorea-san-francisco?utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=OYbm7rBdHJaRh5-qGZk-5g")!) {
+                                
+                                linkSectionRow(section: section)
+                                    .padding(5)
+                            }
+                            .accentColor(Color.black)
+                        }
+                    }
+                    Section {
+                        HStack {
+                            Spacer()
+                            Button(action: {
+                                model.signOut()
+                                model.checkLogin()
+                            }) {
+                                Text("Sign Out")
+                                    .foregroundColor(.red)
+                            }
+                            Spacer()
+                        }
+                    }
                 }
+                .listStyle(.insetGrouped)
             }
+            .navigationTitle("Account")
         }
-        
-        
+        .onAppear {
+            UITableView.appearance().sectionFooterHeight = 15
+            UITableView.appearance().sectionHeaderHeight = 15
+        }
     }
+    
+    
+    
 }
 
 struct ProfileView_Previews: PreviewProvider {

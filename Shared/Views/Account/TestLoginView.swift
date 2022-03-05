@@ -61,6 +61,7 @@ struct TestLoginView: View {
             
             
         }
+        .disabled(isLoading)
         
     }
     
