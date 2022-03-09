@@ -18,7 +18,7 @@ struct ListSection: Identifiable, Hashable {
 
 var firstListSections = [
     ListSection(title: "Settings", icon: "gear"),
-    ListSection(title: "Billing", icon: "creditcard"),
+    ListSection(title: "News", icon: "newspaper"),
     ListSection(title: "Help", icon: "questionmark.circle"),
     ListSection(title: "Order History", icon: "menucard")
 

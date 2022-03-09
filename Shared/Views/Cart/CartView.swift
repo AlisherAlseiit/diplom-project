@@ -14,12 +14,18 @@ struct CartView: View {
             ZStack {
                 Color("Background 6").edgesIgnoringSafeArea(.all)
                 VStack {
-                    List() {
+                    List{
                         ForEach(petroleoums) { item in
                             Section {
                                 CartProductItem(course: item)
                             }
+                            
                         }
+                        .onDelete { value in
+                            print("deleted: \(value)")
+                        }
+                       
+                        
                     }
                     .listStyle(.insetGrouped)
                     Button(action: {
@@ -42,6 +48,11 @@ struct CartView: View {
             UITableView.appearance().sectionHeaderHeight = 7
         }
     }
+    
+//    func delete(at offsets: IndexSet) {
+//           petroleoums.remove(at: offsets)
+//       }
+    
 }
 
 struct CartView_Previews: PreviewProvider {

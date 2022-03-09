@@ -14,12 +14,11 @@ struct CartProductItem: View {
     
     var body: some View {
         HStack {
-            Image(course.image)
+            Image("AI-92")
                 .renderingMode(.original)
                 .resizable()
                 .frame(width: 48, height: 48)
-                .padding(5)
-                .background(RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Color("screen3")))
+                
             VStack(alignment: .leading, spacing: 4) {
                 Text(course.title)
                     .bold()

@@ -11,38 +11,40 @@ struct BannerItem: View {
     var livestream: Livestream = livestreams[0]
     var cornerRadius: CGFloat = 15
     var body: some View {
-        VStack (alignment: .leading) {
-            HStack (alignment: .top){
-                Spacer()
-            }
-            
-            VStack (alignment: .leading, spacing: 12){
-                Text(livestream.title)
-                    .font(.title3)
-                    .foregroundColor(Color.white)
-                    .bold()
+            VStack (alignment: .leading) {
+                HStack (alignment: .top){
+                    Spacer()
+                }
                 
-                Text(livestream.subtitle)
-                    .font(.subheadline)
-                    .foregroundColor(.white)
-                    .opacity(0.8)
+                VStack (alignment: .leading, spacing: 12){
+                    Text(livestream.title)
+                        .font(.title3)
+                        .foregroundColor(Color.white)
+                        .bold()
                     
+                    Text(livestream.subtitle)
+                        .font(.subheadline)
+                        .foregroundColor(.white)
+                        .opacity(0.8)
+                        
+                }
+                Spacer()
+                
+                
             }
-            Spacer()
-            
-            
-        }
-        .padding(.top, 20)
-        .padding(.all, 20)
-        .background(
-            Image(livestream.image)
-                .renderingMode(.original)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
-        .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 5)
+            .padding(.top, 20)
+            .padding(.all, 20)
+            .background(
+                Image(livestream.image)
+                    .renderingMode(.original)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+            .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 5)
         .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 10)
+         
+        
     }
 }
 

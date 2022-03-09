@@ -34,11 +34,21 @@ struct ProductItem: View {
                 .font(.caption)
                 .foregroundColor(Color.gray)
             
-            Text("Add to Cart")
-                .foregroundColor(.white)
-                .frame(minWidth: 0, maxWidth: .infinity)
-                .padding(5)
-                .background(RoundedRectangle(cornerRadius: 10).foregroundColor(Color("screen3")))
+            HStack {
+                Text("$56")
+                    .fontWeight(.bold)
+                    
+                Spacer()
+                Text("Add")
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .foregroundColor(.white)
+                    .padding(5)
+                    .background(RoundedRectangle(cornerRadius: 5).foregroundColor(Color("screen3")))
+                
+                
+            }
+            
+           
         }
         .padding(.all)
         .background(Color.white)
