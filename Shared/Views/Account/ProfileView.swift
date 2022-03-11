@@ -11,23 +11,40 @@ struct ProfileView: View {
     @EnvironmentObject var model:ContentModel
     var body: some View {
         NavigationView {
-            ZStack {
-                Color("Background 6").edgesIgnoringSafeArea(.all)
-                
-                
                 List {
                     Section {
                         ProfileInfoItem()
                     }
                     Section {
-                        ForEach(firstListSections) { section in
-                            NavigationLink(destination: Text("Dwa")) {
-                                SectionRow(section: section)
-                                
-                            }
-                            .padding(5)
+                        
+                        NavigationLink(destination: Text("Settings View")) {
+                            SectionRow(section: firstListSections[0])
+                            
                         }
+                        .padding(5)
+                        
+                        NavigationLink(destination: Text("News View")) {
+                            SectionRow(section: firstListSections[1])
+                            
+                        }
+                        .padding(5)
+                        
+                        NavigationLink(destination: Text("Help View")) {
+                            SectionRow(section: firstListSections[2])
+                            
+                        }
+                        .padding(5)
+                        
+                        NavigationLink(destination: OrderHistoryView()) {
+                            SectionRow(section: firstListSections[3])
+                            
+                        }
+                        .padding(5)
+                       
+                        
+                       
                     }
+                    
                     
                     Section {
                         ForEach(secondListSections) { section in
@@ -54,8 +71,7 @@ struct ProfileView: View {
                     }
                 }
                 .listStyle(.insetGrouped)
-            }
-            .navigationTitle("Account")
+                .navigationTitle("Account")
         }
         .onAppear {
             UITableView.appearance().sectionFooterHeight = 15

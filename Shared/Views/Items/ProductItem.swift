@@ -10,6 +10,8 @@ import SwiftUI
 struct ProductItem: View {
     
     var course: Course = petroleoums[0]
+    var product: Product
+    @EnvironmentObject var model: ContentModel
     
     var cornerRadius: CGFloat = 5
     
@@ -26,25 +28,35 @@ struct ProductItem: View {
                 Spacer()
             }
             
-            Text(course.title)
+            Text(product.name)
                 .fontWeight(.bold)
                 .foregroundColor(Color.black)
                 
-            Text(course.subtitle)
+            Text(product.description)
                 .font(.caption)
                 .foregroundColor(Color.gray)
-            
+                .lineLimit(2)
             HStack {
-                Text("$56")
+                Text("$" + String(format: "%.2f", product.price))
                     .fontWeight(.bold)
                     
                 Spacer()
-                Text("Add")
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .foregroundColor(.white)
-                    .padding(5)
-                    .background(RoundedRectangle(cornerRadius: 5).foregroundColor(Color("screen3")))
-                
+                Button {
+                    model.addToCart(productID: product.id)
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        model.getCart()
+                    }
+                    
+                } label: {
+                    Text("Add")
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .foregroundColor(.white)
+                        .padding(5)
+                        .background(RoundedRectangle(cornerRadius: 5).foregroundColor(Color("screen3")))
+                    
+                }
+
                 
             }
             
@@ -59,6 +71,7 @@ struct ProductItem: View {
 
 struct ProductItem_Previews: PreviewProvider {
     static var previews: some View {
-        ProductItem()
+        ProductItem(product: Product(id: 1, name: "AI-95", price: 56.0, count: 13, description: "Lorem ipsum is a placeholder text", categoryId: 1))
+            .environmentObject(ContentModel())
     }
 }

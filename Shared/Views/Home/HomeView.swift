@@ -33,6 +33,7 @@ struct HomeView: View {
                         }
                         .tabViewStyle(PageTabViewStyle())
                         .frame(height: 190)
+                        .cornerRadius(15)
                         .onReceive(timer) { time in
                             if selectedPage == 0 {
                                 withAnimation {
@@ -54,11 +55,10 @@ struct HomeView: View {
                         SectionTitle(title: "Products")
                         
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: 160), spacing: 16)], spacing: 16) {
-                            
-                            ForEach(isPatreleoum ? petroleoums : diesels) { item in
-                                VStack {
-                                    ProductItem(course: item)
-                                }
+                            ForEach(isPatreleoum ? model.petroleoums : model.diesels) { item in
+                                
+                                    ProductItem(course: petroleoums[0], product: item)
+                                   
                             }
                         }
                     }

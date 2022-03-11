@@ -42,6 +42,8 @@
 		38CF0942272046AA0079C51B /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CF0941272046AA0079C51B /* OnBoardingView.swift */; };
 		38CF0945272047B20079C51B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CF0944272047B20079C51B /* HomeView.swift */; };
 		38D8AA192732ADB60058BB1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D8AA182732ADB60058BB1D /* AppDelegate.swift */; };
+		D00F470427D9CC16000F9112 /* OrderHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F470327D9CC16000F9112 /* OrderHistoryView.swift */; };
+		D00F470627D9CDA4000F9112 /* OrderProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F470527D9CDA4000F9112 /* OrderProductItem.swift */; };
 		D021DBFE27D30FAD002CD455 /* ListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D021DBFD27D30FAD002CD455 /* ListSection.swift */; };
 		D021DC0227D317A3002CD455 /* SectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D021DC0127D317A3002CD455 /* SectionRow.swift */; };
 		D021DC0427D323CA002CD455 /* linkSectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D021DC0327D323CA002CD455 /* linkSectionRow.swift */; };
@@ -103,6 +105,8 @@
 		38CF0941272046AA0079C51B /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		38CF0944272047B20079C51B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		38D8AA182732ADB60058BB1D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D00F470327D9CC16000F9112 /* OrderHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryView.swift; sourceTree = "<group>"; };
+		D00F470527D9CDA4000F9112 /* OrderProductItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderProductItem.swift; sourceTree = "<group>"; };
 		D021DBFD27D30FAD002CD455 /* ListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSection.swift; sourceTree = "<group>"; };
 		D021DC0127D317A3002CD455 /* SectionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionRow.swift; sourceTree = "<group>"; };
 		D021DC0327D323CA002CD455 /* linkSectionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = linkSectionRow.swift; sourceTree = "<group>"; };
@@ -221,6 +225,7 @@
 		38CF0935272041430079C51B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D00F470227D9CC01000F9112 /* Order */,
 				D021DC0527D33287002CD455 /* Cart */,
 				D0F59CB527D212F500AE0246 /* Library */,
 				D02CC5CA27D200D4006A8706 /* Items */,
@@ -303,6 +308,15 @@
 				381E39C0272E7DFF00F8B4D9 /* ForgotPasswordView.swift */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		D00F470227D9CC01000F9112 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				D00F470327D9CC16000F9112 /* OrderHistoryView.swift */,
+				D00F470527D9CDA4000F9112 /* OrderProductItem.swift */,
+			);
+			path = Order;
 			sourceTree = "<group>";
 		};
 		D021DC0527D33287002CD455 /* Cart */ = {
@@ -465,6 +479,7 @@
 				38CF0945272047B20079C51B /* HomeView.swift in Sources */,
 				38CF0937272041540079C51B /* LaunchView.swift in Sources */,
 				381E39C9272EE14F00F8B4D9 /* HalfSheetModal.swift in Sources */,
+				D00F470627D9CDA4000F9112 /* OrderProductItem.swift in Sources */,
 				D021DBFE27D30FAD002CD455 /* ListSection.swift in Sources */,
 				D021DC0427D323CA002CD455 /* linkSectionRow.swift in Sources */,
 				D09941BC27C9E74100B2394A /* DateTitle.swift in Sources */,
@@ -496,6 +511,7 @@
 				D0F59CB727D2130800AE0246 /* SectionTitle.swift in Sources */,
 				383D652F2721BEAB00C76927 /* OnBoardingContent.swift in Sources */,
 				38CF093D272041C90079C51B /* Constants.swift in Sources */,
+				D00F470427D9CC16000F9112 /* OrderHistoryView.swift in Sources */,
 				38BE77AB272FF9A5008498C3 /* LottieView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

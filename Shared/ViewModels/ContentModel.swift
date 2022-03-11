@@ -24,43 +24,198 @@ class ContentModel: ObservableObject {
     @Published var resetPasswordErrorMessage:String = "nil"
     @Published var infoTapped = false
     @Published var excltapped = false
-    @Published var products = [Product]()
+    @Published var petroleoums = [Product]()
+    @Published var diesels = [Product]()
+    @Published var cart = [Cart]()
+    @Published var orders = [Order]()
     @Published var showForgotPasswordView = false
     @Published var forgotPasswordMode = Constants.ForgotPasswordMode.forgotPassword
-    
+    @Published var isLoading = false
     @Published var tapped = false
     
+    init() {
+        fetchProducts()
+        getCart()
+    }
     
     
-//    func fetchPosts() {
-//        guard let url = URL(string: "https://api.edev.kz/api/products") else {
-//            return
-//        }
-//
-//        URLSession.shared.dataTask(with: url) { data, res, err in
-//
-//            if let err = err {
-//                print("Failed to fetch posts:", err)
-//                return
-//            }
-//
-//            guard let data = data else { return}
-//
-//            do {
-//                let posts = try JSONDecoder().decode([Product].self , from: data)
-//
-//                DispatchQueue.main.async {
-//                    self.products = posts
-//                }
-//
-//            } catch let JsonError {
-//                print("fetch json error:", JsonError.localizedDescription)
-//            }
-//
-//
-//        }.resume()
-//
-//    }
+    
+    
+    func addToCart(productID: Int, count: Int = 1) {
+        
+        guard let url = URL(string: "\(Constants.url)/carts")  else {
+            return
+        }
+        
+        
+        var cartRequest = URLRequest(url: url)
+        cartRequest.httpMethod = "POST"
+        cartRequest.addValue("Bearer \(self.token)", forHTTPHeaderField: "Authorization")
+        
+        do {
+            
+            
+            let params = ["product_id": productID, "count": count]
+            cartRequest.httpBody = try JSONSerialization.data(withJSONObject: params, options: .init())
+            
+            cartRequest.setValue("application/json", forHTTPHeaderField: "content-type")
+            
+            URLSession.shared.dataTask(with: cartRequest) { (data, resp, err) in
+                
+                
+                if let err = err {
+                    print("failed to add to cart", err)
+                    return
+                }
+                
+                if let resp = resp as? HTTPURLResponse, resp.statusCode == 201 {
+                    
+                    //TODO: - Write some code here
+                }
+            }
+            .resume()
+            
+        } catch {
+            print("error")
+        }
+    }
+    
+    func setOrder() {
+        
+        guard let url = URL(string: "\(Constants.url)/orders")  else {
+            return
+        }
+        var cartRequest = URLRequest(url: url)
+        cartRequest.httpMethod = "POST"
+        cartRequest.addValue("Bearer \(self.token)", forHTTPHeaderField: "Authorization")
+        URLSession.shared.dataTask(with: cartRequest) { (data, resp, err) in
+            if let err = err {
+                print("failed to order", err)
+                return
+            }
+            if let resp = resp as? HTTPURLResponse, resp.statusCode == 200 {
+                print("Ordered")
+            }
+        }
+        .resume()
+    }
+        
+    
+    func deleteFromCart(productID: Int) {
+        guard let url = URL(string: "\(Constants.url)/carts/\(productID)")  else {
+            return
+        }
+        
+        
+        var cartRequest = URLRequest(url: url)
+        cartRequest.httpMethod = "DELETE"
+        cartRequest.addValue("Bearer \(self.token)", forHTTPHeaderField: "Authorization")
+        URLSession.shared.dataTask(with: cartRequest) { (data, resp, err) in
+            
+            if let err = err {
+                print("failed to delete product", err)
+                return
+            }
+            
+            if let resp = resp as? HTTPURLResponse, resp.statusCode == 200 {
+                
+                print("Deleted")
+            }
+            
+        }
+        .resume()
+        
+    }
+    
+ 
+    
+    func getCart() {
+        guard let url = URL(string: "\(Constants.url)/carts")  else {
+            return
+        }
+        var cartRequest = URLRequest(url: url)
+        cartRequest.addValue("Bearer \(self.token)", forHTTPHeaderField: "Authorization")
+        URLSession.shared.dataTask(with: cartRequest) { (data, resp, err) in
+            if let err = err {
+                print("failed to add to cart", err)
+                return
+            }
+            guard let data = data else {
+                return}
+            
+            
+            do {
+                let cart = try JSONDecoder().decode([Cart].self, from: data)
+                
+                DispatchQueue.main.async {
+                    self.cart = cart
+                }
+            }
+            catch {
+                print("fetch json error:")
+            }
+            
+            
+        }
+        .resume()
+        
+    }
+    
+    func getOrders() {
+        guard let url = URL(string: "\(Constants.url)/orders")  else {
+            return
+        }
+        var cartRequest = URLRequest(url: url)
+        cartRequest.addValue("Bearer \(self.token)", forHTTPHeaderField: "Authorization")
+        URLSession.shared.dataTask(with: cartRequest) { (data, resp, err) in
+            if let err = err {
+                print("failed to add to cart", err)
+                return
+            }
+            guard let data = data else { return}
+            
+            
+            do {
+                let order = try JSONDecoder().decode([Order].self, from: data)
+                DispatchQueue.main.async {
+                    self.orders = order
+                }
+            }
+            catch {
+                print("fetch json error:")
+            }
+        }
+        .resume()
+    }
+    
+    
+    func fetchProducts() {
+        guard let url = URL(string: "\(Constants.url)/products") else {
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { data, res, err in
+            if let err = err {
+                print("Failed to fetch posts:", err)
+                return
+            }
+            guard let data = data else { return}
+            do {
+                let posts = try JSONDecoder().decode([Product].self , from: data)
+                DispatchQueue.main.async {
+                    for product in posts {
+                        if product.categoryId == 1 {
+                            self.petroleoums.append(product)
+                        } else if product.categoryId == 2 {
+                            self.diesels.append(product)
+                        }
+                    }
+                }
+            } catch let JsonError {
+                print("fetch json error:", JsonError.localizedDescription)
+            }
+        }.resume()
+    }
     
     // MARK: - Authentication methods
     
@@ -68,7 +223,7 @@ class ContentModel: ObservableObject {
         DispatchQueue.main.async {
             self.loggedIn = self.token == "" ? false : true
         }
-      
+        
         
         
     }
@@ -80,11 +235,11 @@ class ContentModel: ObservableObject {
     }
     
     
-//    forgot-password-mobile
-//    /reset-password-mobile
+    //    forgot-password-mobile
+    //    /reset-password-mobile
     
     func resetPassword(code: String, password: String, password_confirmation: String, completion: @escaping (String) -> Void) {
-       
+        
         guard let url = URL(string: "\(Constants.url)/reset-password-mobile")
         else {
             print("error chet ne znayu")
@@ -103,7 +258,7 @@ class ContentModel: ObservableObject {
             resetPasswordRequest.setValue("application/json", forHTTPHeaderField: "content-type")
             
             URLSession.shared.dataTask(with: resetPasswordRequest) { (data, resp, err) in
-            
+                
                 if let err = err {
                     print("failed to resetPassword:", err)
                     return
@@ -112,11 +267,11 @@ class ContentModel: ObservableObject {
                 if let resp = resp as? HTTPURLResponse, resp.statusCode != 200 {
                     
                     print("cant reset Password")
- 
+                    
                     DispatchQueue.main.async {
                         let errorString = String(data: data ?? Data(), encoding: .utf8) ?? ""
                         self.resetPasswordErrorMessage = NSError(domain: "", code: resp.statusCode, userInfo: [NSLocalizedDescriptionKey: errorString]).localizedDescription
-//                        print(self.resetPasswordErrorMessage)
+                        //                        print(self.resetPasswordErrorMessage)
                         completion("error")
                     }
                     
@@ -153,7 +308,7 @@ class ContentModel: ObservableObject {
             forgotPasswordRequest.setValue("application/json", forHTTPHeaderField: "content-type")
             
             URLSession.shared.dataTask(with: forgotPasswordRequest) { (data, resp, err) in
-               
+                
                 if let err = err {
                     print("failed to resetPassword:", err)
                     return
@@ -162,11 +317,11 @@ class ContentModel: ObservableObject {
                 if let resp = resp as? HTTPURLResponse, resp.statusCode != 200 {
                     
                     print("cant reset Password")
- 
+                    
                     DispatchQueue.main.async {
                         let errorString = String(data: data ?? Data(), encoding: .utf8) ?? ""
                         self.forgotPasswordErrorMessage = NSError(domain: "", code: resp.statusCode, userInfo: [NSLocalizedDescriptionKey: errorString]).localizedDescription
-//                        print(self.forgotPasswordErrorMessage)
+                        //                        print(self.forgotPasswordErrorMessage)
                         completion("error")
                     }
                     
@@ -185,6 +340,8 @@ class ContentModel: ObservableObject {
         }
         
     }
+    
+    
     
     
     func login(email: String, password: String, completion: @escaping (String) -> Void) {
@@ -214,7 +371,7 @@ class ContentModel: ObservableObject {
                 if let resp = resp as? HTTPURLResponse, resp.statusCode != 200 {
                     
                     print("cant login")
- 
+                    
                     DispatchQueue.main.async {
                         let errorString = String(data: data ?? Data(), encoding: .utf8) ?? ""
                         self.errorMessage = NSError(domain: "", code: resp.statusCode, userInfo: [NSLocalizedDescriptionKey: errorString]).localizedDescription
@@ -358,7 +515,7 @@ let description = "Small business can receive device \npayment super fast and su
 
 // Sample Model SCreens....
 var boardingScreens = [
-
+    
     BoardingModel(image: "screen1", title: "How?", description: "Small and large wholesale for the supply of oil products"),
     BoardingModel(image: "screen2", title: "Inspiration", description: "Expand your business with us"),
     BoardingModel(image: "screen3", title: "Share", description: "All types of petroleum products"),

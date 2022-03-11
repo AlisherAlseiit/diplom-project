@@ -8,28 +8,28 @@
 import SwiftUI
 
 struct CartView: View {
-    
+    @EnvironmentObject var model:ContentModel
     var body: some View {
         NavigationView {
             ZStack {
                 Color("Background 6").edgesIgnoringSafeArea(.all)
                 VStack {
                     List{
-                        ForEach(petroleoums) { item in
+                        ForEach(model.cart) { cartItem in
                             Section {
-                                CartProductItem(course: item)
+                                CartProductItem(course: petroleoums[0], cartItem: cartItem)
                             }
-                            
                         }
                         .onDelete { value in
                             print("deleted: \(value)")
                         }
-                       
-                        
                     }
                     .listStyle(.insetGrouped)
                     Button(action: {
-                        
+                        model.setOrder()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            model.getCart()
+                        }
                     }) {
                         Text("Checkout")
                             .foregroundColor(.white)
@@ -40,8 +40,20 @@ struct CartView: View {
                     .padding(.horizontal, 20)
                     .padding(.bottom, 10)
                 }
+                
+                if model.isLoading {
+                    ProgressView()
+                        .padding(15)
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundColor(.white)
+                        )
+                }
             }
             .navigationTitle("Cart")
+            .onAppear {
+                model.getCart()
+            }
         }
         .onAppear {
             UITableView.appearance().sectionFooterHeight = 7
@@ -58,5 +70,6 @@ struct CartView: View {
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
         CartView()
+            .environmentObject(ContentModel())
     }
 }

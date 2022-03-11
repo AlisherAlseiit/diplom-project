@@ -53,7 +53,9 @@ struct LaunchView: View {
                             Image(systemName: "cart")
                             Text("Cart")
                         }
+                        
                     }
+                    .badge(model.cart.count)
                 
                 ProfileView()
                     .tabItem {

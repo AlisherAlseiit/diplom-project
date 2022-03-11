@@ -5,29 +5,88 @@
 //  Created by Алишер Алсейт on 28.10.2021.
 //
 
-import SwiftUI
 
-struct Product: Decodable, Identifiable {
+import Foundation
+
+
+struct Product: Codable, Identifiable {
     
     var id: Int
     var name: String
-    var price: String
+    var price: Double
+    var count: Int
     var description: String
-    var category_id: Int
-    var created_at: String
-    var updated_at: String
+    var categoryId: Int
+
     
-//    enum CodingKeys: String, CodingKey {
-//
-//        case categoryId = "category_id"
-//        case createdAt = "created_at"
-//        case updatedAt = "updated_at"
-//
-//        case id
-//        case name
-//        case price
-//        case description
-//
-//
-//    }
+    enum CodingKeys: String, CodingKey {
+        case categoryId = "category_id"
+        case id
+        case name
+        case price
+        case count
+        case description
+    }
+}
+
+struct Cart: Codable, Identifiable {
+    
+    var id: Int
+    var count: Int
+    var productId: Int
+    var userId: Int
+    var product: Product
+    
+    
+    enum CodingKeys: String, CodingKey {
+        case productId = "product_id"
+        case userId = "user_id"
+        
+        case id
+        case count
+        case product
+        
+     
+    }
+}
+
+struct Order: Codable, Identifiable {
+    var id: Int
+    var userId: Int
+    var total: Double
+    var createdAt: String
+    var orderItems: [OrderItem]
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case userId = "user_id"
+        case createdAt = "created_at"
+        case orderItems = "order_items"
+        
+        case id
+        case total
+    }
+}
+
+
+struct OrderItem: Codable, Identifiable {
+    var id: Int
+    var name: String
+    var count: Int
+    var cost: Double
+    var orderId: Int
+    var productId: Int
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case orderId = "order_id"
+        case productId = "product_id"
+        
+        case id
+        case name
+        case count
+        case cost
+        
+    }
+    
 }
