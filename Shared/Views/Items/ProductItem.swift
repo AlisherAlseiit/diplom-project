@@ -12,6 +12,7 @@ struct ProductItem: View {
     var course: Course = petroleoums[0]
     var product: Product
     @EnvironmentObject var model: ContentModel
+    @EnvironmentObject var cartModel: CartModel
     
     var cornerRadius: CGFloat = 5
     
@@ -42,10 +43,10 @@ struct ProductItem: View {
                     
                 Spacer()
                 Button {
-                    model.addToCart(productID: product.id)
+                    cartModel.addToCart(productID: product.id)
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        model.getCart()
+                        cartModel.getCart()
                     }
                     
                 } label: {
@@ -73,5 +74,6 @@ struct ProductItem_Previews: PreviewProvider {
     static var previews: some View {
         ProductItem(product: Product(id: 1, name: "AI-95", price: 56.0, count: 13, description: "Lorem ipsum is a placeholder text", categoryId: 1))
             .environmentObject(ContentModel())
+            .environmentObject(CartModel())
     }
 }

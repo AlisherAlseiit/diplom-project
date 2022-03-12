@@ -54,6 +54,9 @@
 		D021DC1127D363BB002CD455 /* CustomCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D021DC1027D363BB002CD455 /* CustomCorner.swift */; };
 		D02CC5CE27D2019F006A8706 /* BannerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02CC5CD27D2019F006A8706 /* BannerItem.swift */; };
 		D03F37AB27D84E9900AF8B2F /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F37AA27D84E9900AF8B2F /* TestView.swift */; };
+		D067060027DB15D500A5F4A8 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06705FF27DB15D500A5F4A8 /* SwiftUIView.swift */; };
+		D071B45727DAFD81009368BC /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D071B45627DAFD81009368BC /* CartModel.swift */; };
+		D071B45927DB087C009368BC /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D071B45827DB087C009368BC /* OrderModel.swift */; };
 		D09941B227C9DF3900B2394A /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09941B127C9DF3900B2394A /* News.swift */; };
 		D09941B627C9E06C00B2394A /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09941B527C9E06C00B2394A /* NewsView.swift */; };
 		D09941B827C9E46200B2394A /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09941B727C9E46200B2394A /* NewsItem.swift */; };
@@ -117,6 +120,9 @@
 		D021DC1027D363BB002CD455 /* CustomCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCorner.swift; sourceTree = "<group>"; };
 		D02CC5CD27D2019F006A8706 /* BannerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerItem.swift; sourceTree = "<group>"; };
 		D03F37AA27D84E9900AF8B2F /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		D06705FF27DB15D500A5F4A8 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		D071B45627DAFD81009368BC /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
+		D071B45827DB087C009368BC /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
 		D09941B127C9DF3900B2394A /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		D09941B527C9E06C00B2394A /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		D09941B727C9E46200B2394A /* NewsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItem.swift; sourceTree = "<group>"; };
@@ -234,6 +240,7 @@
 				38CF0943272047A40079C51B /* Home */,
 				38CF09402720468E0079C51B /* OnBoarding */,
 				38CF09462720490F0079C51B /* Account */,
+				D06705FF27DB15D500A5F4A8 /* SwiftUIView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -243,6 +250,8 @@
 			children = (
 				38CF093E272041E50079C51B /* ContentModel.swift */,
 				38BE77BB27302B81008498C3 /* SignupViewModel.swift */,
+				D071B45627DAFD81009368BC /* CartModel.swift */,
+				D071B45827DB087C009368BC /* OrderModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -469,6 +478,7 @@
 				38D8AA192732ADB60058BB1D /* AppDelegate.swift in Sources */,
 				383D652B272149AE00C76927 /* ProfileView.swift in Sources */,
 				38B870912723DD7D00AED736 /* TextFieldIcon.swift in Sources */,
+				D071B45727DAFD81009368BC /* CartModel.swift in Sources */,
 				D021DC0227D317A3002CD455 /* SectionRow.swift in Sources */,
 				D09941BA27C9E49F00B2394A /* Livestream.swift in Sources */,
 				389FB749274BC998005C576A /* VisualEffectBlur.swift in Sources */,
@@ -501,6 +511,7 @@
 				D0F59CBB27D2140700AE0246 /* Course.swift in Sources */,
 				383D65312721BF4600C76927 /* OnBoardingOverlay.swift in Sources */,
 				381E39C7272ED79400F8B4D9 /* SheetView.swift in Sources */,
+				D071B45927DB087C009368BC /* OrderModel.swift in Sources */,
 				D02CC5CE27D2019F006A8706 /* BannerItem.swift in Sources */,
 				D09941B227C9DF3900B2394A /* News.swift in Sources */,
 				D03F37AB27D84E9900AF8B2F /* TestView.swift in Sources */,
@@ -508,6 +519,7 @@
 				38B870972723E21300AED736 /* GradientButton.swift in Sources */,
 				38CF090327203FCC0079C51B /* diplom_projectApp.swift in Sources */,
 				381E39C5272EA75100F8B4D9 /* CloseButton.swift in Sources */,
+				D067060027DB15D500A5F4A8 /* SwiftUIView.swift in Sources */,
 				D0F59CB727D2130800AE0246 /* SectionTitle.swift in Sources */,
 				383D652F2721BEAB00C76927 /* OnBoardingContent.swift in Sources */,
 				38CF093D272041C90079C51B /* Constants.swift in Sources */,
@@ -645,7 +657,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Q37RAD9XD7;
+				DEVELOPMENT_TEAM = UM77RT2RUA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -675,7 +687,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Q37RAD9XD7;
+				DEVELOPMENT_TEAM = UM77RT2RUA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

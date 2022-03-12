@@ -12,7 +12,8 @@ struct LaunchView: View {
     
     
     @EnvironmentObject var model:ContentModel
-    
+    @EnvironmentObject var cartModel: CartModel
+    @EnvironmentObject var orderModel: OrderModel
    
     var body: some View {
         if model.isFirstTime {
@@ -55,7 +56,7 @@ struct LaunchView: View {
                         }
                         
                     }
-                    .badge(model.cart.count)
+                    .badge(cartModel.cart.count)
                 
                 ProfileView()
                     .tabItem {
@@ -78,5 +79,7 @@ struct LaunchView_Previews: PreviewProvider {
     static var previews: some View {
         LaunchView()
             .environmentObject(ContentModel())
+            .environmentObject(CartModel())
+            .environmentObject(OrderModel())
     }
 }

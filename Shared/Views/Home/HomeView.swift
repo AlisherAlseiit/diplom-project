@@ -13,6 +13,7 @@ struct HomeView: View {
     @EnvironmentObject var model:ContentModel
     @State private var isPatreleoum = false
     @State private var selectedPage = 0
+    
     let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
     var body: some View {
         ZStack {
@@ -54,7 +55,7 @@ struct HomeView: View {
                         CategoryItems(isPetroleoum: $isPatreleoum)
                         SectionTitle(title: "Products")
                         
-                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 160), spacing: 16)], spacing: 16) {
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 140), spacing: 16)], spacing: 16) {
                             ForEach(isPatreleoum ? model.petroleoums : model.diesels) { item in
                                 
                                     ProductItem(course: petroleoums[0], product: item)
@@ -68,8 +69,19 @@ struct HomeView: View {
                 
                 .navigationBarItems(leading: Image("Logo Principle").renderingMode(.original), trailing: Image(systemName: "magnifyingglass").padding(.all, 5).background(Color("screen3").opacity(0.1).clipShape(RoundedRectangle(cornerRadius: 5)).padding(.all, 1)))
             }
+            
+            if model.isLoading {
+                ProgressView()
+                    .padding(15)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor(.white)
+                    )
+            }
         }
-        
+        .onAppear {
+            model.fetchProducts()
+        }
     }
 }
 

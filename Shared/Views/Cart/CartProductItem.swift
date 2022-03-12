@@ -11,6 +11,7 @@ struct CartProductItem: View {
     var course: Course = petroleoums[0]
     var cartItem: Cart
     @EnvironmentObject var model: ContentModel
+    @EnvironmentObject var cartModel: CartModel
     var cornerRadius: CGFloat = 5
     
     var body: some View {
@@ -32,27 +33,20 @@ struct CartProductItem: View {
                     .lineLimit(1)
             }
             Spacer()
-            
             VStack(spacing: 10) {
                 Button {
-                    model.deleteFromCart(productID: cartItem.id)
+                    cartModel.deleteFromCart(productID: cartItem.id)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        model.getCart()
+                        cartModel.getCart()
                     }
-                    
                 } label: {
                     Image(systemName: "trash")
                         .foregroundColor(.red)
                 }
-
-                
                 Text("$" + String(format: "%.2f", cartItem.product.price))
                     .font(.subheadline)
             }
-            
         }
-        
-        
     }
 }
 
@@ -60,5 +54,6 @@ struct CartProductItem_Previews: PreviewProvider {
     static var previews: some View {
         CartProductItem(cartItem: Cart(id: 1, count: 1, productId: 1, userId: 2, product: Product(id: 2, name: "AI-92", price: 56.6, count: 1, description: "Lorem ipsum", categoryId: 2)))
             .environmentObject(ContentModel())
+            .environmentObject(CartModel())
     }
 }

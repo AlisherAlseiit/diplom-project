@@ -17,7 +17,6 @@ class ContentModel: ObservableObject {
     @Published var currentIndex: Int? = -1
     @AppStorage("isFirstTime")  var isFirstTime = true
     @AppStorage("token") var token = ""
-    
     @Published var loginMode = Constants.LoginMode.login
     @Published var errorMessage:String = "Something went wrong"
     @Published var forgotPasswordErrorMessage:String = "nil"
@@ -26,174 +25,19 @@ class ContentModel: ObservableObject {
     @Published var excltapped = false
     @Published var petroleoums = [Product]()
     @Published var diesels = [Product]()
-    @Published var cart = [Cart]()
-    @Published var orders = [Order]()
     @Published var showForgotPasswordView = false
     @Published var forgotPasswordMode = Constants.ForgotPasswordMode.forgotPassword
     @Published var isLoading = false
     @Published var tapped = false
     
-    init() {
-        fetchProducts()
-        getCart()
-    }
+   
     
-    
-    
-    
-    func addToCart(productID: Int, count: Int = 1) {
-        
-        guard let url = URL(string: "\(Constants.url)/carts")  else {
-            return
-        }
-        
-        
-        var cartRequest = URLRequest(url: url)
-        cartRequest.httpMethod = "POST"
-        cartRequest.addValue("Bearer \(self.token)", forHTTPHeaderField: "Authorization")
-        
-        do {
-            
-            
-            let params = ["product_id": productID, "count": count]
-            cartRequest.httpBody = try JSONSerialization.data(withJSONObject: params, options: .init())
-            
-            cartRequest.setValue("application/json", forHTTPHeaderField: "content-type")
-            
-            URLSession.shared.dataTask(with: cartRequest) { (data, resp, err) in
-                
-                
-                if let err = err {
-                    print("failed to add to cart", err)
-                    return
-                }
-                
-                if let resp = resp as? HTTPURLResponse, resp.statusCode == 201 {
-                    
-                    //TODO: - Write some code here
-                }
-            }
-            .resume()
-            
-        } catch {
-            print("error")
-        }
-    }
-    
-    func setOrder() {
-        
-        guard let url = URL(string: "\(Constants.url)/orders")  else {
-            return
-        }
-        var cartRequest = URLRequest(url: url)
-        cartRequest.httpMethod = "POST"
-        cartRequest.addValue("Bearer \(self.token)", forHTTPHeaderField: "Authorization")
-        URLSession.shared.dataTask(with: cartRequest) { (data, resp, err) in
-            if let err = err {
-                print("failed to order", err)
-                return
-            }
-            if let resp = resp as? HTTPURLResponse, resp.statusCode == 200 {
-                print("Ordered")
-            }
-        }
-        .resume()
-    }
-        
-    
-    func deleteFromCart(productID: Int) {
-        guard let url = URL(string: "\(Constants.url)/carts/\(productID)")  else {
-            return
-        }
-        
-        
-        var cartRequest = URLRequest(url: url)
-        cartRequest.httpMethod = "DELETE"
-        cartRequest.addValue("Bearer \(self.token)", forHTTPHeaderField: "Authorization")
-        URLSession.shared.dataTask(with: cartRequest) { (data, resp, err) in
-            
-            if let err = err {
-                print("failed to delete product", err)
-                return
-            }
-            
-            if let resp = resp as? HTTPURLResponse, resp.statusCode == 200 {
-                
-                print("Deleted")
-            }
-            
-        }
-        .resume()
-        
-    }
-    
- 
-    
-    func getCart() {
-        guard let url = URL(string: "\(Constants.url)/carts")  else {
-            return
-        }
-        var cartRequest = URLRequest(url: url)
-        cartRequest.addValue("Bearer \(self.token)", forHTTPHeaderField: "Authorization")
-        URLSession.shared.dataTask(with: cartRequest) { (data, resp, err) in
-            if let err = err {
-                print("failed to add to cart", err)
-                return
-            }
-            guard let data = data else {
-                return}
-            
-            
-            do {
-                let cart = try JSONDecoder().decode([Cart].self, from: data)
-                
-                DispatchQueue.main.async {
-                    self.cart = cart
-                }
-            }
-            catch {
-                print("fetch json error:")
-            }
-            
-            
-        }
-        .resume()
-        
-    }
-    
-    func getOrders() {
-        guard let url = URL(string: "\(Constants.url)/orders")  else {
-            return
-        }
-        var cartRequest = URLRequest(url: url)
-        cartRequest.addValue("Bearer \(self.token)", forHTTPHeaderField: "Authorization")
-        URLSession.shared.dataTask(with: cartRequest) { (data, resp, err) in
-            if let err = err {
-                print("failed to add to cart", err)
-                return
-            }
-            guard let data = data else { return}
-            
-            
-            do {
-                let order = try JSONDecoder().decode([Order].self, from: data)
-                DispatchQueue.main.async {
-                    self.orders = order
-                }
-            }
-            catch {
-                print("fetch json error:")
-            }
-        }
-        .resume()
-    }
-    
-    
+    // Product
     func fetchProducts() {
+        isLoading = true
         guard let url = URL(string: "\(Constants.url)/products") else {
             return
         }
-        
         URLSession.shared.dataTask(with: url) { data, res, err in
             if let err = err {
                 print("Failed to fetch posts:", err)
@@ -210,195 +54,130 @@ class ContentModel: ObservableObject {
                             self.diesels.append(product)
                         }
                     }
+                    self.isLoading = false
                 }
             } catch let JsonError {
+                self.isLoading = false
                 print("fetch json error:", JsonError.localizedDescription)
             }
         }.resume()
     }
     
     // MARK: - Authentication methods
-    
     func checkLogin() {
         DispatchQueue.main.async {
             self.loggedIn = self.token == "" ? false : true
         }
-        
-        
-        
     }
     
     func signOut() {
-        
         token = ""
-        
     }
-    
-    
-    //    forgot-password-mobile
-    //    /reset-password-mobile
-    
     func resetPassword(code: String, password: String, password_confirmation: String, completion: @escaping (String) -> Void) {
-        
         guard let url = URL(string: "\(Constants.url)/reset-password-mobile")
         else {
             print("error chet ne znayu")
             return
-            
         }
-        
         var resetPasswordRequest = URLRequest(url: url)
         resetPasswordRequest.httpMethod = "POST"
-        
         do {
-            
             let params = ["code": code, "password": password, "password_confirmation":password_confirmation]
             resetPasswordRequest.httpBody = try JSONSerialization.data(withJSONObject: params, options: .init())
-            
             resetPasswordRequest.setValue("application/json", forHTTPHeaderField: "content-type")
-            
             URLSession.shared.dataTask(with: resetPasswordRequest) { (data, resp, err) in
-                
                 if let err = err {
                     print("failed to resetPassword:", err)
                     return
                 }
-                
                 if let resp = resp as? HTTPURLResponse, resp.statusCode != 200 {
-                    
                     print("cant reset Password")
-                    
                     DispatchQueue.main.async {
                         let errorString = String(data: data ?? Data(), encoding: .utf8) ?? ""
                         self.resetPasswordErrorMessage = NSError(domain: "", code: resp.statusCode, userInfo: [NSLocalizedDescriptionKey: errorString]).localizedDescription
                         //                        print(self.resetPasswordErrorMessage)
                         completion("error")
                     }
-                    
                     return
                 }
                 completion("fine")
-                
             }.resume()
         }
-        
         catch {
-            
         }
-        
     }
     
     func forgotPassword(email: String, completion: @escaping (String) -> Void) {
-        
         guard let url = URL(string: "\(Constants.url)/forgot-password-mobile")
         else {
             print("error chet ne znayu")
             return
-            
         }
-        
         var forgotPasswordRequest = URLRequest(url: url)
         forgotPasswordRequest.httpMethod = "POST"
-        
         do {
-            
             let params = ["email": email]
             forgotPasswordRequest.httpBody = try JSONSerialization.data(withJSONObject: params, options: .init())
-            
             forgotPasswordRequest.setValue("application/json", forHTTPHeaderField: "content-type")
-            
             URLSession.shared.dataTask(with: forgotPasswordRequest) { (data, resp, err) in
-                
                 if let err = err {
                     print("failed to resetPassword:", err)
                     return
                 }
-                
                 if let resp = resp as? HTTPURLResponse, resp.statusCode != 200 {
-                    
                     print("cant reset Password")
-                    
                     DispatchQueue.main.async {
                         let errorString = String(data: data ?? Data(), encoding: .utf8) ?? ""
                         self.forgotPasswordErrorMessage = NSError(domain: "", code: resp.statusCode, userInfo: [NSLocalizedDescriptionKey: errorString]).localizedDescription
                         //                        print(self.forgotPasswordErrorMessage)
                         completion("error")
                     }
-                    
                     return
                 }
                 completion("fine")
-                
-                
-                
-                
             }.resume()
         }
-        
         catch {
             print("error chet ne znayu")
         }
-        
     }
-    
-    
-    
-    
+     
     func login(email: String, password: String, completion: @escaping (String) -> Void) {
         print("Performin Login")
-        
         guard let url = URL(string: "\(Constants.url)/login")
         else { return }
-        
         var loginRequest = URLRequest(url: url)
         loginRequest.httpMethod = "POST"
-        
         do {
             // fromSwiftApp@mail.ru pass: 123123
             let params = ["email": email, "password": password]
             loginRequest.httpBody = try JSONSerialization.data(withJSONObject: params, options: .init())
-            
             loginRequest.setValue("application/json", forHTTPHeaderField: "content-type")
-            
             URLSession.shared.dataTask(with: loginRequest) { (data, resp, err) in
-                
                 if let err = err {
                     print("failed to login:", err)
                     return
                 }
-                
-                
                 if let resp = resp as? HTTPURLResponse, resp.statusCode != 200 {
-                    
                     print("cant login")
-                    
                     DispatchQueue.main.async {
                         let errorString = String(data: data ?? Data(), encoding: .utf8) ?? ""
                         self.errorMessage = NSError(domain: "", code: resp.statusCode, userInfo: [NSLocalizedDescriptionKey: errorString]).localizedDescription
                         print(self.errorMessage)
-                        
                     }
                     completion("fail")
                     return
                 }
-                
-                
                 if let data = data {
                     do {
                         if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
-                            
                             let responseError = convertedJsonIntoDict["error"] as? String
-                            
-                            
-                            
                             if responseError?.count == nil {
-                                
                                 DispatchQueue.main.async {
                                     let tokenAcceso = convertedJsonIntoDict["token"] as? String
                                     self.token = tokenAcceso!
                                     completion("success")
                                     print("my token = \(self.token)")
-                                    
                                 }
                             } else {
                                 print("error")
@@ -410,60 +189,39 @@ class ContentModel: ObservableObject {
                         print(error.localizedDescription)
                     }
                 }
-                
-                
-                
             }.resume()
-            
         }
         catch {
             print("Failed to serilaize data:", error)
         }
-        
     }
+    
     func register(email: String, password: String, name: String, phone: String, confirmPassword: String, completion: @escaping (Bool) -> Void) {
         print("Performin Registration")
-        
         guard let url = URL(string: "\(Constants.url)/register")
         else { return }
-        
         var loginRequest = URLRequest(url: url)
         loginRequest.httpMethod = "POST"
-        
         do {
-            
             let params = ["email": email, "password": password, "name": name, "phone": phone, "password_confirmation": confirmPassword]
             loginRequest.httpBody = try JSONSerialization.data(withJSONObject: params, options: .init())
-            
             loginRequest.setValue("application/json", forHTTPHeaderField: "content-type")
-            
             URLSession.shared.dataTask(with: loginRequest) { (data, resp, err) in
-                
                 if let err = err {
                     print("failed to register:", err)
                     return
                 }
-                
                 if let resp = resp as? HTTPURLResponse, resp.statusCode != 200 {
-                    
-                    
                     DispatchQueue.main.async {
-                        
                         self.errorMessage = "Coudln't register"
                         completion(false)
                     }
                     return
                 }
-                
-                
                 if let data = data {
                     do {
                         if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
-                            
                             let responseError = convertedJsonIntoDict["error"] as? String
-                            
-                            
-                            
                             if responseError?.count == nil {
                                 
                                 DispatchQueue.main.async {
@@ -483,19 +241,11 @@ class ContentModel: ObservableObject {
                         print(error.localizedDescription)
                     }
                 }
-                
-                
-                
-                
-                
-                
             }.resume()
-            
         }
         catch {
             print("Failed to serilaize data:", error)
         }
-        
     }
 }
 

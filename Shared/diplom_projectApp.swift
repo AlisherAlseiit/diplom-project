@@ -14,6 +14,8 @@ struct diplom_projectApp: App {
         WindowGroup {
             LaunchView()
                 .environmentObject(ContentModel())
+                .environmentObject(CartModel())
+                .environmentObject(OrderModel())
         }
     }
 }

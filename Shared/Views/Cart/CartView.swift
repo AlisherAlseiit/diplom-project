@@ -9,13 +9,16 @@ import SwiftUI
 
 struct CartView: View {
     @EnvironmentObject var model:ContentModel
+    @EnvironmentObject var cartModel: CartModel
+    @EnvironmentObject var orderModel: OrderModel
     var body: some View {
         NavigationView {
             ZStack {
                 Color("Background 6").edgesIgnoringSafeArea(.all)
+                if !cartModel.cart.isEmpty {
                 VStack {
                     List{
-                        ForEach(model.cart) { cartItem in
+                        ForEach(cartModel.cart) { cartItem in
                             Section {
                                 CartProductItem(course: petroleoums[0], cartItem: cartItem)
                             }
@@ -25,10 +28,12 @@ struct CartView: View {
                         }
                     }
                     .listStyle(.insetGrouped)
+                    
+                    
                     Button(action: {
-                        model.setOrder()
+                        orderModel.setOrder()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            model.getCart()
+                            cartModel.getCart()
                         }
                     }) {
                         Text("Checkout")
@@ -40,8 +45,21 @@ struct CartView: View {
                     .padding(.horizontal, 20)
                     .padding(.bottom, 10)
                 }
+                } else {
+                    
+                    VStack(spacing: 10) {
+                        Image(systemName: "cart")
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                        Text("Cart is Empty")
+                            .bold()
+                            .font(.headline)
+                        
+                    }
+                }
                 
-                if model.isLoading {
+                
+                if cartModel.isLoading {
                     ProgressView()
                         .padding(15)
                         .background(
@@ -49,10 +67,11 @@ struct CartView: View {
                                 .foregroundColor(.white)
                         )
                 }
+               
             }
             .navigationTitle("Cart")
             .onAppear {
-                model.getCart()
+                cartModel.getCart()
             }
         }
         .onAppear {
@@ -71,5 +90,7 @@ struct CartView_Previews: PreviewProvider {
     static var previews: some View {
         CartView()
             .environmentObject(ContentModel())
+            .environmentObject(CartModel())
+            .environmentObject(OrderModel())
     }
 }
