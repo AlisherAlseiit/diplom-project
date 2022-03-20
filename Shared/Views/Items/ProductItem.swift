@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ProductItem: View {
     
-    var course: Course = petroleoums[0]
     var product: Product
     @EnvironmentObject var model: ContentModel
     @EnvironmentObject var cartModel: CartModel
@@ -22,9 +21,18 @@ struct ProductItem: View {
             
             HStack {
                 Spacer()
-                Image(course.image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
+                AsyncImage(url: URL(string: product.image)) { imag in
+                    imag.resizable()
+                        .aspectRatio(contentMode: .fit)
+                } placeholder: {
+                    Image("AI-92")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        
+                        
+                }
+                
+                    
 
                 Spacer()
             }
@@ -43,7 +51,7 @@ struct ProductItem: View {
                     
                 Spacer()
                 Button {
-                    cartModel.addToCart(productID: product.id)
+                    cartModel.addToCart(productID: product.id, count: 1)
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         cartModel.getCart()
@@ -72,7 +80,7 @@ struct ProductItem: View {
 
 struct ProductItem_Previews: PreviewProvider {
     static var previews: some View {
-        ProductItem(product: Product(id: 1, name: "AI-95", price: 56.0, count: 13, description: "Lorem ipsum is a placeholder text", categoryId: 1))
+        ProductItem(product: Product(id: 1, name: "AI-92", price: 54.34, description: "some desk", image: "https://api.edev.kz/storage/products/DT.png", category: Category(id: 1, name: "Oil")))
             .environmentObject(ContentModel())
             .environmentObject(CartModel())
     }

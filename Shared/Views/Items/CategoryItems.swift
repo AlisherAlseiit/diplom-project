@@ -12,7 +12,7 @@ struct CategoryItems: View {
     var cornerRadius: CGFloat = 5
     var body: some View {
         HStack {
-            Text("Бензин")
+            Text("Oil Products")
                 .foregroundColor(isPetroleoum ? Color("screen3") : Color(.gray))
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .padding(15)
@@ -22,7 +22,7 @@ struct CategoryItems: View {
                 }
             
             
-            Text("Дизтопливо")
+            Text("Diesel fuels")
                 .foregroundColor(!isPetroleoum ? Color("screen3") : Color(.gray))
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .padding(15)

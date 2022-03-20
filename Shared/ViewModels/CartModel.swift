@@ -12,8 +12,20 @@ class CartModel: ObservableObject {
     
     @Published var cart = [Cart]()
     @Published var isLoading = false
+    @Published var cartTotalItemCount = 0
     
-    func addToCart(productID: Int, count: Int = 1) {
+    
+    func getCartItemCount(cartItem: [Cart]) {
+        var itemCount = 0
+        for cart in cartItem {
+            itemCount += cart.count
+        }
+        cartTotalItemCount = itemCount
+        
+         
+    }
+    
+    func addToCart(productID: Int, count: Int) {
         guard let url = URL(string: "\(Constants.url)/carts")  else {
             return
         }
@@ -31,6 +43,8 @@ class CartModel: ObservableObject {
                 }
                 if let resp = resp as? HTTPURLResponse, resp.statusCode == 201 {
                     //TODO: - Write some code here
+                    
+                    self.getCart()
                 }
             }
             .resume()
@@ -52,7 +66,7 @@ class CartModel: ObservableObject {
                 return
             }
             if let resp = resp as? HTTPURLResponse, resp.statusCode == 200 {
-                print("Deleted")
+                self.getCart()
             }
         }
         .resume()
@@ -60,7 +74,9 @@ class CartModel: ObservableObject {
     }
     
     func getCart() {
-        isLoading = true
+        DispatchQueue.main.async {
+            self.isLoading = true
+        }
         guard let url = URL(string: "\(Constants.url)/carts")  else {
             return
         }
@@ -79,10 +95,13 @@ class CartModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.isLoading = false
                     self.cart = cart
+                    self.getCartItemCount(cartItem: cart)
                 }
             }
             catch {
-                self.isLoading = false
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                }
                 print("fetch json error:")
             }
         }

@@ -14,19 +14,15 @@ struct Product: Codable, Identifiable {
     var id: Int
     var name: String
     var price: Double
-    var count: Int
     var description: String
-    var categoryId: Int
+    var image: String
+    var category: Category
 
-    
-    enum CodingKeys: String, CodingKey {
-        case categoryId = "category_id"
-        case id
-        case name
-        case price
-        case count
-        case description
-    }
+}
+
+struct Category: Codable, Identifiable {
+    var id: Int
+    var name: String
 }
 
 struct Cart: Codable, Identifiable {

@@ -8,51 +8,71 @@
 import SwiftUI
 
 struct CartProductItem: View {
-    var course: Course = petroleoums[0]
     var cartItem: Cart
     @EnvironmentObject var model: ContentModel
     @EnvironmentObject var cartModel: CartModel
     var cornerRadius: CGFloat = 5
     
     var body: some View {
-        HStack {
-            Image("AI-92")
-                .renderingMode(.original)
-                .resizable()
-                .frame(width: 48, height: 48)
-            
-            VStack(alignment: .leading, spacing: 4) {
+        HStack(alignment: .top, spacing: 15) {
+            VStack(spacing: 10) {
+                AsyncImage(url: URL(string: cartItem.product.image)) { image in
+                    image
+                        .renderingMode(.original)
+                        .resizable()
+                        .frame(width: 55, height: 55)
+                        
+                } placeholder: {
+                    Image("AI-92")
+                        .renderingMode(.original)
+                        .resizable()
+                        .frame(width:55, height: 55)
+                }
+                    
+                
+                Text("Delete")
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+                    .onTapGesture {
+                        cartModel.deleteFromCart(productID: cartItem.id)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        }
+                    }
+            }
+            VStack(alignment: .leading, spacing: 10) {
                 Text(cartItem.product.name)
                     .bold()
                     .font(.subheadline)
                     .foregroundColor(.primary)
-                Text(cartItem.product.description)
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
-                    .padding(.bottom, 2)
-                    .lineLimit(1)
+                Text("$" + String(format: "%.2f", Double(cartItem.count) * cartItem.product.price))
+                    .font(.subheadline)
+                
             }
             Spacer()
+            
+            
             VStack(spacing: 10) {
-                Button {
-                    cartModel.deleteFromCart(productID: cartItem.id)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        cartModel.getCart()
+                Image(systemName: "plus")
+                    .padding(5)
+                    .background(Circle().foregroundColor(.gray).opacity(0.2))
+                    .onTapGesture {
+                        cartModel.addToCart(productID: cartItem.productId, count: 1)
                     }
-                } label: {
-                    Image(systemName: "trash")
-                        .foregroundColor(.red)
-                }
-                Text("$" + String(format: "%.2f", cartItem.product.price))
-                    .font(.subheadline)
+                
+                Text("x \(cartItem.count)")
+                
+                Image(systemName: "minus")
+                    .padding(10)
+                    .background(Circle().foregroundColor(.gray).opacity(0.2))
             }
         }
+        
     }
 }
 
 struct CartProductItem_Previews: PreviewProvider {
     static var previews: some View {
-        CartProductItem(cartItem: Cart(id: 1, count: 1, productId: 1, userId: 2, product: Product(id: 2, name: "AI-92", price: 56.6, count: 1, description: "Lorem ipsum", categoryId: 2)))
+        CartProductItem(cartItem: Cart(id: 1, count: 1, productId: 1, userId: 2, product: Product(id: 1, name: "AI-92", price: 54.34, description: "some desk", image: "https://api.edev.kz/storage/products/DT.png", category: Category(id: 1, name: "Oil"))))
             .environmentObject(ContentModel())
             .environmentObject(CartModel())
     }

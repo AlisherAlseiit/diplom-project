@@ -20,12 +20,10 @@ struct CartView: View {
                     List{
                         ForEach(cartModel.cart) { cartItem in
                             Section {
-                                CartProductItem(course: petroleoums[0], cartItem: cartItem)
+                                CartProductItem(cartItem: cartItem)
                             }
                         }
-                        .onDelete { value in
-                            print("deleted: \(value)")
-                        }
+                        
                     }
                     .listStyle(.insetGrouped)
                     

@@ -56,7 +56,7 @@ struct LaunchView: View {
                         }
                         
                     }
-                    .badge(cartModel.cart.count)
+                    .badge(cartModel.cartTotalItemCount)
                 
                 ProfileView()
                     .tabItem {

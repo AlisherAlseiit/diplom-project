@@ -14,6 +14,8 @@ struct HomeView: View {
     @State private var isPatreleoum = false
     @State private var selectedPage = 0
     
+    
+    
     let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
     var body: some View {
         ZStack {
@@ -57,8 +59,13 @@ struct HomeView: View {
                         
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: 140), spacing: 16)], spacing: 16) {
                             ForEach(isPatreleoum ? model.petroleoums : model.diesels) { item in
-                                
-                                    ProductItem(course: petroleoums[0], product: item)
+                                NavigationLink {
+                                    ProductView(product: item)
+                                } label: {
+                                    ProductItem(product: item)
+                                }
+
+                                    
                                    
                             }
                         }
@@ -67,7 +74,7 @@ struct HomeView: View {
                     
                 }
                 
-                .navigationBarItems(leading: Image("Logo Principle").renderingMode(.original), trailing: Image(systemName: "magnifyingglass").padding(.all, 5).background(Color("screen3").opacity(0.1).clipShape(RoundedRectangle(cornerRadius: 5)).padding(.all, 1)))
+                .navigationBarItems(leading: Image("Logo Principle").renderingMode(.original))
             }
             
             if model.isLoading {

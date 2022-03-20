@@ -48,9 +48,9 @@ class ContentModel: ObservableObject {
                 let posts = try JSONDecoder().decode([Product].self , from: data)
                 DispatchQueue.main.async {
                     for product in posts {
-                        if product.categoryId == 1 {
+                        if product.category.id == 1 {
                             self.petroleoums.append(product)
-                        } else if product.categoryId == 2 {
+                        } else if product.category.id == 2 {
                             self.diesels.append(product)
                         }
                     }
