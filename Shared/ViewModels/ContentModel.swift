@@ -8,15 +8,13 @@
 import Foundation
 import SwiftUI
 
-
-
-
 class ContentModel: ObservableObject {
     
     @Published var loggedIn = false
     @Published var currentIndex: Int? = -1
     @AppStorage("isFirstTime")  var isFirstTime = true
     @AppStorage("token") var token = ""
+    
     @Published var loginMode = Constants.LoginMode.login
     @Published var errorMessage:String = "Something went wrong"
     @Published var forgotPasswordErrorMessage:String = "nil"
@@ -29,8 +27,93 @@ class ContentModel: ObservableObject {
     @Published var forgotPasswordMode = Constants.ForgotPasswordMode.forgotPassword
     @Published var isLoading = false
     @Published var tapped = false
+    @Published var user: User?
+    @Published var articles = [Article]()
+    @Published var cart = [Cart]()
+    @Published var cartTotalItemCount = 0
+    @Published var orders = [Order]()
     
-   
+    init() {
+        self.fetchProducts()
+        self.getArticles()
+        self.getCart()
+        self.getUser()
+    }
+    
+    func checkExpirityToken() {
+        if let date = UserDefaults.standard.object(forKey: "date") as? Date {
+            if let diff = Calendar.current.dateComponents([.hour], from: date, to: Date()).hour, diff >= 6 {
+                self.token = ""
+           }
+        }
+        
+        checkLogin()
+    }
+    
+    func getArticles() {
+        isLoading = true
+        guard let url = URL(string: "\(Constants.url)/articles") else {
+            return
+        }
+        URLSession.shared.dataTask(with: url) { data, res, err in
+            if let err = err {
+                print("Failed to fetch articles:", err)
+                return
+            }
+            guard let data = data else { return}
+            
+            do {
+                let fetchedArticles = try JSONDecoder().decode([Article].self, from: data)
+                
+                DispatchQueue.main.async {
+                    for article in fetchedArticles {
+                        if article.articleId == 1 {
+                            self.articles.append(article)
+                        }
+                    }
+                    self.isLoading = false
+                }
+                
+            }
+            catch let JsonError {
+               print("fetch json error:", JsonError.localizedDescription)
+           }
+            
+        }
+        .resume()
+    }
+    
+    // Fetch User
+    func getUser() {
+        guard let url = URL(string: "\(Constants.url)/user") else {
+            return
+        }
+        var userRequest = URLRequest(url: url)
+        userRequest.addValue("Bearer \(UserDefaults.standard.string(forKey: "token") ?? "")", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: userRequest) { data, res, err in
+            if let err = err {
+                print("Failed to fetch posts:", err)
+                return
+            }
+            guard let data = data else { return}
+            
+            do {
+                let user = try JSONDecoder().decode(User.self, from: data)
+                
+                DispatchQueue.main.async {
+                    print("Dwa")
+                    self.user = user
+                }
+                
+            }
+            catch let JsonError {
+               print("fetch json error:", JsonError.localizedDescription)
+           }
+            
+        }
+        .resume()
+    }
     
     // Product
     func fetchProducts() {
@@ -66,9 +149,24 @@ class ContentModel: ObservableObject {
     // MARK: - Authentication methods
     func checkLogin() {
         DispatchQueue.main.async {
-            self.loggedIn = self.token == "" ? false : true
+            if self.token == "" {
+                self.loggedIn = false
+            } else {
+                self.loggedIn = true
+            }
+            
         }
     }
+    
+//    func checkTokenForExpire() {
+//        DispatchQueue.main.async {
+//            if self.user == nil {
+//                self.loggedIn = false
+//            } else {
+//                self.loggedIn = true
+//            }
+//        }
+//    }
     
     func signOut() {
         token = ""
@@ -161,26 +259,31 @@ class ContentModel: ObservableObject {
                 if let resp = resp as? HTTPURLResponse, resp.statusCode != 200 {
                     print("cant login")
                     DispatchQueue.main.async {
-                        let errorString = String(data: data ?? Data(), encoding: .utf8) ?? ""
-                        self.errorMessage = NSError(domain: "", code: resp.statusCode, userInfo: [NSLocalizedDescriptionKey: errorString]).localizedDescription
+                        self.errorMessage = "User not Found"
                         print(self.errorMessage)
                     }
                     completion("fail")
                     return
                 }
+                
                 if let data = data {
                     do {
                         if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
-                            let responseError = convertedJsonIntoDict["error"] as? String
-                            if responseError?.count == nil {
+                            if convertedJsonIntoDict["errors"] == nil {
                                 DispatchQueue.main.async {
                                     let tokenAcceso = convertedJsonIntoDict["token"] as? String
                                     self.token = tokenAcceso!
+                                    UserDefaults.standard.set(Date(), forKey: "date")
                                     completion("success")
                                     print("my token = \(self.token)")
+                                    self.getUser()
+                                    self.getCart()
                                 }
                             } else {
-                                print("error")
+                                DispatchQueue.main.async {
+                                self.errorMessage = "Wrong Password"
+                                completion("fail")
+                                }
                             }
                         }
                     }
@@ -195,6 +298,7 @@ class ContentModel: ObservableObject {
             print("Failed to serilaize data:", error)
         }
     }
+   
     
     func register(email: String, password: String, name: String, phone: String, confirmPassword: String, completion: @escaping (Bool) -> Void) {
         print("Performin Registration")
@@ -213,7 +317,7 @@ class ContentModel: ObservableObject {
                 }
                 if let resp = resp as? HTTPURLResponse, resp.statusCode != 200 {
                     DispatchQueue.main.async {
-                        self.errorMessage = "Coudln't register"
+                        self.errorMessage = "Email already used"
                         completion(false)
                     }
                     return
@@ -227,12 +331,17 @@ class ContentModel: ObservableObject {
                                 DispatchQueue.main.async {
                                     let tokenAcceso = convertedJsonIntoDict["token"] as? String
                                     self.token = tokenAcceso!
+                                    UserDefaults.standard.set(Date(), forKey: "date")
                                     completion(true)
                                     print("my token = \(self.token)")
-                                    
+                                    self.getUser()
+                                    self.getCart()
                                 }
                             } else {
-                                print("error")
+                                DispatchQueue.main.async {
+                                    self.errorMessage = "Failed while registering"
+                                    completion(false)
+                                }
                             }
                         }
                     }
@@ -246,6 +355,153 @@ class ContentModel: ObservableObject {
         catch {
             print("Failed to serilaize data:", error)
         }
+    }
+    
+    
+    //
+    func getCartItemCount(cartItem: [Cart]) {
+        var itemCount = 0
+        for cart in cartItem {
+            itemCount += cart.count
+        }
+        cartTotalItemCount = itemCount
+        
+         
+    }
+    
+    func addToCart(productID: Int, count: Int) {
+        guard let url = URL(string: "\(Constants.url)/carts")  else {
+            return
+        }
+        var cartRequest = URLRequest(url: url)
+        cartRequest.httpMethod = "POST"
+        cartRequest.addValue("Bearer \(UserDefaults.standard.string(forKey: "token")!)", forHTTPHeaderField: "Authorization")
+        do {
+            let params = ["product_id": productID, "count": count]
+            cartRequest.httpBody = try JSONSerialization.data(withJSONObject: params, options: .init())
+            cartRequest.setValue("application/json", forHTTPHeaderField: "content-type")
+            URLSession.shared.dataTask(with: cartRequest) { (data, resp, err) in
+                if let err = err {
+                    print("failed to add to cart", err)
+                    return
+                }
+                if let resp = resp as? HTTPURLResponse, resp.statusCode == 201 {
+                    //TODO: - Write some code here
+                    
+                    self.getCart()
+                }
+            }
+            .resume()
+        } catch {
+            print("error")
+        }
+    }
+    
+    func deleteFromCart(productID: Int) {
+        guard let url = URL(string: "\(Constants.url)/carts/\(productID)")  else {
+            return
+        }
+        var cartRequest = URLRequest(url: url)
+        cartRequest.httpMethod = "DELETE"
+        cartRequest.addValue("Bearer \(UserDefaults.standard.string(forKey: "token")!)", forHTTPHeaderField: "Authorization")
+        URLSession.shared.dataTask(with: cartRequest) { (data, resp, err) in
+            if let err = err {
+                print("failed to delete product", err)
+                return
+            }
+            if let resp = resp as? HTTPURLResponse, resp.statusCode == 200 {
+                self.getCart()
+            }
+        }
+        .resume()
+        
+    }
+    
+    func getCart() {
+        DispatchQueue.main.async {
+            self.isLoading = true
+        }
+        guard let url = URL(string: "\(Constants.url)/carts")  else {
+            return
+        }
+        var cartRequest = URLRequest(url: url)
+        cartRequest.addValue("Bearer \(UserDefaults.standard.string(forKey: "token") ?? "")", forHTTPHeaderField: "Authorization")
+        URLSession.shared.dataTask(with: cartRequest) { (data, resp, err) in
+            if let err = err {
+                print("failed to add to cart", err)
+                return
+            }
+            guard let data = data else {
+                return}
+            do {
+                let cart = try JSONDecoder().decode([Cart].self, from: data)
+                
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                    self.cart = cart
+                    self.getCartItemCount(cartItem: cart)
+                }
+            }
+            catch {
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                }
+                print("fetch json error:")
+            }
+        }
+        .resume()
+    }
+    
+    
+    
+    
+    
+    
+    // Order
+    func setOrder() {
+        guard let url = URL(string: "\(Constants.url)/orders")  else {
+            return
+        }
+        var cartRequest = URLRequest(url: url)
+        cartRequest.httpMethod = "POST"
+        cartRequest.addValue("Bearer \(UserDefaults.standard.string(forKey: "token")!)", forHTTPHeaderField: "Authorization")
+        URLSession.shared.dataTask(with: cartRequest) { (data, resp, err) in
+            if let err = err {
+                print("failed to order", err)
+                return
+            }
+            if let resp = resp as? HTTPURLResponse, resp.statusCode == 200 {
+                print("Ordered")
+                self.getCart()
+            }
+        }
+        .resume()
+    }
+        
+    // Order
+    func getOrders() {
+        guard let url = URL(string: "\(Constants.url)/orders")  else {
+            return
+        }
+        var cartRequest = URLRequest(url: url)
+        cartRequest.addValue("Bearer \(UserDefaults.standard.string(forKey: "token")!)", forHTTPHeaderField: "Authorization")
+        URLSession.shared.dataTask(with: cartRequest) { (data, resp, err) in
+            if let err = err {
+                print("failed to add to cart", err)
+                return
+            }
+            guard let data = data else { return}
+            do {
+                let order = try JSONDecoder().decode([Order].self, from: data)
+                DispatchQueue.main.async {
+                    self.orders = order
+                }
+            }
+            catch {
+                print("fetch json error:")
+            }
+        }
+        .resume()
     }
 }
 

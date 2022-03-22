@@ -9,26 +9,13 @@ import SwiftUI
 
 struct LaunchView: View {
     
-    
-    
     @EnvironmentObject var model:ContentModel
-    @EnvironmentObject var cartModel: CartModel
-    @EnvironmentObject var orderModel: OrderModel
-   
     var body: some View {
         if model.isFirstTime {
                 OnBoardingView()
         }
         else if !model.isFirstTime && !model.loggedIn {
-
                 TestLoginView()
-
-                    .onAppear {
-                        
-                        // Check if the user logged in or out
-                        model.checkLogin()
-                    }
-       
         } else {
             TabView {
                 
@@ -56,7 +43,7 @@ struct LaunchView: View {
                         }
                         
                     }
-                    .badge(cartModel.cartTotalItemCount)
+                    .badge(model.cartTotalItemCount)
                 
                 ProfileView()
                     .tabItem {
@@ -66,12 +53,16 @@ struct LaunchView: View {
                         }
                     }
             }
+            .onChange(of: model.token, perform: { newValue in
+                model.checkLogin()
+            })
             .onAppear {
                 UITabBar.appearance().backgroundColor = UIColor(Color("TabbarColor"))
             }
             .accentColor(Color("screen3"))
             
         }
+        
     }
 }
 
@@ -79,7 +70,5 @@ struct LaunchView_Previews: PreviewProvider {
     static var previews: some View {
         LaunchView()
             .environmentObject(ContentModel())
-            .environmentObject(CartModel())
-            .environmentObject(OrderModel())
     }
 }

@@ -8,11 +8,17 @@
 import SwiftUI
 import Lottie
 
+struct FlatLinkStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+    }
+}
+
 struct HomeView: View {
     @State private var products = [Product]()
     @EnvironmentObject var model:ContentModel
     @State private var isPatreleoum = false
-    @State private var selectedPage = 0
+    @State private var selectedPage = 6
     
     
     
@@ -24,33 +30,36 @@ struct HomeView: View {
             NavigationView {
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 10) {
-                        
-//                        BannerItem(livestream: livestreams[0])
+                        if !model.articles.isEmpty {
                         TabView(selection: $selectedPage) {
-                            BannerItem(livestream: livestreams[0])
-                                .tag(0)
-                            BannerItem(livestream: livestreams[1])
-                                .tag(1)
-                            BannerItem(livestream: livestreams[2])
-                                .tag(2)
+                            ForEach(model.articles) { article in
+                                BannerItem(article: article)
+                                    .tag(article.id)
+                                
+                            }
                         }
                         .tabViewStyle(PageTabViewStyle())
                         .frame(height: 190)
                         .cornerRadius(15)
                         .onReceive(timer) { time in
-                            if selectedPage == 0 {
+                            if selectedPage == 5 {
                                 withAnimation {
-                                    selectedPage = 1
+                                    selectedPage = 6
                                 }
-                            } else if selectedPage == 1 {
+                            } else if selectedPage == 6 {
                                 withAnimation {
-                                    selectedPage = 2
+                                    selectedPage = 7
                                 }
                             } else  {
                                 withAnimation {
-                                    selectedPage = 0
+                                    selectedPage = 5
                                 }
                             }
+                        }
+                        } else {
+                            BannerItem(article: Article(id: 1, title: "Title", image: "https://api.edev.kz/storage/articles/mobile_slider1.png", body: "Standart oil Qazaqstan", articleId: 1))
+                                .frame(height: 190)
+                                .cornerRadius(15)
                         }
                         
                         SectionTitle(title: "Categories")
@@ -64,9 +73,10 @@ struct HomeView: View {
                                 } label: {
                                     ProductItem(product: item)
                                 }
-
-                                    
-                                   
+                                .buttonStyle(FlatLinkStyle())
+                                
+                                
+                                
                             }
                         }
                     }
@@ -86,9 +96,7 @@ struct HomeView: View {
                     )
             }
         }
-        .onAppear {
-            model.fetchProducts()
-        }
+        
     }
 }
 

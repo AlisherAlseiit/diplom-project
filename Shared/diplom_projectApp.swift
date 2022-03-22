@@ -12,10 +12,8 @@ struct diplom_projectApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {
-            LaunchView()
+            PreLanuchView()
                 .environmentObject(ContentModel())
-                .environmentObject(CartModel())
-                .environmentObject(OrderModel())
         }
     }
 }

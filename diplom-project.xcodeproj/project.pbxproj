@@ -55,8 +55,6 @@
 		D02CC5CE27D2019F006A8706 /* BannerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02CC5CD27D2019F006A8706 /* BannerItem.swift */; };
 		D03F37AB27D84E9900AF8B2F /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F37AA27D84E9900AF8B2F /* TestView.swift */; };
 		D067060027DB15D500A5F4A8 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06705FF27DB15D500A5F4A8 /* SwiftUIView.swift */; };
-		D071B45727DAFD81009368BC /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D071B45627DAFD81009368BC /* CartModel.swift */; };
-		D071B45927DB087C009368BC /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D071B45827DB087C009368BC /* OrderModel.swift */; };
 		D09941B227C9DF3900B2394A /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09941B127C9DF3900B2394A /* News.swift */; };
 		D09941B627C9E06C00B2394A /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09941B527C9E06C00B2394A /* NewsView.swift */; };
 		D09941B827C9E46200B2394A /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09941B727C9E46200B2394A /* NewsItem.swift */; };
@@ -70,6 +68,11 @@
 		D0F59CB927D213B200AE0246 /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F59CB827D213B200AE0246 /* ProductItem.swift */; };
 		D0F59CBB27D2140700AE0246 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F59CBA27D2140700AE0246 /* Course.swift */; };
 		D0F59CBD27D22A3E00AE0246 /* ProfileInfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F59CBC27D22A3E00AE0246 /* ProfileInfoItem.swift */; };
+		DA0CCA7727E877A20091A6AC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0CCA7627E877A20091A6AC /* User.swift */; };
+		DA0CCA7927E878020091A6AC /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0CCA7827E878020091A6AC /* Order.swift */; };
+		DA0CCA7B27E878290091A6AC /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0CCA7A27E878290091A6AC /* Cart.swift */; };
+		DA0CCA7D27E8D8A70091A6AC /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0CCA7C27E8D8A70091A6AC /* Article.swift */; };
+		DACC1AA727E9FF0D00DD5AB7 /* PreLanuchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACC1AA627E9FF0D00DD5AB7 /* PreLanuchView.swift */; };
 		DAFF5D5327E7A30F009784E3 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFF5D5227E7A30F009784E3 /* ProductView.swift */; };
 /* End PBXBuildFile section */
 
@@ -122,8 +125,6 @@
 		D02CC5CD27D2019F006A8706 /* BannerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerItem.swift; sourceTree = "<group>"; };
 		D03F37AA27D84E9900AF8B2F /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		D06705FF27DB15D500A5F4A8 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
-		D071B45627DAFD81009368BC /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
-		D071B45827DB087C009368BC /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
 		D09941B127C9DF3900B2394A /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		D09941B527C9E06C00B2394A /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		D09941B727C9E46200B2394A /* NewsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItem.swift; sourceTree = "<group>"; };
@@ -137,6 +138,12 @@
 		D0F59CB827D213B200AE0246 /* ProductItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItem.swift; sourceTree = "<group>"; };
 		D0F59CBA27D2140700AE0246 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		D0F59CBC27D22A3E00AE0246 /* ProfileInfoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoItem.swift; sourceTree = "<group>"; };
+		DA0CCA7627E877A20091A6AC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DA0CCA7827E878020091A6AC /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		DA0CCA7A27E878290091A6AC /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		DA0CCA7C27E8D8A70091A6AC /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		DACC1AA527E9FDC100DD5AB7 /* diplom-project--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "diplom-project--iOS--Info.plist"; sourceTree = "<group>"; };
+		DACC1AA627E9FF0D00DD5AB7 /* PreLanuchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreLanuchView.swift; sourceTree = "<group>"; };
 		DAFF5D5227E7A30F009784E3 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -190,6 +197,7 @@
 		38CF08ED27203FC90079C51B = {
 			isa = PBXGroup;
 			children = (
+				DACC1AA527E9FDC100DD5AB7 /* diplom-project--iOS--Info.plist */,
 				38CF08F227203FCA0079C51B /* Shared */,
 				38CF090127203FCC0079C51B /* macOS */,
 				38CF08FB27203FCC0079C51B /* Products */,
@@ -238,6 +246,7 @@
 				D0F59CB527D212F500AE0246 /* Library */,
 				D02CC5CA27D200D4006A8706 /* Items */,
 				38CF0936272041540079C51B /* LaunchView.swift */,
+				DACC1AA627E9FF0D00DD5AB7 /* PreLanuchView.swift */,
 				383F17AD27231153005173B0 /* Common */,
 				38CF0943272047A40079C51B /* Home */,
 				38CF09402720468E0079C51B /* OnBoarding */,
@@ -252,8 +261,6 @@
 			children = (
 				38CF093E272041E50079C51B /* ContentModel.swift */,
 				38BE77BB27302B81008498C3 /* SignupViewModel.swift */,
-				D071B45627DAFD81009368BC /* CartModel.swift */,
-				D071B45827DB087C009368BC /* OrderModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -267,6 +274,10 @@
 				38C26AEF272A948D0095F68C /* Product.swift */,
 				D09941B127C9DF3900B2394A /* News.swift */,
 				D021DBFD27D30FAD002CD455 /* ListSection.swift */,
+				DA0CCA7627E877A20091A6AC /* User.swift */,
+				DA0CCA7827E878020091A6AC /* Order.swift */,
+				DA0CCA7A27E878290091A6AC /* Cart.swift */,
+				DA0CCA7C27E8D8A70091A6AC /* Article.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -479,9 +490,10 @@
 				38C26AF0272A948D0095F68C /* Product.swift in Sources */,
 				38B870932723DDF900AED736 /* GradientText.swift in Sources */,
 				38D8AA192732ADB60058BB1D /* AppDelegate.swift in Sources */,
+				DA0CCA7B27E878290091A6AC /* Cart.swift in Sources */,
 				383D652B272149AE00C76927 /* ProfileView.swift in Sources */,
+				DA0CCA7727E877A20091A6AC /* User.swift in Sources */,
 				38B870912723DD7D00AED736 /* TextFieldIcon.swift in Sources */,
-				D071B45727DAFD81009368BC /* CartModel.swift in Sources */,
 				D021DC0227D317A3002CD455 /* SectionRow.swift in Sources */,
 				D09941BA27C9E49F00B2394A /* Livestream.swift in Sources */,
 				389FB749274BC998005C576A /* VisualEffectBlur.swift in Sources */,
@@ -490,9 +502,11 @@
 				D0F59CB927D213B200AE0246 /* ProductItem.swift in Sources */,
 				DAFF5D5327E7A30F009784E3 /* ProductView.swift in Sources */,
 				383D652D2721BE7100C76927 /* OffsetPageTabView.swift in Sources */,
+				DA0CCA7927E878020091A6AC /* Order.swift in Sources */,
 				38CF0945272047B20079C51B /* HomeView.swift in Sources */,
 				38CF0937272041540079C51B /* LaunchView.swift in Sources */,
 				381E39C9272EE14F00F8B4D9 /* HalfSheetModal.swift in Sources */,
+				DA0CCA7D27E8D8A70091A6AC /* Article.swift in Sources */,
 				D00F470627D9CDA4000F9112 /* OrderProductItem.swift in Sources */,
 				D021DBFE27D30FAD002CD455 /* ListSection.swift in Sources */,
 				D021DC0427D323CA002CD455 /* linkSectionRow.swift in Sources */,
@@ -512,10 +526,10 @@
 				D09941C227C9ED3E00B2394A /* Content.swift in Sources */,
 				38CF0942272046AA0079C51B /* OnBoardingView.swift in Sources */,
 				38B870952723DF1000AED736 /* TestLoginView.swift in Sources */,
+				DACC1AA727E9FF0D00DD5AB7 /* PreLanuchView.swift in Sources */,
 				D0F59CBB27D2140700AE0246 /* Course.swift in Sources */,
 				383D65312721BF4600C76927 /* OnBoardingOverlay.swift in Sources */,
 				381E39C7272ED79400F8B4D9 /* SheetView.swift in Sources */,
-				D071B45927DB087C009368BC /* OrderModel.swift in Sources */,
 				D02CC5CE27D2019F006A8706 /* BannerItem.swift in Sources */,
 				D09941B227C9DF3900B2394A /* News.swift in Sources */,
 				D03F37AB27D84E9900AF8B2F /* TestView.swift in Sources */,
@@ -664,9 +678,9 @@
 				DEVELOPMENT_TEAM = UM77RT2RUA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "diplom-project--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -694,9 +708,9 @@
 				DEVELOPMENT_TEAM = UM77RT2RUA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "diplom-project--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

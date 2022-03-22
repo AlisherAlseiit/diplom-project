@@ -13,7 +13,11 @@ class CartModel: ObservableObject {
     @Published var cart = [Cart]()
     @Published var isLoading = false
     @Published var cartTotalItemCount = 0
+    @Published var orders = [Order]()
     
+    init() {
+        getCart()
+    }
     
     func getCartItemCount(cartItem: [Cart]) {
         var itemCount = 0
@@ -81,7 +85,7 @@ class CartModel: ObservableObject {
             return
         }
         var cartRequest = URLRequest(url: url)
-        cartRequest.addValue("Bearer \(UserDefaults.standard.string(forKey: "token")!)", forHTTPHeaderField: "Authorization")
+        cartRequest.addValue("Bearer \(UserDefaults.standard.string(forKey: "token") ?? "")", forHTTPHeaderField: "Authorization")
         URLSession.shared.dataTask(with: cartRequest) { (data, resp, err) in
             if let err = err {
                 print("failed to add to cart", err)
@@ -102,6 +106,58 @@ class CartModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.isLoading = false
                 }
+                print("fetch json error:")
+            }
+        }
+        .resume()
+    }
+    
+    
+    
+    
+    
+    
+    // Order
+    func setOrder() {
+        guard let url = URL(string: "\(Constants.url)/orders")  else {
+            return
+        }
+        var cartRequest = URLRequest(url: url)
+        cartRequest.httpMethod = "POST"
+        cartRequest.addValue("Bearer \(UserDefaults.standard.string(forKey: "token")!)", forHTTPHeaderField: "Authorization")
+        URLSession.shared.dataTask(with: cartRequest) { (data, resp, err) in
+            if let err = err {
+                print("failed to order", err)
+                return
+            }
+            if let resp = resp as? HTTPURLResponse, resp.statusCode == 200 {
+                print("Ordered")
+                self.getCart()
+            }
+        }
+        .resume()
+    }
+        
+    // Order
+    func getOrders() {
+        guard let url = URL(string: "\(Constants.url)/orders")  else {
+            return
+        }
+        var cartRequest = URLRequest(url: url)
+        cartRequest.addValue("Bearer \(UserDefaults.standard.string(forKey: "token")!)", forHTTPHeaderField: "Authorization")
+        URLSession.shared.dataTask(with: cartRequest) { (data, resp, err) in
+            if let err = err {
+                print("failed to add to cart", err)
+                return
+            }
+            guard let data = data else { return}
+            do {
+                let order = try JSONDecoder().decode([Order].self, from: data)
+                DispatchQueue.main.async {
+                    self.orders = order
+                }
+            }
+            catch {
                 print("fetch json error:")
             }
         }

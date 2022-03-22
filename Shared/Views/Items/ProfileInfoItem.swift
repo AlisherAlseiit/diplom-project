@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ProfileInfoItem: View {
     var cornerRadius: CGFloat = 15
+    @EnvironmentObject var model: ContentModel
+    
     var body: some View {
         VStack (alignment: .leading) {
             Spacer()
@@ -28,7 +30,7 @@ struct ProfileInfoItem: View {
                         .clipShape(Circle())
                         
                         
-                    Text("Johny Depp")
+                    Text(model.user?.name ?? "Placeholder Name")
                         .font(.title3)
                         .foregroundColor(Color.black)
                         .bold()

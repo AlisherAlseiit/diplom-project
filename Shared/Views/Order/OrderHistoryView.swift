@@ -9,24 +9,22 @@ import SwiftUI
 
 struct OrderHistoryView: View {
     @EnvironmentObject var model: ContentModel
-    @EnvironmentObject var orderModel: OrderModel
     var body: some View {
         ZStack {
             Color("Background 6").edgesIgnoringSafeArea(.all)
             
             List {
-                ForEach(orderModel.orders) { order in
-                    Section(header: Text(convertDate(date: order.createdAt))) {
+                ForEach(model.orders) { order in
+                    Section(header: Text(convertDate(date: order.createdAt)), footer: Text("TOTAL: $" + String(format: "%.2f", order.total))) {
                         ForEach(order.orderItems) { item in
                             OrderProductItem(course: petroleoums[0], orderItem: item)
                         }
                     }
                 }
-                
             }
         }
         .onAppear {
-            orderModel.getOrders()
+            model.getOrders()
         }
         .navigationTitle("Orders")
         
@@ -52,6 +50,5 @@ struct OrderHistoryView_Previews: PreviewProvider {
     static var previews: some View {
         OrderHistoryView()
             .environmentObject(ContentModel())
-            .environmentObject(OrderModel())
     }
 }

@@ -25,7 +25,7 @@ struct OrderProductItem: View {
                     .bold()
                     .font(.subheadline)
                     .foregroundColor(.primary)
-                Text("\(orderItem.count) b")
+                Text("\(orderItem.count) x")
                     .font(.footnote)
                     .foregroundColor(.secondary)
                     .padding(.bottom, 2)

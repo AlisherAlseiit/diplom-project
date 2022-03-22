@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BannerItem: View {
-    var livestream: Livestream = livestreams[0]
+    var article: Article
     var cornerRadius: CGFloat = 15
     var body: some View {
             VStack (alignment: .leading) {
@@ -17,15 +17,16 @@ struct BannerItem: View {
                 }
                 
                 VStack (alignment: .leading, spacing: 12){
-                    Text(livestream.title)
+                    Text(article.title)
                         .font(.title3)
                         .foregroundColor(Color.white)
                         .bold()
                     
-                    Text(livestream.subtitle)
+                    Text(article.body)
                         .font(.subheadline)
                         .foregroundColor(.white)
-                        .opacity(0.8)
+                        .bold()
+                        
                         
                 }
                 Spacer()
@@ -35,10 +36,19 @@ struct BannerItem: View {
             .padding(.top, 20)
             .padding(.all, 20)
             .background(
-                Image(livestream.image)
-                    .renderingMode(.original)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
+                AsyncImage(url: URL(string: article.image)) { image in
+                    image
+                        .renderingMode(.original)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                } placeholder: {
+                    Image(livestreams[0].image)
+                        .renderingMode(.original)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        
+                }
+               
             )
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
             .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 5)
@@ -50,6 +60,6 @@ struct BannerItem: View {
 
 struct BannerItem_Previews: PreviewProvider {
     static var previews: some View {
-        BannerItem()
+        BannerItem(article: Article(id: 1, title: "Some Title", image: "", body: "dawdw", articleId: 1))
     }
 }

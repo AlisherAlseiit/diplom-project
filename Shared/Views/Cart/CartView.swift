@@ -9,16 +9,14 @@ import SwiftUI
 
 struct CartView: View {
     @EnvironmentObject var model:ContentModel
-    @EnvironmentObject var cartModel: CartModel
-    @EnvironmentObject var orderModel: OrderModel
     var body: some View {
         NavigationView {
             ZStack {
                 Color("Background 6").edgesIgnoringSafeArea(.all)
-                if !cartModel.cart.isEmpty {
+                if !model.cart.isEmpty {
                 VStack {
                     List{
-                        ForEach(cartModel.cart) { cartItem in
+                        ForEach(model.cart) { cartItem in
                             Section {
                                 CartProductItem(cartItem: cartItem)
                             }
@@ -29,10 +27,7 @@ struct CartView: View {
                     
                     
                     Button(action: {
-                        orderModel.setOrder()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            cartModel.getCart()
-                        }
+                        model.setOrder()
                     }) {
                         Text("Checkout")
                             .foregroundColor(.white)
@@ -57,7 +52,7 @@ struct CartView: View {
                 }
                 
                 
-                if cartModel.isLoading {
+                if model.isLoading {
                     ProgressView()
                         .padding(15)
                         .background(
@@ -68,27 +63,17 @@ struct CartView: View {
                
             }
             .navigationTitle("Cart")
-            .onAppear {
-                cartModel.getCart()
-            }
         }
         .onAppear {
             UITableView.appearance().sectionFooterHeight = 7
             UITableView.appearance().sectionHeaderHeight = 7
         }
-    }
-    
-//    func delete(at offsets: IndexSet) {
-//           petroleoums.remove(at: offsets)
-//       }
-    
+    }   
 }
 
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
         CartView()
             .environmentObject(ContentModel())
-            .environmentObject(CartModel())
-            .environmentObject(OrderModel())
     }
 }

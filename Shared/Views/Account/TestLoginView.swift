@@ -188,9 +188,13 @@ struct TestLoginView: View {
                     } else {
                         self.isLoading = true
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                            model.register(email: signupVM.email, password: signupVM.password, name: signupVM.name, phone: signupVM.phoneNum, confirmPassword: signupVM.confirmPw) { _ in
+                            model.register(email: signupVM.email, password: signupVM.password, name: signupVM.name, phone: signupVM.phoneNum, confirmPassword: signupVM.confirmPw) { message in
                                 isLoading = false
-                                model.checkLogin()
+                                if message == false {
+                                    showAlert = true   
+                                } else if message == true {
+                                    model.checkLogin()
+                                }
                             }
                         }
                         

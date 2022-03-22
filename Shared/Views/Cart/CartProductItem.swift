@@ -10,7 +10,6 @@ import SwiftUI
 struct CartProductItem: View {
     var cartItem: Cart
     @EnvironmentObject var model: ContentModel
-    @EnvironmentObject var cartModel: CartModel
     var cornerRadius: CGFloat = 5
     
     var body: some View {
@@ -34,7 +33,7 @@ struct CartProductItem: View {
                     .font(.footnote)
                     .foregroundColor(.gray)
                     .onTapGesture {
-                        cartModel.deleteFromCart(productID: cartItem.id)
+                        model.deleteFromCart(productID: cartItem.id)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         }
                     }
@@ -56,7 +55,7 @@ struct CartProductItem: View {
                     .padding(5)
                     .background(Circle().foregroundColor(.gray).opacity(0.2))
                     .onTapGesture {
-                        cartModel.addToCart(productID: cartItem.productId, count: 1)
+                        model.addToCart(productID: cartItem.productId, count: 1)
                     }
                 
                 Text("x \(cartItem.count)")
@@ -74,6 +73,5 @@ struct CartProductItem_Previews: PreviewProvider {
     static var previews: some View {
         CartProductItem(cartItem: Cart(id: 1, count: 1, productId: 1, userId: 2, product: Product(id: 1, name: "AI-92", price: 54.34, description: "some desk", image: "https://api.edev.kz/storage/products/DT.png", category: Category(id: 1, name: "Oil"))))
             .environmentObject(ContentModel())
-            .environmentObject(CartModel())
     }
 }
