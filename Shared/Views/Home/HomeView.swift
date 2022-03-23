@@ -79,12 +79,14 @@ struct HomeView: View {
                                 
                             }
                         }
+                        .padding(.bottom, 25)
                     }
                     .padding(.horizontal, 20)
                     
+                    
                 }
                 
-                .navigationBarItems(leading: Image("Logo Principle").renderingMode(.original))
+                .navigationBarItems(leading: Image("logo").renderingMode(.original))
             }
             
             if model.isLoading {

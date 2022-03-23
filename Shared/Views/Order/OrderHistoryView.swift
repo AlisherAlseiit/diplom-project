@@ -38,7 +38,7 @@ struct OrderHistoryView: View {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         
         let dateFormatterPrint = DateFormatter()
-        dateFormatterPrint.dateFormat = "MMM dd,yyyy"
+        dateFormatterPrint.dateFormat = "MMM dd,yyyy HH:mm:ss"
         
         let stringDate: Date? = dateFormatter.date(from: date)
         

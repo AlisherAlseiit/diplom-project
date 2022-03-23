@@ -29,13 +29,10 @@
 		38BE77B22730011E008498C3 /* loading2.json in Resources */ = {isa = PBXBuildFile; fileRef = 38BE77B12730011E008498C3 /* loading2.json */; };
 		38BE77B42730039D008498C3 /* Paperplane.json in Resources */ = {isa = PBXBuildFile; fileRef = 38BE77B32730039D008498C3 /* Paperplane.json */; };
 		38BE77B627301430008498C3 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BE77B527301430008498C3 /* CustomTextField.swift */; };
-		38BE77BA27302B71008498C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BE77B927302B71008498C3 /* ContentView.swift */; };
 		38BE77BC27302B81008498C3 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BE77BB27302B81008498C3 /* SignupViewModel.swift */; };
 		38C26AF0272A948D0095F68C /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C26AEF272A948D0095F68C /* Product.swift */; };
 		38CF090327203FCC0079C51B /* diplom_projectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CF08F327203FCA0079C51B /* diplom_projectApp.swift */; };
-		38CF090427203FCC0079C51B /* diplom_projectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CF08F327203FCA0079C51B /* diplom_projectApp.swift */; };
 		38CF090727203FCC0079C51B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38CF08F527203FCC0079C51B /* Assets.xcassets */; };
-		38CF090827203FCC0079C51B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38CF08F527203FCC0079C51B /* Assets.xcassets */; };
 		38CF0937272041540079C51B /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CF0936272041540079C51B /* LaunchView.swift */; };
 		38CF093D272041C90079C51B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CF093C272041C90079C51B /* Constants.swift */; };
 		38CF093F272041E50079C51B /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CF093E272041E50079C51B /* ContentModel.swift */; };
@@ -72,6 +69,9 @@
 		DA0CCA7927E878020091A6AC /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0CCA7827E878020091A6AC /* Order.swift */; };
 		DA0CCA7B27E878290091A6AC /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0CCA7A27E878290091A6AC /* Cart.swift */; };
 		DA0CCA7D27E8D8A70091A6AC /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0CCA7C27E8D8A70091A6AC /* Article.swift */; };
+		DA5A1CA727EAE968001361ED /* CartPriceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A1CA627EAE968001361ED /* CartPriceItem.swift */; };
+		DA5A1CA927EB04C8001361ED /* BonusInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A1CA827EB04C8001361ED /* BonusInfoView.swift */; };
+		DA5A1CAB27EB0DA8001361ED /* BonusProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A1CAA27EB0DA8001361ED /* BonusProgressView.swift */; };
 		DACC1AA727E9FF0D00DD5AB7 /* PreLanuchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACC1AA627E9FF0D00DD5AB7 /* PreLanuchView.swift */; };
 		DAFF5D5327E7A30F009784E3 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFF5D5227E7A30F009784E3 /* ProductView.swift */; };
 /* End PBXBuildFile section */
@@ -98,13 +98,11 @@
 		38BE77B12730011E008498C3 /* loading2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading2.json; sourceTree = "<group>"; };
 		38BE77B32730039D008498C3 /* Paperplane.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Paperplane.json; sourceTree = "<group>"; };
 		38BE77B527301430008498C3 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-		38BE77B927302B71008498C3 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		38BE77BB27302B81008498C3 /* SignupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		38C26AEF272A948D0095F68C /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		38CF08F327203FCA0079C51B /* diplom_projectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = diplom_projectApp.swift; sourceTree = "<group>"; };
 		38CF08F527203FCC0079C51B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		38CF08FA27203FCC0079C51B /* diplom-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "diplom-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		38CF090027203FCC0079C51B /* diplom-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "diplom-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		38CF090227203FCC0079C51B /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		38CF0936272041540079C51B /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		38CF093C272041C90079C51B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -142,6 +140,9 @@
 		DA0CCA7827E878020091A6AC /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		DA0CCA7A27E878290091A6AC /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		DA0CCA7C27E8D8A70091A6AC /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		DA5A1CA627EAE968001361ED /* CartPriceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPriceItem.swift; sourceTree = "<group>"; };
+		DA5A1CA827EB04C8001361ED /* BonusInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusInfoView.swift; sourceTree = "<group>"; };
+		DA5A1CAA27EB0DA8001361ED /* BonusProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonusProgressView.swift; sourceTree = "<group>"; };
 		DACC1AA527E9FDC100DD5AB7 /* diplom-project--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "diplom-project--iOS--Info.plist"; sourceTree = "<group>"; };
 		DACC1AA627E9FF0D00DD5AB7 /* PreLanuchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreLanuchView.swift; sourceTree = "<group>"; };
 		DAFF5D5227E7A30F009784E3 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
@@ -153,13 +154,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				38BE77A9272FF94D008498C3 /* Lottie in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		38CF08FD27203FCC0079C51B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,7 +202,6 @@
 			isa = PBXGroup;
 			children = (
 				38CF08F327203FCA0079C51B /* diplom_projectApp.swift */,
-				38BE77B927302B71008498C3 /* ContentView.swift */,
 				38CF0935272041430079C51B /* Views */,
 				38CF09382720416C0079C51B /* ViewModels */,
 				38CF09392720417B0079C51B /* Models */,
@@ -224,7 +217,6 @@
 			isa = PBXGroup;
 			children = (
 				38CF08FA27203FCC0079C51B /* diplom-project.app */,
-				38CF090027203FCC0079C51B /* diplom-project.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -321,6 +313,7 @@
 				383D652A272149AE00C76927 /* ProfileView.swift */,
 				38B870942723DF1000AED736 /* TestLoginView.swift */,
 				381E39C0272E7DFF00F8B4D9 /* ForgotPasswordView.swift */,
+				DA5A1CA827EB04C8001361ED /* BonusInfoView.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -341,6 +334,7 @@
 				D021DC0827D33377002CD455 /* CartProductItem.swift */,
 				D021DC0A27D360D5002CD455 /* CartBottomView.swift */,
 				D03F37AA27D84E9900AF8B2F /* TestView.swift */,
+				DA5A1CA627EAE968001361ED /* CartPriceItem.swift */,
 			);
 			path = Cart;
 			sourceTree = "<group>";
@@ -361,6 +355,7 @@
 		D0F59CB527D212F500AE0246 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				DA5A1CAA27EB0DA8001361ED /* BonusProgressView.swift */,
 				D0F59CB627D2130800AE0246 /* SectionTitle.swift */,
 				D021DC0E27D36259002CD455 /* CartBlurView.swift */,
 				D021DC1027D363BB002CD455 /* CustomCorner.swift */,
@@ -399,23 +394,6 @@
 			productReference = 38CF08FA27203FCC0079C51B /* diplom-project.app */;
 			productType = "com.apple.product-type.application";
 		};
-		38CF08FF27203FCC0079C51B /* diplom-project (macOS) */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 38CF090E27203FCC0079C51B /* Build configuration list for PBXNativeTarget "diplom-project (macOS)" */;
-			buildPhases = (
-				38CF08FC27203FCC0079C51B /* Sources */,
-				38CF08FD27203FCC0079C51B /* Frameworks */,
-				38CF08FE27203FCC0079C51B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "diplom-project (macOS)";
-			productName = "diplom-project (macOS)";
-			productReference = 38CF090027203FCC0079C51B /* diplom-project.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -427,9 +405,6 @@
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
 					38CF08F927203FCC0079C51B = {
-						CreatedOnToolsVersion = 13.0;
-					};
-					38CF08FF27203FCC0079C51B = {
 						CreatedOnToolsVersion = 13.0;
 					};
 				};
@@ -451,7 +426,6 @@
 			projectRoot = "";
 			targets = (
 				38CF08F927203FCC0079C51B /* diplom-project (iOS) */,
-				38CF08FF27203FCC0079C51B /* diplom-project (macOS) */,
 			);
 		};
 /* End PBXProject section */
@@ -465,14 +439,6 @@
 				38CF090727203FCC0079C51B /* Assets.xcassets in Resources */,
 				38BE77B22730011E008498C3 /* loading2.json in Resources */,
 				38BE77B42730039D008498C3 /* Paperplane.json in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		38CF08FE27203FCC0079C51B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				38CF090827203FCC0079C51B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,16 +483,17 @@
 				38B8708F2723DD4900AED736 /* VisualEffectBlur12.swift in Sources */,
 				D021DC0B27D360D5002CD455 /* CartBottomView.swift in Sources */,
 				D09941C027C9ED0400B2394A /* LibraryContent.swift in Sources */,
+				DA5A1CA927EB04C8001361ED /* BonusInfoView.swift in Sources */,
 				D09941B627C9E06C00B2394A /* NewsView.swift in Sources */,
 				D021DC0927D33377002CD455 /* CartProductItem.swift in Sources */,
 				D09941B827C9E46200B2394A /* NewsItem.swift in Sources */,
 				D021DC0727D33298002CD455 /* CartView.swift in Sources */,
 				D021DC0F27D36259002CD455 /* CartBlurView.swift in Sources */,
-				38BE77BA27302B71008498C3 /* ContentView.swift in Sources */,
 				D09941C227C9ED3E00B2394A /* Content.swift in Sources */,
 				38CF0942272046AA0079C51B /* OnBoardingView.swift in Sources */,
 				38B870952723DF1000AED736 /* TestLoginView.swift in Sources */,
 				DACC1AA727E9FF0D00DD5AB7 /* PreLanuchView.swift in Sources */,
+				DA5A1CA727EAE968001361ED /* CartPriceItem.swift in Sources */,
 				D0F59CBB27D2140700AE0246 /* Course.swift in Sources */,
 				383D65312721BF4600C76927 /* OnBoardingOverlay.swift in Sources */,
 				381E39C7272ED79400F8B4D9 /* SheetView.swift in Sources */,
@@ -534,6 +501,7 @@
 				D09941B227C9DF3900B2394A /* News.swift in Sources */,
 				D03F37AB27D84E9900AF8B2F /* TestView.swift in Sources */,
 				38BE77AE272FFA95008498C3 /* LoadingView.swift in Sources */,
+				DA5A1CAB27EB0DA8001361ED /* BonusProgressView.swift in Sources */,
 				38B870972723E21300AED736 /* GradientButton.swift in Sources */,
 				38CF090327203FCC0079C51B /* diplom_projectApp.swift in Sources */,
 				381E39C5272EA75100F8B4D9 /* CloseButton.swift in Sources */,
@@ -543,14 +511,6 @@
 				38CF093D272041C90079C51B /* Constants.swift in Sources */,
 				D00F470427D9CC16000F9112 /* OrderHistoryView.swift in Sources */,
 				38BE77AB272FF9A5008498C3 /* LottieView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		38CF08FC27203FCC0079C51B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				38CF090427203FCC0079C51B /* diplom_projectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -729,62 +689,6 @@
 			};
 			name = Release;
 		};
-		38CF090F27203FCC0079C51B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Q37RAD9XD7;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.codewithAlish.diplom-project";
-				PRODUCT_NAME = "diplom-project";
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		38CF091027203FCC0079C51B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Q37RAD9XD7;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.codewithAlish.diplom-project";
-				PRODUCT_NAME = "diplom-project";
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -802,15 +706,6 @@
 			buildConfigurations = (
 				38CF090C27203FCC0079C51B /* Debug */,
 				38CF090D27203FCC0079C51B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		38CF090E27203FCC0079C51B /* Build configuration list for PBXNativeTarget "diplom-project (macOS)" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				38CF090F27203FCC0079C51B /* Debug */,
-				38CF091027203FCC0079C51B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

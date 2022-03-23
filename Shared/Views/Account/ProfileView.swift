@@ -15,6 +15,10 @@ struct ProfileView: View {
                     Section {
                         ProfileInfoItem()
                     }
+                    
+                    Section {
+                        BonusInfoView()
+                    }
                     Section {
                         
                         NavigationLink(destination: Text("Settings View")) {
@@ -61,7 +65,7 @@ struct ProfileView: View {
                             Spacer()
                             Button(action: {
                                 model.signOut()
-                                model.checkLogin()
+                                
                             }) {
                                 Text("Sign Out")
                                     .foregroundColor(.red)

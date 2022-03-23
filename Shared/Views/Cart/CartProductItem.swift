@@ -63,6 +63,12 @@ struct CartProductItem: View {
                 Image(systemName: "minus")
                     .padding(10)
                     .background(Circle().foregroundColor(.gray).opacity(0.2))
+                    .onTapGesture {
+                        if cartItem.count >= 2 {
+                            print("yes")
+                            model.removeItem(cartId: cartItem.id, productId: cartItem.productId, count: cartItem.count-1)
+                        }
+                    }
             }
         }
         

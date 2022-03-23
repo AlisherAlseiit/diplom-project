@@ -21,22 +21,28 @@ struct CartView: View {
                                 CartProductItem(cartItem: cartItem)
                             }
                         }
+                        Section {
+                        CartPriceItem()
+                            
+                            Button(action: {
+                                model.setOrder()
+                            }) {
+                                Text("Checkout")
+                                    .foregroundColor(.white)
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                                    .padding(15)
+                                    .background(RoundedRectangle(cornerRadius: 12).foregroundColor(Color("screen3")))
+                            }
+                            
+                        }
                         
                     }
                     .listStyle(.insetGrouped)
                     
                     
-                    Button(action: {
-                        model.setOrder()
-                    }) {
-                        Text("Checkout")
-                            .foregroundColor(.white)
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                            .padding(15)
-                            .background(RoundedRectangle(cornerRadius: 12).foregroundColor(Color("screen3")))
-                    }
-                    .padding(.horizontal, 20)
-                    .padding(.bottom, 10)
+                    
+                    
+                   
                 }
                 } else {
                     
@@ -65,8 +71,8 @@ struct CartView: View {
             .navigationTitle("Cart")
         }
         .onAppear {
-            UITableView.appearance().sectionFooterHeight = 7
-            UITableView.appearance().sectionHeaderHeight = 7
+            UITableView.appearance().sectionFooterHeight = 5
+            UITableView.appearance().sectionHeaderHeight = 5
         }
     }   
 }

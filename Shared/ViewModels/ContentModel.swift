@@ -31,12 +31,15 @@ class ContentModel: ObservableObject {
     @Published var articles = [Article]()
     @Published var cart = [Cart]()
     @Published var cartTotalItemCount = 0
+    @Published var total = 0.0
+    @Published var orderTotal = 0.0
     @Published var orders = [Order]()
     
     init() {
         self.fetchProducts()
         self.getArticles()
         self.getCart()
+        self.getOrders()
         self.getUser()
     }
     
@@ -157,19 +160,12 @@ class ContentModel: ObservableObject {
             
         }
     }
-    
-//    func checkTokenForExpire() {
-//        DispatchQueue.main.async {
-//            if self.user == nil {
-//                self.loggedIn = false
-//            } else {
-//                self.loggedIn = true
-//            }
-//        }
-//    }
+
     
     func signOut() {
         token = ""
+        
+        self.checkLogin()
     }
     func resetPassword(code: String, password: String, password_confirmation: String, completion: @escaping (String) -> Void) {
         guard let url = URL(string: "\(Constants.url)/reset-password-mobile")
@@ -278,6 +274,7 @@ class ContentModel: ObservableObject {
                                     print("my token = \(self.token)")
                                     self.getUser()
                                     self.getCart()
+                                    self.getOrders()
                                 }
                             } else {
                                 DispatchQueue.main.async {
@@ -336,6 +333,7 @@ class ContentModel: ObservableObject {
                                     print("my token = \(self.token)")
                                     self.getUser()
                                     self.getCart()
+                                    self.getOrders()
                                 }
                             } else {
                                 DispatchQueue.main.async {
@@ -365,8 +363,59 @@ class ContentModel: ObservableObject {
             itemCount += cart.count
         }
         cartTotalItemCount = itemCount
+    }
+    
+    func getCartTotalPrice(carts: [Cart]) {
+        var total = 0.0
+        for cart in carts {
+            total += Double(cart.count) * cart.product.price
+        }
         
-         
+        DispatchQueue.main.async {
+            self.total = total
+        }
+        
+        
+        
+    }
+    
+    func getOrderTotalPrice(orders: [Order]) {
+        var total = 0.0
+        for order in orders {
+            total += order.total
+        }
+        DispatchQueue.main.async {
+            self.orderTotal = total
+        }
+        
+    }
+    
+    func removeItem(cartId: Int, productId: Int, count: Int ) {
+        guard let url = URL(string: "\(Constants.url)/carts/\(cartId)") else {
+            return
+        }
+        
+        var cartRequest = URLRequest(url: url)
+        cartRequest.httpMethod = "PUT"
+        cartRequest.addValue("Bearer \(UserDefaults.standard.string(forKey: "token")!)", forHTTPHeaderField: "Authorization")
+        do {
+            let params = ["product_id": productId, "count": count]
+            cartRequest.httpBody = try JSONSerialization.data(withJSONObject: params, options: .init())
+            cartRequest.setValue("application/json", forHTTPHeaderField: "content-type")
+            URLSession.shared.dataTask(with: cartRequest) { (data, resp, err) in
+                if let err = err {
+                    print("failed to change product count", err)
+                    return
+                }
+                if let resp = resp as? HTTPURLResponse, resp.statusCode == 200 {
+                    
+                    self.getCart()
+                }
+            }
+            .resume()
+        } catch {
+            print("error")
+        }
     }
     
     func addToCart(productID: Int, count: Int) {
@@ -440,6 +489,7 @@ class ContentModel: ObservableObject {
                     self.isLoading = false
                     self.cart = cart
                     self.getCartItemCount(cartItem: cart)
+                    self.getCartTotalPrice(carts: cart)
                 }
             }
             catch {
@@ -473,6 +523,7 @@ class ContentModel: ObservableObject {
             if let resp = resp as? HTTPURLResponse, resp.statusCode == 200 {
                 print("Ordered")
                 self.getCart()
+                self.getOrders()
             }
         }
         .resume()
@@ -484,7 +535,7 @@ class ContentModel: ObservableObject {
             return
         }
         var cartRequest = URLRequest(url: url)
-        cartRequest.addValue("Bearer \(UserDefaults.standard.string(forKey: "token")!)", forHTTPHeaderField: "Authorization")
+        cartRequest.addValue("Bearer \(UserDefaults.standard.string(forKey: "token") ?? "")", forHTTPHeaderField: "Authorization")
         URLSession.shared.dataTask(with: cartRequest) { (data, resp, err) in
             if let err = err {
                 print("failed to add to cart", err)
@@ -494,8 +545,10 @@ class ContentModel: ObservableObject {
             do {
                 let order = try JSONDecoder().decode([Order].self, from: data)
                 DispatchQueue.main.async {
-                    self.orders = order
+                    self.orders = order.sorted(by: {$0.id > $1.id})
                 }
+                
+                self.getOrderTotalPrice(orders: order)
             }
             catch {
                 print("fetch json error:")

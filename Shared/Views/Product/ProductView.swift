@@ -45,7 +45,9 @@ struct ProductView: View {
                             
                             HStack {
                                 HStack(spacing: 50) {
-                                    Image(systemName: "minus")
+                                    Image("Subtract")
+                                        .frame(width:25, height: 25)
+                                    
                                         .onTapGesture {
                                             if count >= 2 {
                                                 count = count - 1
@@ -55,7 +57,7 @@ struct ProductView: View {
                                     Text("\(count)")
                                         
                                     
-                                    Image(systemName: "plus")
+                                    Image("Plus")
                                         .onTapGesture {
                                             count = count + 1
                                         }
