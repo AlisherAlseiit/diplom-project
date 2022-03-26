@@ -13,10 +13,10 @@ struct CartView: View {
         NavigationView {
             ZStack {
                 Color("Background 6").edgesIgnoringSafeArea(.all)
-                if !model.cart.isEmpty {
+                if !model.carts.isEmpty {
                 VStack {
                     List{
-                        ForEach(model.cart) { cartItem in
+                        ForEach(model.carts) { cartItem in
                             Section {
                                 CartProductItem(cartItem: cartItem)
                             }

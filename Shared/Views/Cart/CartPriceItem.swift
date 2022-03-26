@@ -31,6 +31,17 @@ struct CartPriceItem: View {
                 Spacer()
                 Text("$" + String(format: "%.2f", model.total))
             }
+            
+            Divider()
+            HStack {
+                Text("To Pay")
+                    .foregroundColor(.secondary)
+                    .font(.caption)
+                Spacer()
+                Text("$" + String(format: "%.2f", model.total-(model.total*Double(model.cartWithDiscount!.discount)/100)))
+                
+                
+            }
         }
     }
 }

@@ -15,9 +15,10 @@ struct ProfileView: View {
                     Section {
                         ProfileInfoItem()
                     }
-                    
-                    Section {
-                        BonusInfoView()
+                    if model.user != nil {
+                        Section {
+                            BonusInfoView(card: model.user!.card)
+                        }
                     }
                     Section {
                         

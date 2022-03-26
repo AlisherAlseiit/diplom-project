@@ -29,7 +29,8 @@ class ContentModel: ObservableObject {
     @Published var tapped = false
     @Published var user: User?
     @Published var articles = [Article]()
-    @Published var cart = [Cart]()
+    @Published var carts = [Cart]()
+    @Published var cartWithDiscount: Discount?
     @Published var cartTotalItemCount = 0
     @Published var total = 0.0
     @Published var orderTotal = 0.0
@@ -483,20 +484,23 @@ class ContentModel: ObservableObject {
             guard let data = data else {
                 return}
             do {
-                let cart = try JSONDecoder().decode([Cart].self, from: data)
+                let cart = try JSONDecoder().decode(Discount.self, from: data)
                 
                 DispatchQueue.main.async {
+                    
+                    self.cartWithDiscount = cart
+                    
+                    self.carts = cart.carts ?? [Cart]()
+                    self.getCartItemCount(cartItem: self.carts)
+                    self.getCartTotalPrice(carts: self.carts)
                     self.isLoading = false
-                    self.cart = cart
-                    self.getCartItemCount(cartItem: cart)
-                    self.getCartTotalPrice(carts: cart)
                 }
             }
             catch {
                 DispatchQueue.main.async {
                     self.isLoading = false
                 }
-                print("fetch json error:")
+                print("fetch cart json error:")
             }
         }
         .resume()
@@ -524,6 +528,7 @@ class ContentModel: ObservableObject {
                 print("Ordered")
                 self.getCart()
                 self.getOrders()
+                self.getUser()
             }
         }
         .resume()

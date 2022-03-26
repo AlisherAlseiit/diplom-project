@@ -12,6 +12,7 @@ struct Order: Codable, Identifiable {
     var id: Int
     var userId: Int
     var total: Double
+    var discount: Int
     var createdAt: String
     var orderItems: [OrderItem]
     
@@ -23,6 +24,7 @@ struct Order: Codable, Identifiable {
         
         case id
         case total
+        case discount
     }
 }
 

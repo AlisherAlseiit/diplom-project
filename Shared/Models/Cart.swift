@@ -8,6 +8,14 @@
 import Foundation
 
 
+
+
+struct Discount: Codable {
+        
+    var carts: [Cart]?
+    var discount: Int
+}
+
 struct Cart: Codable, Identifiable {
     
     var id: Int

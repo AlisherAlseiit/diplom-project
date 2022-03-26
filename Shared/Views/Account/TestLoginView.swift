@@ -143,7 +143,7 @@ struct TestLoginView: View {
                     CustomTextField(field: $signupVM.phoneNum, iconName: "8.circle.fill",isSecure: false, title: "phone number", prompt: signupVM.phoneNumPrompt)
                         .focused($focusedField, equals: .phoneNumber)
                         .submitLabel(.next)
-                        .keyboardType(.decimalPad)
+//                        .keyboardType(.decimalPad)
                     
                     
                 }
@@ -153,6 +153,7 @@ struct TestLoginView: View {
                     .focused($focusedField, equals: .password)
                     .submitLabel(model.loginMode == Constants.LoginMode.login ? .join : .next)
                     .textContentType(.password)
+//                    .keyboardType(.default)
                 
                 
                 
