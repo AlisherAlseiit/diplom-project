@@ -12,7 +12,6 @@ struct CartView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color("Background 6").edgesIgnoringSafeArea(.all)
                 if !model.carts.isEmpty {
                 VStack {
                     List{
@@ -38,11 +37,6 @@ struct CartView: View {
                         
                     }
                     .listStyle(.insetGrouped)
-                    
-                    
-                    
-                    
-                   
                 }
                 } else {
                     

@@ -34,8 +34,8 @@ struct BonusInfoView: View {
             }
             .padding(.top, 10)
             
-            if card.min > 0 {
-                BonusProgressView(need: CGFloat(card.min))
+            if card.next.min > 0 {
+                BonusProgressView(need: CGFloat(card.next.min))
                 
                 
                 
@@ -45,7 +45,7 @@ struct BonusInfoView: View {
                     
                     Spacer()
                     
-                    Text("\(card.min)")
+                    Text("\(card.next.min)")
                         .font(.caption)
                 }
                 .padding(.bottom, 10)
@@ -97,7 +97,7 @@ struct BonusInfoView: View {
 
 struct BonusInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        BonusInfoView(card: Card(id: 1, name: "Silver", color: "#C0C0C0", discount: 3, min: 0, expires: "2023-03-26 17:14:58"))
+        BonusInfoView(card: Card(id: 1, name: "Silver", color: "#C0C0C0", discount: 3, min: 0, expires: "2023-03-26 17:14:58", next: Next(id: 1, name: "Gold", color: "", discount: 15, min: 5000)))
             .environmentObject(ContentModel())
     }
 }

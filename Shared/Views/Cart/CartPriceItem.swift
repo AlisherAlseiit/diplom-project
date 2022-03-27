@@ -30,6 +30,7 @@ struct CartPriceItem: View {
                     .font(.caption)
                 Spacer()
                 Text("$" + String(format: "%.2f", model.total))
+                    .strikethrough(true)
             }
             
             Divider()

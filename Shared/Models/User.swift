@@ -18,7 +18,6 @@ struct User: Codable, Identifiable {
     var card: Card
 }
 
-
 struct Card: Codable, Identifiable {
     var id: Int
     var name: String
@@ -26,6 +25,16 @@ struct Card: Codable, Identifiable {
     var discount: Int
     var min: Int
     var expires: String
+    var next: Next
     
+}
+
+struct Next: Codable, Identifiable {
+
+    var id: Int
+    var name: String
+    var color: String
+    var discount: Int
+    var min: Int
 }
 

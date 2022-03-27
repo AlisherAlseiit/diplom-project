@@ -35,6 +35,10 @@ class ContentModel: ObservableObject {
     @Published var total = 0.0
     @Published var orderTotal = 0.0
     @Published var orders = [Order]()
+    @Published var selectedPage = 0
+    @Published var indexes = [Int]()
+    
+    @Published var showLaunchView = false
     
     init() {
         self.fetchProducts()
@@ -51,8 +55,41 @@ class ContentModel: ObservableObject {
            }
         }
         
+        checkToken()
         checkLogin()
     }
+    
+    func checkToken()  {
+        guard let url = URL(string: "\(Constants.url)/user") else {
+            return
+        }
+        var userRequest = URLRequest(url: url)
+        userRequest.addValue("Bearer \(UserDefaults.standard.string(forKey: "token") ?? "")", forHTTPHeaderField: "Authorization")
+        URLSession.shared.dataTask(with: userRequest) { data, res, err in
+            if let err = err {
+                print("Failed to fetch user:", err)
+                return
+            }
+            guard let data = data else {
+                return
+            }
+            do {
+                try JSONDecoder().decode(User.self, from: data)
+                DispatchQueue.main.async {
+                    self.showLaunchView = true
+                }
+            }
+            catch let JsonError {
+                DispatchQueue.main.async {
+                    self.token = ""
+                    self.showLaunchView = true
+                }
+               print("fetch json error:", JsonError.localizedDescription)
+           }
+        }
+        .resume()
+    }
+    
     
     func getArticles() {
         isLoading = true
@@ -73,11 +110,17 @@ class ContentModel: ObservableObject {
                     for article in fetchedArticles {
                         if article.articleId == 1 {
                             self.articles.append(article)
+                            self.indexes.append(article.id)
+                            
+                        }
+                        
+                        if !self.articles.isEmpty {
+                            self.selectedPage = self.articles.first!.id
+                            
                         }
                     }
                     self.isLoading = false
                 }
-                
             }
             catch let JsonError {
                print("fetch json error:", JsonError.localizedDescription)
@@ -112,6 +155,7 @@ class ContentModel: ObservableObject {
                 
             }
             catch let JsonError {
+                print("d123")
                print("fetch json error:", JsonError.localizedDescription)
            }
             

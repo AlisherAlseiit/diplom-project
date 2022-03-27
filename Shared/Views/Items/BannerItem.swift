@@ -21,11 +21,13 @@ struct BannerItem: View {
                         .font(.title3)
                         .foregroundColor(Color.white)
                         .bold()
+                        .shadow(radius: 1)
                     
                     Text(article.body)
                         .font(.subheadline)
                         .foregroundColor(.white)
                         .bold()
+                        .shadow(radius: 1)
                         
                         
                 }

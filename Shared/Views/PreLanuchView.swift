@@ -8,30 +8,35 @@
 import SwiftUI
 
 struct PreLanuchView: View {
-    @State private var showLaunchView = false
     @EnvironmentObject var model: ContentModel
     var body: some View {
         Group {
-            if showLaunchView {
+            if model.showLaunchView {
                 LaunchView()
+                
             } else {
-                ZStack {
+                ZStack{
                     
                 }
             }
         }
         .onAppear {
             model.checkExpirityToken()
-            withAnimation() {
-                showLaunchView = true
-            }
         }
     }
 }
 
 struct PreLaunchVIew_Previews: PreviewProvider {
     static var previews: some View {
-        PreLanuchView()
-            .environmentObject(ContentModel())
+        Group {
+            PreLanuchView()
+                .environmentObject(ContentModel())
+            PreLanuchView()
+                .previewDevice("iPhone 8")
+                .environmentObject(ContentModel())
+            PreLanuchView()
+                .previewDevice("iPod touch (7th generation)")
+                .environmentObject(ContentModel())
+        }
     }
 }

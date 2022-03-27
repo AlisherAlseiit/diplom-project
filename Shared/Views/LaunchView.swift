@@ -57,6 +57,7 @@ struct LaunchView: View {
                 model.checkLogin()
             })
             .onAppear {
+                model.checkLogin()
                 UITabBar.appearance().backgroundColor = UIColor(Color("TabbarColor"))
             }
             .accentColor(Color("screen3"))
