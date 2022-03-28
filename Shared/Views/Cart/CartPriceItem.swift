@@ -23,7 +23,7 @@ struct CartPriceItem: View {
                 Spacer()
                 Text("\(model.cartTotalItemCount)")
             }
-            
+            if model.user!.card.discount != 0 {
             HStack {
                 Text("Total")
                     .foregroundColor(.secondary)
@@ -32,6 +32,8 @@ struct CartPriceItem: View {
                 Text("$" + String(format: "%.2f", model.total))
                     .strikethrough(true)
             }
+            }
+            
             
             Divider()
             HStack {
