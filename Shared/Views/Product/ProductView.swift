@@ -48,33 +48,35 @@ struct ProductView: View {
                                 .foregroundColor(.gray)
                             
                             HStack {
-                                HStack(spacing: 25) {
+                                HStack(spacing: 10) {
                                     Image("Subtract")
                                         .renderingMode(.template)
-                                        .foregroundColor(.black.opacity(0.6))
+                                        .foregroundColor(Color("screen3").opacity(0.7))
                                         .frame(width:25, height: 25)
-
                                         .onTapGesture {
                                             if count >= 2 {
                                                 count = count - 1
                                             }
                                         }
+                                    
                                     TextField("1", value: $count, formatter: NumberFormatter() )
                                         .keyboardType(.numberPad)
-                                        .frame(width: 55)
+                                        .frame(width: 65)
                                         .textFieldStyle(RoundedBorderTextFieldStyle())
                                        
                                     
                                     Image("Plus")
                                         .renderingMode(.template)
-                                        .foregroundColor(.black.opacity(0.6))
+                                        .foregroundColor(Color("screen3").opacity(0.7))
                                         .onTapGesture {
                                             count = count + 1
                                         }
                                 }
                                 .padding(.horizontal, 5)
-                                .padding(.vertical, 10)
-                                .background(Color.gray.opacity(0.2).cornerRadius(6))
+                                .padding(.vertical, 2)
+                                .background(RoundedRectangle(cornerRadius: 5).stroke(Color("screen3")))
+                                
+//                                .background(Color.gray.opacity(0.2).cornerRadius(6))
                                
                                 
                                 Spacer()
