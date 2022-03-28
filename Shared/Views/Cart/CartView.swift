@@ -23,15 +23,7 @@ struct CartView: View {
                         Section {
                         CartPriceItem()
                             
-                            Button(action: {
-                                model.setOrder()
-                            }) {
-                                Text("Checkout")
-                                    .foregroundColor(.white)
-                                    .frame(minWidth: 0, maxWidth: .infinity)
-                                    .padding(15)
-                                    .background(RoundedRectangle(cornerRadius: 12).foregroundColor(Color("screen3")))
-                            }
+                           
                             
                         }
                         

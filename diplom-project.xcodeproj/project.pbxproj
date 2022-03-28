@@ -143,7 +143,6 @@
 		DA5A1CA627EAE968001361ED /* CartPriceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPriceItem.swift; sourceTree = "<group>"; };
 		DA5A1CA827EB04C8001361ED /* BonusInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusInfoView.swift; sourceTree = "<group>"; };
 		DA5A1CAA27EB0DA8001361ED /* BonusProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonusProgressView.swift; sourceTree = "<group>"; };
-		DACC1AA527E9FDC100DD5AB7 /* diplom-project--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "diplom-project--iOS--Info.plist"; sourceTree = "<group>"; };
 		DACC1AA627E9FF0D00DD5AB7 /* PreLanuchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreLanuchView.swift; sourceTree = "<group>"; };
 		DAFF5D5227E7A30F009784E3 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,7 +190,6 @@
 		38CF08ED27203FC90079C51B = {
 			isa = PBXGroup;
 			children = (
-				DACC1AA527E9FDC100DD5AB7 /* diplom-project--iOS--Info.plist */,
 				38CF08F227203FCA0079C51B /* Shared */,
 				38CF090127203FCC0079C51B /* macOS */,
 				38CF08FB27203FCC0079C51B /* Products */,

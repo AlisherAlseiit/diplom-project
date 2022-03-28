@@ -32,43 +32,27 @@ struct HomeView: View {
                     VStack(spacing: 10) {
                         if !model.articles.isEmpty {
                             TabView(selection: $model.selectedPage) {
-                            ForEach(model.articles) { article in
-                                BannerItem(article: article)
-                                    .tag(article.id)
-                                
+                                ForEach(model.articles.indices, id: \.self) { article in
+                                    BannerItem(article: model.articles[article])
+                                    .tag(article)
                             }
                         }
                         .tabViewStyle(PageTabViewStyle())
                         .frame(height: 190)
                         .cornerRadius(15)
                         .onReceive(timer) { time in
-//                            if model.selectedPage != 0  && !model.indexes.isEmpty {
-//
-//                                if model.indexes.firstIndex(of: (model.indexes.firstIndex(of: model.selectedPage)! + 1)) != nil {
-//                                    withAnimation {
-//                                        selectedPage = model.indexes[model.indexes.firstIndex(of: model.selectedPage)! + 1]
-//                                    }
-//                                } else {
-//                                    withAnimation {
-//                                        selectedPage = model.indexes.first!
-//                                    }
-//                                }
-//                            } else {
-//                                print("fail")
-//                            }
-                           
-                            if model.selectedPage == 5 {
-                                withAnimation {
-                                    model.selectedPage = 6
+                            if model.selectedPage != -1  && !model.indexes.isEmpty {
+                                if model.selectedPage + 1 <= model.indexes.count-1 {
+                                    withAnimation {
+                                        model.selectedPage = model.selectedPage + 1
+                                    }
+                                } else {
+                                    withAnimation {
+                                        model.selectedPage = model.indexes.firstIndex(of: model.indexes.first!) ?? -1
+                                    }
                                 }
-                            } else if model.selectedPage == 6 {
-                                withAnimation {
-                                    model.selectedPage = 7
-                                }
-                            } else  {
-                                withAnimation {
-                                    model.selectedPage = 5
-                                }
+                            } else {
+                                print("fail")
                             }
                         }
                         } else {

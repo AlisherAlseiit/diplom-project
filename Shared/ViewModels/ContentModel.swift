@@ -35,7 +35,7 @@ class ContentModel: ObservableObject {
     @Published var total = 0.0
     @Published var orderTotal = 0.0
     @Published var orders = [Order]()
-    @Published var selectedPage = 0
+    @Published var selectedPage = -1
     @Published var indexes = [Int]()
     
     @Published var showLaunchView = false
@@ -102,21 +102,16 @@ class ContentModel: ObservableObject {
                 return
             }
             guard let data = data else { return}
-            
             do {
                 let fetchedArticles = try JSONDecoder().decode([Article].self, from: data)
-                
                 DispatchQueue.main.async {
                     for article in fetchedArticles {
                         if article.articleId == 1 {
                             self.articles.append(article)
                             self.indexes.append(article.id)
-                            
                         }
-                        
-                        if !self.articles.isEmpty {
-                            self.selectedPage = self.articles.first!.id
-                            
+                        if !self.indexes.isEmpty {
+                            self.selectedPage = self.indexes.firstIndex(of: self.indexes.first!) ?? -1
                         }
                     }
                     self.isLoading = false

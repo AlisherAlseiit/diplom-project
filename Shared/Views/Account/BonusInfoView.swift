@@ -45,7 +45,7 @@ struct BonusInfoView: View {
                     
                     Spacer()
                     
-                    Text("\(card.next.min)")
+                    Text("$\(card.next.min)")
                         .font(.caption)
                 }
                 .padding(.bottom, 10)

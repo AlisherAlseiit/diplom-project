@@ -19,19 +19,19 @@ struct ProductView: View {
             
             VStack {
                 ScrollView {
-                AsyncImage(url: URL(string: product.image)) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                } placeholder: {
-                    Image("AI-92")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                }
-                .frame(height: getScreenBounds().height / 3)
-                
+                    AsyncImage(url: URL(string: product.image)) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    } placeholder: {
+                        Image("AI-92")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    }
+                    .frame(height: getScreenBounds().height / 3)
                     
-                
+                    
+                    
                     VStack(alignment: .leading){
                         VStack(alignment: .leading, spacing: 8) {
                             Text(product.name)
@@ -46,6 +46,8 @@ struct ProductView: View {
                             HStack {
                                 HStack(spacing: 50) {
                                     Image("Subtract")
+                                        .renderingMode(.template)
+                                        .foregroundColor(.black.opacity(0.6))
                                         .frame(width:25, height: 25)
                                     
                                         .onTapGesture {
@@ -53,21 +55,17 @@ struct ProductView: View {
                                                 count = count - 1
                                             }
                                         }
-                                    
                                     Text("\(count)")
-                                        
-                                    
                                     Image("Plus")
+                                        .renderingMode(.template)
+                                        .foregroundColor(.black.opacity(0.6))
                                         .onTapGesture {
                                             count = count + 1
                                         }
                                 }
                                 .padding(.vertical, 10)
-                                .padding(.horizontal, 5)
                                 .background(Color.gray.opacity(0.2).cornerRadius(6))
-                                
                                 Spacer()
-                                
                                 Text("$" + String(format: "%.2f", product.price * Double(count)))
                                     .font(.title)
                                     .bold()
