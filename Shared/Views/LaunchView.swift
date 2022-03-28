@@ -27,7 +27,12 @@ struct LaunchView: View {
                 
                
                 
-                HomeView()
+                NavigationView {
+                    VStack {
+                        
+                    }
+                    .navigationTitle("Statistics")
+                }
                     .tabItem {
                         VStack {
                             Image(systemName: "chart.pie")

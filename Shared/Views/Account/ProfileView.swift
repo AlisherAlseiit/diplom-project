@@ -21,37 +21,12 @@ struct ProfileView: View {
                         }
                     }
                     Section {
-                        
-                        NavigationLink(destination: Text("Settings View")) {
-                            SectionRow(section: firstListSections[0])
-                            
-                        }
-                        .padding(5)
-                        
-                        NavigationLink(destination: Text("News View")) {
-                            SectionRow(section: firstListSections[1])
-                            
-                        }
-                        .padding(5)
-                        
-                        NavigationLink(destination: Text("Help View")) {
-                            SectionRow(section: firstListSections[2])
-                            
-                        }
-                        .padding(5)
-                        
                         NavigationLink(destination: OrderHistoryView()) {
                             SectionRow(section: firstListSections[3])
                             
                         }
                         .padding(5)
-                       
                         
-                       
-                    }
-                    
-                    
-                    Section {
                         ForEach(secondListSections) { section in
                             Link(destination: URL(string: "https://m.yelp.com/biz/tacorea-san-francisco?utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=OYbm7rBdHJaRh5-qGZk-5g")!) {
                                 
