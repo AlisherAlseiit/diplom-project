@@ -34,8 +34,8 @@ struct BonusInfoView: View {
             }
             .padding(.top, 10)
             
-            if card.next.min > 0 {
-                BonusProgressView(need: CGFloat(card.next.min))
+            if let min = card.next?.min, min > 0 {
+                BonusProgressView(need: CGFloat(min))
                 
                 
                 
@@ -45,7 +45,7 @@ struct BonusInfoView: View {
                     
                     Spacer()
                     
-                    Text("$\(card.next.min)")
+                    Text("$\(min)")
                         .font(.caption)
                 }
                 .padding(.bottom, 10)

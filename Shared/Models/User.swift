@@ -25,7 +25,7 @@ struct Card: Codable, Identifiable {
     var discount: Int
     var min: Int
     var expires: String
-    var next: Next
+    var next: Next?
     
 }
 

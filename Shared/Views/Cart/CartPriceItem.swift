@@ -17,7 +17,7 @@ struct CartPriceItem: View {
                 .padding(.vertical, 5)
             
             HStack {
-                Text("Cout")
+                Text("Count")
                     .foregroundColor(.secondary)
                     .font(.caption)
                 Spacer()

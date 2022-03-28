@@ -21,10 +21,7 @@ struct CartView: View {
                             }
                         }
                         Section {
-                        CartPriceItem()
-                            
-                           
-                            
+                        CartPriceItem() 
                         }
                         
                     }
