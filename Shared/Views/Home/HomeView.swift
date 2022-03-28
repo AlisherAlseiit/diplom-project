@@ -97,6 +97,9 @@ struct HomeView: View {
                     )
             }
         }
+        .onAppear {
+            UIApplication.shared.addTapGestureRecognizer()
+        }
         
     }
 }

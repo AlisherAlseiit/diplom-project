@@ -151,7 +151,7 @@ class ContentModel: ObservableObject {
             }
             catch let JsonError {
                 print("d123")
-               print("fetch json error:", JsonError.localizedDescription)
+               print("fetch json error: here", JsonError.localizedDescription)
            }
             
         }

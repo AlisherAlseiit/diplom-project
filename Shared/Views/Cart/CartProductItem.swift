@@ -59,6 +59,8 @@ struct CartProductItem: View {
                     }
                 
                 Text("x \(cartItem.count)")
+               
+                   
                 
                 Image(systemName: "minus")
                     .padding(10)

@@ -7,9 +7,13 @@
 
 import SwiftUI
 
+
+
+
 struct ProductView: View {
     var product: Product
     @EnvironmentObject var model: ContentModel
+    @State private var text = ""
     @State var count = 1
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -44,18 +48,23 @@ struct ProductView: View {
                                 .foregroundColor(.gray)
                             
                             HStack {
-                                HStack(spacing: 50) {
+                                HStack(spacing: 25) {
                                     Image("Subtract")
                                         .renderingMode(.template)
                                         .foregroundColor(.black.opacity(0.6))
                                         .frame(width:25, height: 25)
-                                    
+
                                         .onTapGesture {
                                             if count >= 2 {
                                                 count = count - 1
                                             }
                                         }
-                                    Text("\(count)")
+                                    TextField("1", value: $count, formatter: NumberFormatter() )
+                                        .keyboardType(.numberPad)
+                                        .frame(width: 55)
+                                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                                       
+                                    
                                     Image("Plus")
                                         .renderingMode(.template)
                                         .foregroundColor(.black.opacity(0.6))
@@ -63,8 +72,11 @@ struct ProductView: View {
                                             count = count + 1
                                         }
                                 }
+                                .padding(.horizontal, 5)
                                 .padding(.vertical, 10)
                                 .background(Color.gray.opacity(0.2).cornerRadius(6))
+                               
+                                
                                 Spacer()
                                 Text("$" + String(format: "%.2f", product.price * Double(count)))
                                     .font(.title)
