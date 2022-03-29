@@ -72,8 +72,10 @@ struct HomeView: View {
                                     ProductView(product: item)
                                 } label: {
                                     ProductItem(product: item)
+                                        
                                 }
                                 .buttonStyle(FlatLinkStyle())
+                                .disabled(model.isLoading)
                                 
                                 
                                 

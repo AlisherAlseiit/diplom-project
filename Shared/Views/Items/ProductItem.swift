@@ -53,7 +53,6 @@ struct ProductItem: View {
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
         .shadow(radius:1)
-        .disabled(model.isLoading)
     }
 }
 
