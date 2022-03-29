@@ -117,6 +117,7 @@ struct ProductView: View {
                                 }
                             }
                             .padding(.bottom, 50)
+                            .disabled(model.isLoading)
                             
                             
                             
@@ -131,6 +132,7 @@ struct ProductView: View {
                 }
             }
         }
+        
         
         
         

@@ -459,6 +459,9 @@ class ContentModel: ObservableObject {
     }
     
     func addToCart(productID: Int, count: Int) {
+        DispatchQueue.main.async {
+            self.isLoading = true
+        }
         guard let url = URL(string: "\(Constants.url)/carts")  else {
             return
         }
@@ -476,17 +479,25 @@ class ContentModel: ObservableObject {
                 }
                 if let resp = resp as? HTTPURLResponse, resp.statusCode == 201 {
                     //TODO: - Write some code here
-                    
+                    DispatchQueue.main.async {
+                        self.isLoading = false
+                    }
                     self.getCart()
                 }
             }
             .resume()
         } catch {
+            DispatchQueue.main.async {
+                self.isLoading = false
+            }
             print("error")
         }
     }
     
     func deleteFromCart(productID: Int) {
+        DispatchQueue.main.async {
+            self.isLoading = true
+        }
         guard let url = URL(string: "\(Constants.url)/carts/\(productID)")  else {
             return
         }
@@ -495,10 +506,16 @@ class ContentModel: ObservableObject {
         cartRequest.addValue("Bearer \(UserDefaults.standard.string(forKey: "token")!)", forHTTPHeaderField: "Authorization")
         URLSession.shared.dataTask(with: cartRequest) { (data, resp, err) in
             if let err = err {
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                }
                 print("failed to delete product", err)
                 return
             }
             if let resp = resp as? HTTPURLResponse, resp.statusCode == 200 {
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                }
                 self.getCart()
             }
         }

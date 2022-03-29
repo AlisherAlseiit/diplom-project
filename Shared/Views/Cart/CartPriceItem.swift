@@ -56,6 +56,7 @@ struct CartPriceItem: View {
             }
             .buttonStyle(FlatLinkStyle())
         }
+        .disabled(model.isLoading)
     }
 }
 

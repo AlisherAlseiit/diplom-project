@@ -23,6 +23,7 @@ struct HomeView: View {
     
     
     let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
+    
     var body: some View {
         ZStack {
             Color("Background 3").edgesIgnoringSafeArea(.all)

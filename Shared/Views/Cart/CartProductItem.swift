@@ -57,6 +57,7 @@ struct CartProductItem: View {
                     .onTapGesture {
                         model.addToCart(productID: cartItem.productId, count: 1)
                     }
+                    .disabled(model.isLoading)
                 
                 Text("x \(cartItem.count)")
                
@@ -67,10 +68,10 @@ struct CartProductItem: View {
                     .background(Circle().foregroundColor(.gray).opacity(0.2))
                     .onTapGesture {
                         if cartItem.count >= 2 {
-                            print("yes")
                             model.removeItem(cartId: cartItem.id, productId: cartItem.productId, count: cartItem.count-1)
                         }
                     }
+                    .disabled(model.isLoading)
             }
         }
         
