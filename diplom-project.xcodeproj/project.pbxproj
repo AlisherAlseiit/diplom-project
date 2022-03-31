@@ -52,9 +52,6 @@
 		D02CC5CE27D2019F006A8706 /* BannerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02CC5CD27D2019F006A8706 /* BannerItem.swift */; };
 		D03F37AB27D84E9900AF8B2F /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F37AA27D84E9900AF8B2F /* TestView.swift */; };
 		D067060027DB15D500A5F4A8 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06705FF27DB15D500A5F4A8 /* SwiftUIView.swift */; };
-		D09941B227C9DF3900B2394A /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09941B127C9DF3900B2394A /* News.swift */; };
-		D09941B627C9E06C00B2394A /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09941B527C9E06C00B2394A /* NewsView.swift */; };
-		D09941B827C9E46200B2394A /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09941B727C9E46200B2394A /* NewsItem.swift */; };
 		D09941BA27C9E49F00B2394A /* Livestream.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09941B927C9E49F00B2394A /* Livestream.swift */; };
 		D09941BC27C9E74100B2394A /* DateTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09941BB27C9E74100B2394A /* DateTitle.swift */; };
 		D09941BE27C9EB7000B2394A /* CourseSectionContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09941BD27C9EB7000B2394A /* CourseSectionContent.swift */; };
@@ -123,9 +120,6 @@
 		D02CC5CD27D2019F006A8706 /* BannerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerItem.swift; sourceTree = "<group>"; };
 		D03F37AA27D84E9900AF8B2F /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		D06705FF27DB15D500A5F4A8 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
-		D09941B127C9DF3900B2394A /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
-		D09941B527C9E06C00B2394A /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
-		D09941B727C9E46200B2394A /* NewsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItem.swift; sourceTree = "<group>"; };
 		D09941B927C9E49F00B2394A /* Livestream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Livestream.swift; sourceTree = "<group>"; };
 		D09941BB27C9E74100B2394A /* DateTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTitle.swift; sourceTree = "<group>"; };
 		D09941BD27C9EB7000B2394A /* CourseSectionContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseSectionContent.swift; sourceTree = "<group>"; };
@@ -172,7 +166,6 @@
 				381E39C6272ED79400F8B4D9 /* SheetView.swift */,
 				38BE77AD272FFA95008498C3 /* LoadingView.swift */,
 				38BE77B527301430008498C3 /* CustomTextField.swift */,
-				D09941B727C9E46200B2394A /* NewsItem.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -262,7 +255,6 @@
 				D09941C127C9ED3E00B2394A /* Content.swift */,
 				D09941B927C9E49F00B2394A /* Livestream.swift */,
 				38C26AEF272A948D0095F68C /* Product.swift */,
-				D09941B127C9DF3900B2394A /* News.swift */,
 				D021DBFD27D30FAD002CD455 /* ListSection.swift */,
 				DA0CCA7627E877A20091A6AC /* User.swift */,
 				DA0CCA7827E878020091A6AC /* Order.swift */,
@@ -300,7 +292,6 @@
 			isa = PBXGroup;
 			children = (
 				38CF0944272047B20079C51B /* HomeView.swift */,
-				D09941B527C9E06C00B2394A /* NewsView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -482,9 +473,7 @@
 				D021DC0B27D360D5002CD455 /* CartBottomView.swift in Sources */,
 				D09941C027C9ED0400B2394A /* LibraryContent.swift in Sources */,
 				DA5A1CA927EB04C8001361ED /* BonusInfoView.swift in Sources */,
-				D09941B627C9E06C00B2394A /* NewsView.swift in Sources */,
 				D021DC0927D33377002CD455 /* CartProductItem.swift in Sources */,
-				D09941B827C9E46200B2394A /* NewsItem.swift in Sources */,
 				D021DC0727D33298002CD455 /* CartView.swift in Sources */,
 				D021DC0F27D36259002CD455 /* CartBlurView.swift in Sources */,
 				D09941C227C9ED3E00B2394A /* Content.swift in Sources */,
@@ -496,7 +485,6 @@
 				383D65312721BF4600C76927 /* OnBoardingOverlay.swift in Sources */,
 				381E39C7272ED79400F8B4D9 /* SheetView.swift in Sources */,
 				D02CC5CE27D2019F006A8706 /* BannerItem.swift in Sources */,
-				D09941B227C9DF3900B2394A /* News.swift in Sources */,
 				D03F37AB27D84E9900AF8B2F /* TestView.swift in Sources */,
 				38BE77AE272FFA95008498C3 /* LoadingView.swift in Sources */,
 				DA5A1CAB27EB0DA8001361ED /* BonusProgressView.swift in Sources */,
@@ -637,6 +625,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "diplom-project--iOS--Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = SOQ;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -667,6 +656,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "diplom-project--iOS--Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = SOQ;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
