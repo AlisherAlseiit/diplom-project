@@ -67,6 +67,10 @@ class ContentModel: ObservableObject {
         userRequest.addValue("Bearer \(UserDefaults.standard.string(forKey: "token") ?? "")", forHTTPHeaderField: "Authorization")
         URLSession.shared.dataTask(with: userRequest) { data, res, err in
             if let err = err {
+                DispatchQueue.main.async {
+                    self.token = ""
+                    self.showLaunchView = true
+                }
                 print("Failed to fetch user:", err)
                 return
             }
@@ -289,8 +293,11 @@ class ContentModel: ObservableObject {
             loginRequest.setValue("application/json", forHTTPHeaderField: "content-type")
             URLSession.shared.dataTask(with: loginRequest) { (data, resp, err) in
                 if let err = err {
+                    DispatchQueue.main.async {
+                        self.errorMessage = "No access to Ethernet"
+                    }
                     print("failed to login:", err)
-                    return
+                    completion("fail")
                 }
                 if let resp = resp as? HTTPURLResponse, resp.statusCode != 200 {
                     print("cant login")
@@ -349,8 +356,11 @@ class ContentModel: ObservableObject {
             loginRequest.setValue("application/json", forHTTPHeaderField: "content-type")
             URLSession.shared.dataTask(with: loginRequest) { (data, resp, err) in
                 if let err = err {
-                    print("failed to register:", err)
-                    return
+                    DispatchQueue.main.async {
+                        self.errorMessage = "No access to Ethernet"
+                    }
+                    print("failed to login:", err)
+                    completion(false)
                 }
                 if let resp = resp as? HTTPURLResponse, resp.statusCode != 200 {
                     DispatchQueue.main.async {

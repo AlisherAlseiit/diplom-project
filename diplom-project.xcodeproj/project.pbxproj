@@ -70,6 +70,7 @@
 		DA5A1CA927EB04C8001361ED /* BonusInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A1CA827EB04C8001361ED /* BonusInfoView.swift */; };
 		DA5A1CAB27EB0DA8001361ED /* BonusProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A1CAA27EB0DA8001361ED /* BonusProgressView.swift */; };
 		DACC1AA727E9FF0D00DD5AB7 /* PreLanuchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACC1AA627E9FF0D00DD5AB7 /* PreLanuchView.swift */; };
+		DAE5F70427FB040D00CBCBE5 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE5F70327FB040D00CBCBE5 /* TabItem.swift */; };
 		DAFF5D5327E7A30F009784E3 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFF5D5227E7A30F009784E3 /* ProductView.swift */; };
 /* End PBXBuildFile section */
 
@@ -138,6 +139,7 @@
 		DA5A1CA827EB04C8001361ED /* BonusInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusInfoView.swift; sourceTree = "<group>"; };
 		DA5A1CAA27EB0DA8001361ED /* BonusProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonusProgressView.swift; sourceTree = "<group>"; };
 		DACC1AA627E9FF0D00DD5AB7 /* PreLanuchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreLanuchView.swift; sourceTree = "<group>"; };
+		DAE5F70327FB040D00CBCBE5 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		DAFF5D5227E7A30F009784E3 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -260,6 +262,7 @@
 				DA0CCA7827E878020091A6AC /* Order.swift */,
 				DA0CCA7A27E878290091A6AC /* Cart.swift */,
 				DA0CCA7C27E8D8A70091A6AC /* Article.swift */,
+				DAE5F70327FB040D00CBCBE5 /* TabItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				D021DC0927D33377002CD455 /* CartProductItem.swift in Sources */,
 				D021DC0727D33298002CD455 /* CartView.swift in Sources */,
 				D021DC0F27D36259002CD455 /* CartBlurView.swift in Sources */,
+				DAE5F70427FB040D00CBCBE5 /* TabItem.swift in Sources */,
 				D09941C227C9ED3E00B2394A /* Content.swift in Sources */,
 				38CF0942272046AA0079C51B /* OnBoardingView.swift in Sources */,
 				38B870952723DF1000AED736 /* TestLoginView.swift in Sources */,

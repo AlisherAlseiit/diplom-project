@@ -40,12 +40,14 @@ struct BonusInfoView: View {
                 
                 
                 HStack {
-                    Text("$" + String(format: "%.2f", model.orderTotal))
+                    Text("spent: $" + String(format: "%.2f", model.orderTotal))
+                        .foregroundColor(.secondary) 
                         .font(.caption)
                     
                     Spacer()
                     
-                    Text("$\(min)")
+                    Text("need: $\(min)")
+                        .foregroundColor(.secondary)
                         .font(.caption)
                 }
                 .padding(.bottom, 10)
