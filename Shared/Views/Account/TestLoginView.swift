@@ -148,6 +148,8 @@ struct TestLoginView: View {
                 }
                 
                 CustomTextField(field: $signupVM.email, iconName: "envelope.open.fill", isSecure: false, title: "Email", prompt: signupVM.emailPrompt)
+                    .textContentType(.emailAddress)
+                    .keyboardType(.emailAddress)
                     .focused($focusedField, equals: .email)
                     .submitLabel(.next)
                 

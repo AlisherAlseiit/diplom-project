@@ -18,20 +18,19 @@ struct CustomTextField: View {
         VStack (alignment: .leading) {
             HStack(spacing: 15) {
                 TextFieldIcon(iconName: iconName)
-                
-                if !isSecure {
-                    TextField(title, text: $field)
-                        .colorScheme(.dark)
-                        .foregroundColor(Color.white.opacity(0.7))
-                        .autocapitalization(.none)
-                    
-                } else {
-                    SecureField(title, text: $field)
-                        .colorScheme(.dark)
-                        .foregroundColor(Color.white.opacity(0.7))
-                        .autocapitalization(.none)
-                    
+                Group {
+                    if !isSecure {
+                        TextField(title, text: $field)
+                    } else {
+                        SecureField(title, text: $field)
+                            
+                        
+                    }
                 }
+                .colorScheme(.dark)
+                .foregroundColor(Color.white.opacity(0.7))
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
                 
             }
             .frame(height: 52)
