@@ -66,9 +66,11 @@
 		DA0CCA7927E878020091A6AC /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0CCA7827E878020091A6AC /* Order.swift */; };
 		DA0CCA7B27E878290091A6AC /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0CCA7A27E878290091A6AC /* Cart.swift */; };
 		DA0CCA7D27E8D8A70091A6AC /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0CCA7C27E8D8A70091A6AC /* Article.swift */; };
+		DA13B10528183F51009B8A1D /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = DA13B10428183F51009B8A1D /* CachedAsyncImage */; };
 		DA5A1CA727EAE968001361ED /* CartPriceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A1CA627EAE968001361ED /* CartPriceItem.swift */; };
 		DA5A1CA927EB04C8001361ED /* BonusInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A1CA827EB04C8001361ED /* BonusInfoView.swift */; };
 		DA5A1CAB27EB0DA8001361ED /* BonusProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A1CAA27EB0DA8001361ED /* BonusProgressView.swift */; };
+		DAA3BBB72809D0EA008076C9 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA3BBB62809D0EA008076C9 /* StatisticsView.swift */; };
 		DACC1AA727E9FF0D00DD5AB7 /* PreLanuchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACC1AA627E9FF0D00DD5AB7 /* PreLanuchView.swift */; };
 		DAE5F70427FB040D00CBCBE5 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE5F70327FB040D00CBCBE5 /* TabItem.swift */; };
 		DAFF5D5327E7A30F009784E3 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFF5D5227E7A30F009784E3 /* ProductView.swift */; };
@@ -138,6 +140,7 @@
 		DA5A1CA627EAE968001361ED /* CartPriceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPriceItem.swift; sourceTree = "<group>"; };
 		DA5A1CA827EB04C8001361ED /* BonusInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusInfoView.swift; sourceTree = "<group>"; };
 		DA5A1CAA27EB0DA8001361ED /* BonusProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonusProgressView.swift; sourceTree = "<group>"; };
+		DAA3BBB62809D0EA008076C9 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		DACC1AA627E9FF0D00DD5AB7 /* PreLanuchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreLanuchView.swift; sourceTree = "<group>"; };
 		DAE5F70327FB040D00CBCBE5 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		DAFF5D5227E7A30F009784E3 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
@@ -149,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38BE77A9272FF94D008498C3 /* Lottie in Frameworks */,
+				DA13B10528183F51009B8A1D /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +241,7 @@
 				38CF09402720468E0079C51B /* OnBoarding */,
 				38CF09462720490F0079C51B /* Account */,
 				D06705FF27DB15D500A5F4A8 /* SwiftUIView.swift */,
+				DAA3BBB62809D0EA008076C9 /* StatisticsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -381,6 +386,7 @@
 			name = "diplom-project (iOS)";
 			packageProductDependencies = (
 				38BE77A8272FF94D008498C3 /* Lottie */,
+				DA13B10428183F51009B8A1D /* CachedAsyncImage */,
 			);
 			productName = "diplom-project (iOS)";
 			productReference = 38CF08FA27203FCC0079C51B /* diplom-project.app */;
@@ -412,6 +418,7 @@
 			mainGroup = 38CF08ED27203FC90079C51B;
 			packageReferences = (
 				38BE77A7272FF94D008498C3 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				DA13B10328183F51009B8A1D /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
 			);
 			productRefGroup = 38CF08FB27203FCC0079C51B /* Products */;
 			projectDirPath = "";
@@ -455,6 +462,7 @@
 				D021DC0227D317A3002CD455 /* SectionRow.swift in Sources */,
 				D09941BA27C9E49F00B2394A /* Livestream.swift in Sources */,
 				389FB749274BC998005C576A /* VisualEffectBlur.swift in Sources */,
+				DAA3BBB72809D0EA008076C9 /* StatisticsView.swift in Sources */,
 				D0F59CB427D2120300AE0246 /* CategoryItems.swift in Sources */,
 				383F17AC27230FE9005173B0 /* BackButtonView.swift in Sources */,
 				D0F59CB927D213B200AE0246 /* ProductItem.swift in Sources */,
@@ -713,6 +721,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		DA13B10328183F51009B8A1D /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -720,6 +736,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 38BE77A7272FF94D008498C3 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		DA13B10428183F51009B8A1D /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA13B10328183F51009B8A1D /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -139,12 +139,8 @@ struct TestLoginView: View {
                     
                     TextFieldIcon(iconName: "exclamationmark")
                         .onTapGesture {
-                            model.excltapped = true
-                            
+                            model.excltapped = true   
                         }
-                    
-                    
-                    
                 }
                 
                 CustomTextField(field: $signupVM.email, iconName: "envelope.open.fill", isSecure: false, title: "Email", prompt: signupVM.emailPrompt)

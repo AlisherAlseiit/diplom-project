@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct ProductItem: View {
     
@@ -19,7 +20,7 @@ struct ProductItem: View {
             
             HStack {
                 Spacer()
-                AsyncImage(url: URL(string: product.image)) { imag in
+                CachedAsyncImage(url: URL(string: product.image)) { imag in
                     imag.resizable()
                         .aspectRatio(contentMode: .fit)
                 } placeholder: {

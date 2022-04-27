@@ -37,6 +37,7 @@ class ContentModel: ObservableObject {
     @Published var orders = [Order]()
     @Published var selectedPage = -1
     @Published var indexes = [Int]()
+    @Published var brent: Brent?
     
     @Published var showLaunchView = false
     
@@ -58,6 +59,8 @@ class ContentModel: ObservableObject {
         checkToken()
         checkLogin()
     }
+    
+   
     
     func checkToken()  {
         guard let url = URL(string: "\(Constants.url)/user") else {

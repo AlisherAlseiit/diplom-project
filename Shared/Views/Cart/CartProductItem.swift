@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct CartProductItem: View {
     var cartItem: Cart
@@ -15,7 +16,7 @@ struct CartProductItem: View {
     var body: some View {
         HStack(alignment: .top, spacing: 15) {
             VStack(spacing: 10) {
-                AsyncImage(url: URL(string: cartItem.product.image)) { image in
+                CachedAsyncImage(url: URL(string: cartItem.product.image)) { image in
                     image
                         .renderingMode(.original)
                         .resizable()

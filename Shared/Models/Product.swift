@@ -24,6 +24,10 @@ struct Category: Codable, Identifiable {
     var name: String
 }
 
+struct Brent: Decodable {
+    var Brent: Double
+}
+
 
 
 

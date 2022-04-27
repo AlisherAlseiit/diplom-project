@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct BannerItem: View {
     var article: Article
@@ -38,7 +39,7 @@ struct BannerItem: View {
             .padding(.top, 20)
             .padding(.all, 20)
             .background(
-                AsyncImage(url: URL(string: article.image)) { image in
+                CachedAsyncImage(url: URL(string: article.image)) { image in
                     image
                         .renderingMode(.original)
                         .resizable()

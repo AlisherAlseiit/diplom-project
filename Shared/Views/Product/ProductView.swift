@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import CachedAsyncImage
 
 
 
@@ -23,7 +23,7 @@ struct ProductView: View {
             
             VStack {
                 ScrollView {
-                    AsyncImage(url: URL(string: product.image)) { image in
+                    CachedAsyncImage(url: URL(string: product.image)) { image in
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fit)
