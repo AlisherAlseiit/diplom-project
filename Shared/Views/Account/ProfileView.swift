@@ -28,7 +28,7 @@ struct ProfileView: View {
                         .padding(5)
                         
                         ForEach(secondListSections) { section in
-                            Link(destination: URL(string: "https://m.yelp.com/biz/tacorea-san-francisco?utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=OYbm7rBdHJaRh5-qGZk-5g")!) {
+                            Link(destination: URL(string: section.link)!) {
                                 
                                 linkSectionRow(section: section)
                                     .padding(5)
